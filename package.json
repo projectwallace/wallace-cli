@@ -4,14 +4,11 @@
   "description": "Stylesheet analysis",
   "main": "cli.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "xo"
   },
   "bin": {
-    "wallace": "./cli.js"
+    "analyzecss": "./cli.js"
   },
-  "files": [
-    "cli.js"
-  ],
   "keywords": [
     "stylesheets",
     "css",
@@ -35,6 +32,7 @@
     "cli-table3": "^0.5.1",
     "cli-truncate": "^1.1.0",
     "color-sorter": "^2.0.0",
+    "flat": "^4.1.0",
     "get-css": "^1.2.7-2",
     "get-stdin": "^6.0.0",
     "is-absolute-url": "^2.1.0",
@@ -46,5 +44,8 @@
   },
   "devDependencies": {
     "xo": "^0.22.0"
+  },
+  "xo": {
+    "semicolon": false
   }
 }

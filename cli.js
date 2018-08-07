@@ -7,20 +7,41 @@ const getStdin = require('get-stdin')
 const isAbsoluteUrl = require('is-absolute-url')
 const getCss = require('get-css')
 const ora = require('ora')
-const table = require('./table.js')
+const flatten = require('flat')
+const tableify = require('./table.js')
+
+// CONFIG
+const FORMATS = {
+	JSON: 'json',
+	PRETTY: 'pretty'
+}
 
 const cli = meow(`
 	Usage
 		$ analyze-css https://projectwallace.com
 
+	Options
+		--format, -f Format pretty (default) or JSON
+		--compact, -c Show a compact output
+
 	Examples
 		$ analyze-css https://projectwallace.com
 		$ analyze-css 'body { color: red; }'
 		$ echo 'html { font-size: 16px; } | analyze-css
+		$ analyze-css 'html {}' --format=json
+		$ cat style.css | analyze-css --compact
+
 `, {
 	flags: {
-		version: {
-			alias: 'v'
+		format: {
+			type: 'string',
+			default: FORMATS.PRETTY,
+			alias: 'f'
+		},
+		compact: {
+			type: 'boolean',
+			default: null,
+			alias: 'c'
 		}
 	}
 })
@@ -32,24 +53,54 @@ if (!input && process.stdin.isTTY) {
 	process.exit(1)
 }
 
-const processStats = async (input) => {
-	let css
-	const spinner = ora({text: 'Wallace wakes up...', color: 'green'}).start()
+const filterOutput = (config, output) => {
+	if (config.compact) {
+		return Object.entries(output).reduce((acc, [key, value]) => {
+			if (!key.includes('unique') && !key.includes('top')) {
+				acc[key] = value
+			}
+			return acc
+		}, {})
+	}
+
+	return output
+}
+
+const formatOutput = (format, output, config) => {
+	switch (format) {
+		case FORMATS.JSON:
+			return JSON.stringify(output)
+		case FORMATS.PRETTY:
+		default:
+			return tableify(output, config)
+	}
+}
+
+const fetchCssFromUrl = async url => {
+	return (await getCss(url, {
+		headers: {'User-Agent': 'Project Wallace CSS Analyzer CLI'}
+	})).css
+}
+
+const processStats = async input => {
+	const spinner = ora('Starting analysis...').start()
 
 	if (isAbsoluteUrl(input)) {
 		spinner.text = 'Fetching CSS...'
-		input = (await getCss(input, {
-			headers: {'User-Agent': 'Project Wallace CLI'}
-		})).css
-		spinner.stop()
+		input = await fetchCssFromUrl(input)
 	}
 
-	analyzeCss(input).then(stats => {
-		spinner.stop()
-		console.log(table(stats))
-	})
+	const stats = await analyzeCss(input)
+	const flattened = flatten(stats, {safe: true})
+	const filtered = filterOutput({compact: cli.flags.compact}, flattened)
+	const format = FORMATS[cli.flags.format.toUpperCase()] ? cli.flags.format : FORMATS.PRETTY
+	const output = formatOutput(format, filtered, {compact: cli.flags.compact})
+
+	spinner.stop()
+	console.log(output)
 }
 
+// Read input as argument or from STDIN
 if (input) {
 	processStats(input)
 } else {

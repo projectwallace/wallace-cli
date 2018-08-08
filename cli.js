@@ -69,7 +69,7 @@ const filterOutput = (config, output) => {
 const formatOutput = (format, output, config) => {
 	switch (format) {
 		case FORMATS.JSON:
-			return JSON.stringify(output)
+			return JSON.stringify(output, null, 2)
 		case FORMATS.PRETTY:
 		default:
 			return tableify(output, config)

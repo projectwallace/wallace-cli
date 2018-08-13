@@ -56,6 +56,13 @@ module.exports = stats => {
 		['@keyframes', stats['atrules.keyframes.total'], stats['atrules.keyframes.totalUnique']]
 	)
 
+	if (stats['atrules.mediaqueries.unique']) {
+		table.push([
+			'@media queries',
+			{colSpan: 2, content: listWithCount(stats['atrules.mediaqueries.unique'])}
+		])
+	}
+
 	table.push(
 		[heading('Selectors'), chalk.dim('Total'), chalk.dim('Unique')],
 		['All', stats['selectors.total'], stats['selectors.totalUnique']],

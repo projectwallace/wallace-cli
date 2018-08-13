@@ -6,7 +6,7 @@
     "test": "xo"
   },
   "bin": {
-    "analyzecss": "./cli.js"
+    "wallace": "./cli.js"
   },
   "keywords": [
     "stylesheets",

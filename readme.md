@@ -1,4 +1,4 @@
-# CSS Analuzer CLI
+# Wallace
 
 Analyze your CSS from the CLI, like [Parker](https://www.npmjs.com/package/parker) or [Stylestats](https://www.npmjs.com/package/stylestats)
 
@@ -107,3 +107,9 @@ Usage
 │ Prefixed                │ N\A              │
 └─────────────────────────┴──────────────────┘
 ```
+
+## Related
+
+- [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer that powers this module
+- [Gromit](https://github.com/bartveneman/gromit) - A test framework to assert that CSS doesn't exceeds certain tresholds.
+- [CSS Analyzer Diff](https://github.com/bartveneman/css-analyzer-diff) - Calculates the diff between two sets of CSS analysis

@@ -1,8 +1,7 @@
 {
   "name": "css-analyzer-cli",
   "version": "0.1.0",
-  "description": "Stylesheet analysis",
-  "main": "cli.js",
+  "description": "Stylesheet analysis CLI Tool",
   "scripts": {
     "test": "xo"
   },
@@ -20,10 +19,13 @@
     "cli-app",
     "cssstats",
     "parker",
+    "stylestats",
     "projectwallace",
-    "wallace"
+    "wallace",
+    "performance",
+    "property"
   ],
-  "author": "",
+  "author": "Bart Veneman",
   "license": "MIT",
   "dependencies": {
     "@projectwallace/css-analyzer": "^1.1.0",
@@ -43,6 +45,7 @@
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
+    "prettier": "^1.14.2",
     "xo": "^0.22.0"
   },
   "xo": {

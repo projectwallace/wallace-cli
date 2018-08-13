@@ -6,18 +6,18 @@ Analyze your CSS from the CLI, like [Parker](https://www.npmjs.com/package/parke
 
 ```sh
 Usage
-  $ analyze-css https://projectwallace.com
+  $ wallace https://projectwallace.com
 
   Options
   --format, -f Format pretty (default) or JSON
   --compact, -c Show a compact output
 
   Examples
-  $ analyze-css https://projectwallace.com
-  $ analyze-css 'body { color: red; }'
-  $ echo 'html { font-size: 16px; } | analyze-css
-  $ analyze-css 'html {}' --format=json
-  $ cat style.css | analyze-css --compact
+  $ wallace https://projectwallace.com
+  $ wallace 'body { color: red; }'
+  $ echo 'html { font-size: 16px; } | wallace
+  $ wallace 'html {}' --format=json
+  $ cat style.css | wallace --compact
 ```
 
 ## Output

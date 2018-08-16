@@ -1,6 +1,6 @@
 {
   "name": "wallace-cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Stylesheet analysis CLI Tool",
   "scripts": {
     "test": "xo"

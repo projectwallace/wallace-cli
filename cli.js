@@ -33,6 +33,9 @@ const cli = meow(`
 
 `, {
 	flags: {
+		version: {
+			alias: 'v'
+		},
 		format: {
 			type: 'string',
 			default: FORMATS.PRETTY,
@@ -49,8 +52,7 @@ const cli = meow(`
 const input = cli.input[0]
 
 if (!input && process.stdin.isTTY) {
-	console.log('Specify something to analyze')
-	process.exit(1)
+	cli.showHelp()
 }
 
 const filterOutput = (config, output) => {

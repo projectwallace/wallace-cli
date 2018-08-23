@@ -5,12 +5,26 @@ const tinycolor = require('tinycolor2')
 const leftPad = require('left-pad')
 const prettyBytes = require('pretty-bytes')
 const sortColors = require('color-sorter')
+const termSize = require('term-size')
+
+// The minimum amount of characters needed to properly render the table
+const MIN_WIDTH = 36
+// The width of the CLI window
+const {columns: WINDOW_WIDTH} = termSize()
+// The max-width that a value on the outer right side can have
+const MAX_VALUE_WIDTH = WINDOW_WIDTH - MIN_WIDTH
 
 const roundFraction = fraction => {
 	return fraction.toFixed(3)
 }
 
 const fractionToPercentage = fraction => {
+	if (fraction === 0) {
+		return '0%'
+	}
+	if (fraction === 1) {
+		return '100%'
+	}
 	return `${roundFraction(fraction * 100)}%`
 }
 
@@ -26,23 +40,36 @@ const listWithCount = list => {
 		return chalk.dim('N\\A')
 	}
 
+	const padWidth = Math.max(...list.map(i => i.count)).toString().length
+
 	return list.map(item => {
-		return chalk`{dim ${leftPad(item.count, 2)} ×} ${cliTruncate(item.value, 34)}`
+		return chalk`{dim ${leftPad(item.count, padWidth)} ×} ${cliTruncate(item.value, MAX_VALUE_WIDTH)}`
 	}).join('\n')
 }
 
 const listSelectors = list => {
 	return list.map((selector, i) => {
-		return chalk`{dim ${(i + 1)}.} ${cliTruncate(selector.selector, 36)}`
+		return chalk`{dim ${(i + 1)}.} ${cliTruncate(selector.selector, MAX_VALUE_WIDTH)}`
 	}).join('\n')
 }
 
 module.exports = stats => {
 	const table = new Table()
 	const heading = chalk.hex('#29c87d').bold
+	const th = title => ({hAlign: 'right', content: chalk.dim(title)})
+	const numericCell = value => ({hAlign: 'right', content: value})
+	const numericRow = (title, stat) => {
+		return [
+			title,
+			numericCell(stats[`${stat}.total`]),
+			numericCell(stats[`${stat}.totalUnique`]),
+			numericCell(fractionOfTotal(stats[`${stat}.totalUnique`], stats[`${stat}.total`])),
+		]
+	}
+	const listRow = (title, list) => ([title, {colSpan: 3, content: list}])
 
 	table.push(
-		[{colSpan: 3, content: heading('Global')}],
+		[{colSpan: 4, content: heading('Stylesheet')}],
 		['Stylesheet size', prettyBytes(stats['stylesheets.size'])],
 		['Simplicity', roundFraction(stats['stylesheets.simplicity'])],
 		['Cohesion', roundFraction(stats['stylesheets.cohesion.average'])],
@@ -50,145 +77,160 @@ module.exports = stats => {
 	)
 
 	table.push(
-		[heading('At-Rules'), chalk.dim('Total'), chalk.dim('Unique')],
-		['@media queries', stats['atrules.mediaqueries.total'], stats['atrules.mediaqueries.totalUnique']],
-		['@font-faces', stats['atrules.fontfaces.total'], stats['atrules.fontfaces.totalUnique']],
-		['@keyframes', stats['atrules.keyframes.total'], stats['atrules.keyframes.totalUnique']]
+		[
+			heading('At-Rules'),
+			th('Total'),
+			th('Unique'),
+			th('Unique (%)')
+		],
+		numericRow('@media queries', 'atrules.mediaqueries'),
+		numericRow('@font-faces', 'atrules.fontfaces'),
+		numericRow('@keyframes', 'atrules.keyframes')
 	)
 
 	if (stats['atrules.mediaqueries.unique']) {
-		table.push([
+		table.push(listRow(
 			'@media queries',
-			{colSpan: 2, content: listWithCount(stats['atrules.mediaqueries.unique'])}
-		])
+			listWithCount(stats['atrules.mediaqueries.unique'])
+		))
 	}
 
 	table.push(
-		[heading('Selectors'), chalk.dim('Total'), chalk.dim('Unique')],
-		['All', stats['selectors.total'], stats['selectors.totalUnique']],
-		['ID', stats['selectors.id.total'], stats['selectors.id.totalUnique']],
-		['JS', stats['selectors.js.total'], stats['selectors.js.totalUnique']],
-		['Universal', stats['selectors.universal.total'], stats['selectors.universal.totalUnique']],
-		['Accessibility', stats['selectors.accessibility.total'], stats['selectors.accessibility.totalUnique']],
-		['Average identifiers', roundFraction(stats['selectors.identifiers.average'])],
+		[
+			heading('Selectors'),
+			th('Total'),
+			th('Unique'),
+			th('Unique (%)')
+		],
+		numericRow('All', 'selectors'),
+		numericRow('ID', 'selectors.id'),
+		numericRow('JS', 'selectors.js'),
+		numericRow('Universal', 'selectors.universal'),
+		numericRow('Accessibility', 'selectors.accessibility'),
+		[
+			'Average identifiers',
+			numericCell(roundFraction(stats['selectors.identifiers.average']))
+		]
 	)
 
 	if (stats['selectors.identifiers.top']) {
-		table.push([
+		table.push(listRow(
 			'Max. identifiers',
-			{colSpan: 2, content: listSelectors(stats['selectors.identifiers.top'])}
-		])
+			listSelectors(stats['selectors.identifiers.top']))
+		)
 	}
 
 	if (stats['selectors.specificity.top']) {
-		table.push([
+		table.push(listRow(
 			'Top specificity',
-			{colSpan: 2, content: listSelectors(stats['selectors.specificity.top'])}
-		])
+			listSelectors(stats['selectors.specificity.top']))
+		)
 	}
 
 	if (stats['selectors.id.unique']) {
-		table.push([
+		table.push(listRow(
 			'ID Selectors',
-			{colSpan: 2, content: listWithCount(stats['selectors.id.unique'])}
-		])
+			listWithCount(stats['selectors.id.unique']))
+		)
 	}
 
 	if (stats['selectors.js.unique']) {
-		table.push([
+		table.push(listRow(
 			'JS Selectors',
-			{colSpan: 2, content: listWithCount(stats['selectors.js.unique'])}
-		])
+			listWithCount(stats['selectors.js.unique']))
+		)
 	}
 
 	if (stats['selectors.universal.unique']) {
-		table.push([
+		table.push(listRow(
 			'Universal Selectors',
-			{colSpan: 2, content: listWithCount(stats['selectors.universal.unique'])}
-		])
+			listWithCount(stats['selectors.universal.unique']))
+		)
 	}
 
 	if (stats['selectors.accessibility.unique']) {
-		table.push([
+		table.push(listRow(
 			'Accessibility Selectors',
-			{colSpan: 2, content: listWithCount(stats['selectors.accessibility.unique'])}
-		])
+			listWithCount(stats['selectors.accessibility.unique']))
+		)
 	}
 
 	table.push(
-		[heading('Declarations'), chalk.dim('Total'), chalk.dim('Share')],
-		['Total', stats['declarations.total']],
-		['Unique', stats['declarations.totalUnique'], fractionOfTotal(stats['declarations.totalUnique'], stats['declarations.total'])],
-		['!importants', stats['declarations.importants.total'], fractionToPercentage(stats['declarations.importants.share'])],
+		[
+			heading('Declarations'),
+			th('Total'),
+			th('Unique'),
+			th('Share (%)')
+		],
+		numericRow('All', 'declarations'),
+		[
+			'!importants',
+			numericCell(stats['declarations.importants.total']),
+			'',
+			numericCell(fractionToPercentage(stats['declarations.importants.share']))
+		],
 	)
 
 	table.push(
-		[heading('Properties'), chalk.dim('Total'), chalk.dim('Share')],
-		['All', stats['properties.total']],
-		['Unique', stats['properties.totalUnique'], fractionOfTotal(stats['properties.totalUnique'], stats['properties.total'])],
-		['Prefixed', stats['properties.prefixed.total'], fractionToPercentage(stats['properties.prefixed.share'])]
+		[
+			heading('Properties'),
+			th('Total'),
+			th('Unique'),
+			th('Unique (%)')
+		],
+		numericRow('All', 'properties'),
+		numericRow('Prefixed', 'properties.prefixed')
 	)
 
 	if (stats['properties.prefixed.unique']) {
-		table.push([
+		table.push(listRow(
 			'Prefixed',
-			{
-				colSpan: 2,
-				content: listWithCount(stats['properties.prefixed.unique'])
-			}
-		])
+			listWithCount(stats['properties.prefixed.unique']))
+		)
 	}
 
 	table.push(
-		[heading('Values'), chalk.dim('Total'), chalk.dim('Unique')],
-		['Prefixed', stats['values.prefixed.total'], stats['values.prefixed.totalUnique']],
-		['Colors', stats['values.colors.total'], stats['values.colors.totalUnique']],
-		['Font-sizes', stats['values.fontsizes.total'], stats['values.fontsizes.totalUnique']],
-		['Font-families', stats['values.fontfamilies.total'], stats['values.fontfamilies.totalUnique']]
+		[
+			heading('Values'),
+			th('Total'),
+			th('Unique'),
+			th('Unique (%)')
+		],
+		numericRow('Prefixed', 'values.prefixed'),
+		numericRow('Colors', 'values.colors'),
+		numericRow('Font-families', 'values.fontfamilies'),
+		numericRow('Font-sizes', 'values.fontsizes')
 	)
 
 	if (stats['values.colors.unique']) {
-		table.push([
-			'Unique Colors',
-			{
-				colSpan: 2,
-				content: sortColors(stats['values.colors.unique'].map(c => c.value)).map(color => {
-					const {count} = stats['values.colors.unique'].find(c => c.value === color)
-					const hex = tinycolor(color).toHex()
-					return chalk`{dim ${leftPad(count, 3) + ' ×'}} ${chalk.hex(hex)(color)}`
-				}).join('\n')
-			}
-		])
+		const padSize = Math.max(...stats['values.colors.unique'].map(c => c.count)).toString().length
+		const content = sortColors(stats['values.colors.unique'].map(c => c.value)).map(color => {
+			const {count} = stats['values.colors.unique'].find(c => c.value === color)
+			const hex = tinycolor(color).toHex()
+			return chalk`{dim ${leftPad(count, padSize) + ' ×'}} ${chalk.hex(hex)(color)}`
+		}).join('\n')
+		table.push(listRow('Unique Colors', content))
 	}
 
 	if (stats['values.fontsizes.unique']) {
-		table.push([
+		table.push(listRow(
 			'Unique font-sizes',
-			{
-				colSpan: 2,
-				content: listWithCount(stats['values.fontsizes.unique'])
-			}
-		])
+			listWithCount(stats['values.fontsizes.unique']))
+		)
 	}
 
 	if (stats['values.fontfamilies.unique']) {
-		table.push([
+		table.push(listRow(
 			'Unique font-families',
-			{
-				colSpan: 2,
-				content: listWithCount(stats['values.fontfamilies.unique'])
-			}
-		])
+			listWithCount(stats['values.fontfamilies.unique']))
+		)
 	}
 
 	if (stats['values.prefixed.unique']) {
-		table.push([
+		table.push(listRow(
 			'Prefixed',
-			{
-				colSpan: 2,
-				content: listWithCount(stats['values.prefixed.unique'])
-			}
-		])
+			listWithCount(stats['values.prefixed.unique']))
+		)
 	}
 
 	return table.toString()

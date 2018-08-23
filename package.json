@@ -42,6 +42,7 @@
     "meow": "^5.0.0",
     "ora": "^3.0.0",
     "pretty-bytes": "^5.1.0",
+    "term-size": "^1.2.0",
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {

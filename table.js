@@ -63,7 +63,7 @@ module.exports = stats => {
 			title,
 			numericCell(stats[`${stat}.total`]),
 			numericCell(stats[`${stat}.totalUnique`]),
-			numericCell(fractionOfTotal(stats[`${stat}.totalUnique`], stats[`${stat}.total`])),
+			numericCell(fractionOfTotal(stats[`${stat}.totalUnique`], stats[`${stat}.total`]))
 		]
 	}
 	const listRow = (title, list) => ([title, {colSpan: 3, content: list}])

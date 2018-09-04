@@ -58,7 +58,7 @@ if (!input && process.stdin.isTTY) {
 const filterOutput = (config, output) => {
 	if (config.compact) {
 		return Object.entries(output).reduce((acc, [key, value]) => {
-			if (!key.includes('unique') && !key.includes('top')) {
+			if (!key.includes('unique') && !key.includes('top') && !key.includes('duplicates')) {
 				acc[key] = value
 			}
 			return acc

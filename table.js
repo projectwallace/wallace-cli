@@ -212,6 +212,55 @@ module.exports = stats => {
 		table.push(listRow('Unique Colors', content))
 	}
 
+	if (stats['values.colors.duplicates']) {
+		const padSize = Math.max(...stats['values.colors.duplicates'].map(c => c.count)).toString().length
+		const dupeMapper = dupe => {
+			return chalk`{dim ${leftPad(dupe.count, padSize) + ' ×'}} ${dupe.value}`
+		}
+		const [firstDupe, ...otherDupes] = stats['values.colors.duplicates']
+
+		if (firstDupe) {
+			table.push([
+				{
+					content: 'Color aliases',
+					rowSpan: stats['values.colors.duplicates'].length
+				},
+				dupeMapper(firstDupe),
+				{
+					colSpan: 2,
+					content: firstDupe.aliases.map(alias => {
+						return chalk`{dim ${alias.count} ×} ${alias.value}`
+					}).join('\n')
+				}
+			])
+		}
+
+		if (otherDupes.length > 0) {
+			otherDupes.map(dupe => {
+				const padSize = Math.max(...dupe.aliases.map(alias => alias.count)).toString().length
+				return table.push([
+					dupeMapper(dupe),
+					{
+						colSpan: 2,
+						content: dupe.aliases.map(alias => {
+							return chalk`{dim ${leftPad(alias.count, padSize) + ' ×'}} ${alias.value}`
+						}).join('\n')
+					}
+				])
+			})
+		}
+
+		if (!firstDupe) {
+			table.push([
+				'Color aliases',
+				{
+					colSpan: 3,
+					content: chalk.dim('N\\A')
+				}
+			])
+		}
+	}
+
 	if (stats['values.fontsizes.unique']) {
 		table.push(listRow(
 			'Unique font-sizes',

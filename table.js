@@ -219,32 +219,36 @@ module.exports = stats => {
 		}
 		const [firstDupe, ...otherDupes] = stats['values.colors.duplicates']
 
-		firstDupe && table.push([
-			{
-				content: 'Color aliases',
-				rowSpan: stats['values.colors.duplicates'].length
-			},
-			dupeMapper(firstDupe),
-			{
-				colSpan: 2,
-				content: firstDupe.aliases.map(alias => {
-					return chalk`{dim ${alias.count} ×} ${alias.value}`
-				}).join('\n')
-			}
-		])
-
-		otherDupes.length > 0 && otherDupes.map(dupe => {
-			const padSize = Math.max(...dupe.aliases.map(alias => alias.count)).toString().length
+		if (firstDupe) {
 			table.push([
-				dupeMapper(dupe),
+				{
+					content: 'Color aliases',
+					rowSpan: stats['values.colors.duplicates'].length
+				},
+				dupeMapper(firstDupe),
 				{
 					colSpan: 2,
-					content: dupe.aliases.map(alias => {
-						return chalk`{dim ${leftPad(alias.count, padSize) + ' ×'}} ${alias.value}`
+					content: firstDupe.aliases.map(alias => {
+						return chalk`{dim ${alias.count} ×} ${alias.value}`
 					}).join('\n')
 				}
 			])
-		})
+		}
+
+		if (otherDupes.length > 0) {
+			otherDupes.map(dupe => {
+				const padSize = Math.max(...dupe.aliases.map(alias => alias.count)).toString().length
+				return table.push([
+					dupeMapper(dupe),
+					{
+						colSpan: 2,
+						content: dupe.aliases.map(alias => {
+							return chalk`{dim ${leftPad(alias.count, padSize) + ' ×'}} ${alias.value}`
+						}).join('\n')
+					}
+				])
+			})
+		}
 
 		if (!firstDupe) {
 			table.push([

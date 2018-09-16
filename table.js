@@ -4,7 +4,6 @@ const cliTruncate = require('cli-truncate')
 const tinycolor = require('tinycolor2')
 const leftPad = require('left-pad')
 const prettyBytes = require('pretty-bytes')
-const sortColors = require('color-sorter')
 const termSize = require('term-size')
 
 // The minimum amount of characters needed to properly render the table
@@ -204,7 +203,7 @@ module.exports = stats => {
 
 	if (stats['values.colors.unique']) {
 		const padSize = Math.max(...stats['values.colors.unique'].map(c => c.count)).toString().length
-		const content = sortColors(stats['values.colors.unique'].map(c => c.value)).map(color => {
+		const content = stats['values.colors.unique'].map(c => c.value).map(color => {
 			const {count} = stats['values.colors.unique'].find(c => c.value === color)
 			const hex = tinycolor(color).toHex()
 			return chalk`{dim ${leftPad(count, padSize) + ' ×'}} ${chalk.hex(hex)(color)}`

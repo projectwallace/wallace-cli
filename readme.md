@@ -1,4 +1,4 @@
-# Wallace
+# Wallace [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 Analyze your CSS from the CLI, like [Parker](https://www.npmjs.com/package/parker) or [Stylestats](https://www.npmjs.com/package/stylestats)
 

@@ -45,8 +45,8 @@
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
-    "prettier": "^1.14.2",
-    "xo": "^0.22.0"
+    "prettier": "^1.14.3",
+    "xo": "^0.23.0"
   },
   "xo": {
     "semicolon": false

@@ -15,7 +15,8 @@ const FORMATS = {
 	PRETTY: 'pretty'
 }
 
-const cli = meow(`
+const cli = meow(
+	`
 	Usage
 		$ wallace https://projectwallace.com
 
@@ -30,23 +31,25 @@ const cli = meow(`
 		$ wallace 'html {}' --format=json
 		$ cat style.css | wallace --compact
 
-`, {
-	flags: {
-		version: {
-			alias: 'v'
-		},
-		format: {
-			type: 'string',
-			default: FORMATS.PRETTY,
-			alias: 'f'
-		},
-		compact: {
-			type: 'boolean',
-			default: null,
-			alias: 'c'
+`,
+	{
+		flags: {
+			version: {
+				alias: 'v'
+			},
+			format: {
+				type: 'string',
+				default: FORMATS.PRETTY,
+				alias: 'f'
+			},
+			compact: {
+				type: 'boolean',
+				default: null,
+				alias: 'c'
+			}
 		}
 	}
-})
+)
 
 const input = cli.input[0]
 
@@ -60,7 +63,11 @@ const filterOutput = (config, output) => {
 	}
 
 	return Object.entries(output).reduce((acc, [key, value]) => {
-		if (!key.includes('unique') && !key.includes('top') && !key.includes('duplicates')) {
+		if (
+			!key.includes('unique') &&
+			!key.includes('top') &&
+			!key.includes('duplicates')
+		) {
 			acc[key] = value
 		}
 
@@ -94,7 +101,9 @@ const processStats = async input => {
 
 	const stats = await analyzeCss(input)
 	const filtered = filterOutput({compact: cli.flags.compact}, stats)
-	const format = FORMATS[cli.flags.format.toUpperCase()] ? cli.flags.format : FORMATS.PRETTY
+	const format = FORMATS[cli.flags.format.toUpperCase()]
+		? cli.flags.format
+		: FORMATS.PRETTY
 	const output = formatOutput(format, filtered, {compact: cli.flags.compact})
 
 	spinner.stop()

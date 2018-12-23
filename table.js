@@ -41,15 +41,25 @@ const listWithCount = list => {
 
 	const padWidth = Math.max(...list.map(i => i.count)).toString().length
 
-	return list.map(item => {
-		return chalk`{dim ${leftPad(item.count, padWidth)} ×} ${cliTruncate(item.value, MAX_VALUE_WIDTH)}`
-	}).join('\n')
+	return list
+		.map(item => {
+			return chalk`{dim ${leftPad(item.count, padWidth)} ×} ${cliTruncate(
+				item.value,
+				MAX_VALUE_WIDTH
+			)}`
+		})
+		.join('\n')
 }
 
 const listSelectors = list => {
-	return list.map((selector, i) => {
-		return chalk`{dim ${(i + 1)}.} ${cliTruncate(selector.selector, MAX_VALUE_WIDTH)}`
-	}).join('\n')
+	return list
+		.map((selector, i) => {
+			return chalk`{dim ${i + 1}.} ${cliTruncate(
+				selector.value,
+				MAX_VALUE_WIDTH
+			)}`
+		})
+		.join('\n')
 }
 
 module.exports = stats => {
@@ -62,10 +72,12 @@ module.exports = stats => {
 			title,
 			numericCell(stats[`${stat}.total`]),
 			numericCell(stats[`${stat}.totalUnique`]),
-			numericCell(fractionOfTotal(stats[`${stat}.totalUnique`], stats[`${stat}.total`]))
+			numericCell(
+				fractionOfTotal(stats[`${stat}.totalUnique`], stats[`${stat}.total`])
+			)
 		]
 	}
-	const listRow = (title, list) => ([title, {colSpan: 3, content: list}])
+	const listRow = (title, list) => [title, {colSpan: 3, content: list}]
 
 	table.push(
 		[{colSpan: 4, content: heading('Stylesheet')}],
@@ -76,31 +88,23 @@ module.exports = stats => {
 	)
 
 	table.push(
-		[
-			heading('At-Rules'),
-			th('Total'),
-			th('Unique'),
-			th('Unique (%)')
-		],
+		[heading('At-Rules'), th('Total'), th('Unique'), th('Unique (%)')],
 		numericRow('@media queries', 'atrules.mediaqueries'),
 		numericRow('@font-faces', 'atrules.fontfaces'),
 		numericRow('@keyframes', 'atrules.keyframes')
 	)
 
 	if (stats['atrules.mediaqueries.unique']) {
-		table.push(listRow(
-			'@media queries',
-			listWithCount(stats['atrules.mediaqueries.unique'])
-		))
+		table.push(
+			listRow(
+				'@media queries',
+				listWithCount(stats['atrules.mediaqueries.unique'])
+			)
+		)
 	}
 
 	table.push(
-		[
-			heading('Selectors'),
-			th('Total'),
-			th('Unique'),
-			th('Unique (%)')
-		],
+		[heading('Selectors'), th('Total'), th('Unique'), th('Unique (%)')],
 		numericRow('All', 'selectors'),
 		numericRow('ID', 'selectors.id'),
 		numericRow('JS', 'selectors.js'),
@@ -113,88 +117,78 @@ module.exports = stats => {
 	)
 
 	if (stats['selectors.identifiers.top']) {
-		table.push(listRow(
-			'Max. identifiers',
-			listSelectors(stats['selectors.identifiers.top']))
+		table.push(
+			listRow(
+				'Max. identifiers',
+				listSelectors(stats['selectors.identifiers.top'])
+			)
 		)
 	}
 
 	if (stats['selectors.specificity.top']) {
-		table.push(listRow(
-			'Top specificity',
-			listSelectors(stats['selectors.specificity.top']))
+		table.push(
+			listRow(
+				'Top specificity',
+				listSelectors(stats['selectors.specificity.top'])
+			)
 		)
 	}
 
 	if (stats['selectors.id.unique']) {
-		table.push(listRow(
-			'ID Selectors',
-			listWithCount(stats['selectors.id.unique']))
+		table.push(
+			listRow('ID Selectors', listWithCount(stats['selectors.id.unique']))
 		)
 	}
 
 	if (stats['selectors.js.unique']) {
-		table.push(listRow(
-			'JS Selectors',
-			listWithCount(stats['selectors.js.unique']))
+		table.push(
+			listRow('JS Selectors', listWithCount(stats['selectors.js.unique']))
 		)
 	}
 
 	if (stats['selectors.universal.unique']) {
-		table.push(listRow(
-			'Universal Selectors',
-			listWithCount(stats['selectors.universal.unique']))
+		table.push(
+			listRow(
+				'Universal Selectors',
+				listWithCount(stats['selectors.universal.unique'])
+			)
 		)
 	}
 
 	if (stats['selectors.accessibility.unique']) {
-		table.push(listRow(
-			'Accessibility Selectors',
-			listWithCount(stats['selectors.accessibility.unique']))
+		table.push(
+			listRow(
+				'Accessibility Selectors',
+				listWithCount(stats['selectors.accessibility.unique'])
+			)
 		)
 	}
 
 	table.push(
-		[
-			heading('Declarations'),
-			th('Total'),
-			th('Unique'),
-			th('Share (%)')
-		],
+		[heading('Declarations'), th('Total'), th('Unique'), th('Share (%)')],
 		numericRow('All', 'declarations'),
 		[
 			'!importants',
 			numericCell(stats['declarations.importants.total']),
 			'',
 			numericCell(fractionToPercentage(stats['declarations.importants.share']))
-		],
+		]
 	)
 
 	table.push(
-		[
-			heading('Properties'),
-			th('Total'),
-			th('Unique'),
-			th('Unique (%)')
-		],
+		[heading('Properties'), th('Total'), th('Unique'), th('Unique (%)')],
 		numericRow('All', 'properties'),
 		numericRow('Prefixed', 'properties.prefixed')
 	)
 
 	if (stats['properties.prefixed.unique']) {
-		table.push(listRow(
-			'Prefixed',
-			listWithCount(stats['properties.prefixed.unique']))
+		table.push(
+			listRow('Prefixed', listWithCount(stats['properties.prefixed.unique']))
 		)
 	}
 
 	table.push(
-		[
-			heading('Values'),
-			th('Total'),
-			th('Unique'),
-			th('Unique (%)')
-		],
+		[heading('Values'), th('Total'), th('Unique'), th('Unique (%)')],
 		numericRow('Prefixed', 'values.prefixed'),
 		numericRow('Colors', 'values.colors'),
 		numericRow('Font-families', 'values.fontfamilies'),
@@ -202,17 +196,28 @@ module.exports = stats => {
 	)
 
 	if (stats['values.colors.unique']) {
-		const padSize = Math.max(...stats['values.colors.unique'].map(c => c.count)).toString().length
-		const content = stats['values.colors.unique'].map(c => c.value).map(color => {
-			const {count} = stats['values.colors.unique'].find(c => c.value === color)
-			const hex = tinycolor(color).toHex()
-			return chalk`{dim ${leftPad(count, padSize) + ' ×'}} ${chalk.hex(hex)(color)}`
-		}).join('\n')
+		const padSize = Math.max(
+			...stats['values.colors.unique'].map(c => c.count)
+		).toString().length
+		const content = stats['values.colors.unique']
+			.map(c => c.value)
+			.map(color => {
+				const {count} = stats['values.colors.unique'].find(
+					c => c.value === color
+				)
+				const hex = tinycolor(color).toHex()
+				return chalk`{dim ${leftPad(count, padSize) + ' ×'}} ${chalk.hex(hex)(
+					color
+				)}`
+			})
+			.join('\n')
 		table.push(listRow('Unique Colors', content))
 	}
 
 	if (stats['values.colors.duplicates']) {
-		const padSize = Math.max(...stats['values.colors.duplicates'].map(c => c.count)).toString().length
+		const padSize = Math.max(
+			...stats['values.colors.duplicates'].map(c => c.count)
+		).toString().length
 		const dupeMapper = dupe => {
 			return chalk`{dim ${leftPad(dupe.count, padSize) + ' ×'}} ${dupe.value}`
 		}
@@ -227,23 +232,31 @@ module.exports = stats => {
 				dupeMapper(firstDupe),
 				{
 					colSpan: 2,
-					content: firstDupe.aliases.map(alias => {
-						return chalk`{dim ${alias.count} ×} ${alias.value}`
-					}).join('\n')
+					content: firstDupe.aliases
+						.map(alias => {
+							return chalk`{dim ${alias.count} ×} ${alias.value}`
+						})
+						.join('\n')
 				}
 			])
 		}
 
 		if (otherDupes.length > 0) {
 			otherDupes.map(dupe => {
-				const padSize = Math.max(...dupe.aliases.map(alias => alias.count)).toString().length
+				const padSize = Math.max(
+					...dupe.aliases.map(alias => alias.count)
+				).toString().length
 				return table.push([
 					dupeMapper(dupe),
 					{
 						colSpan: 2,
-						content: dupe.aliases.map(alias => {
-							return chalk`{dim ${leftPad(alias.count, padSize) + ' ×'}} ${alias.value}`
-						}).join('\n')
+						content: dupe.aliases
+							.map(alias => {
+								return chalk`{dim ${leftPad(alias.count, padSize) + ' ×'}} ${
+									alias.value
+								}`
+							})
+							.join('\n')
 					}
 				])
 			})
@@ -261,23 +274,26 @@ module.exports = stats => {
 	}
 
 	if (stats['values.fontsizes.unique']) {
-		table.push(listRow(
-			'Unique font-sizes',
-			listWithCount(stats['values.fontsizes.unique']))
+		table.push(
+			listRow(
+				'Unique font-sizes',
+				listWithCount(stats['values.fontsizes.unique'])
+			)
 		)
 	}
 
 	if (stats['values.fontfamilies.unique']) {
-		table.push(listRow(
-			'Unique font-families',
-			listWithCount(stats['values.fontfamilies.unique']))
+		table.push(
+			listRow(
+				'Unique font-families',
+				listWithCount(stats['values.fontfamilies.unique'])
+			)
 		)
 	}
 
 	if (stats['values.prefixed.unique']) {
-		table.push(listRow(
-			'Prefixed',
-			listWithCount(stats['values.prefixed.unique']))
+		table.push(
+			listRow('Prefixed', listWithCount(stats['values.prefixed.unique']))
 		)
 	}
 

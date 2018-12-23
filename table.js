@@ -48,7 +48,7 @@ const listWithCount = list => {
 
 const listSelectors = list => {
 	return list.map((selector, i) => {
-		return chalk`{dim ${(i + 1)}.} ${cliTruncate(selector.selector, MAX_VALUE_WIDTH)}`
+		return chalk`{dim ${(i + 1)}.} ${cliTruncate(selector.value, MAX_VALUE_WIDTH)}`
 	}).join('\n')
 }
 

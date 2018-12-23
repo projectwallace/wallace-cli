@@ -7,7 +7,6 @@ const getStdin = require('get-stdin')
 const isAbsoluteUrl = require('is-absolute-url')
 const getCss = require('get-css')
 const ora = require('ora')
-const flatten = require('flat')
 const tableify = require('./table.js')
 
 // CONFIG
@@ -56,16 +55,17 @@ if (!input && process.stdin.isTTY) {
 }
 
 const filterOutput = (config, output) => {
-	if (config.compact) {
-		return Object.entries(output).reduce((acc, [key, value]) => {
-			if (!key.includes('unique') && !key.includes('top') && !key.includes('duplicates')) {
-				acc[key] = value
-			}
-			return acc
-		}, {})
+	if (!config.compact) {
+		return output
 	}
 
-	return output
+	return Object.entries(output).reduce((acc, [key, value]) => {
+		if (!key.includes('unique') && !key.includes('top') && !key.includes('duplicates')) {
+			acc[key] = value
+		}
+
+		return acc
+	}, {})
 }
 
 const formatOutput = (format, output, config) => {
@@ -93,8 +93,7 @@ const processStats = async input => {
 	}
 
 	const stats = await analyzeCss(input)
-	const flattened = flatten(stats, {safe: true})
-	const filtered = filterOutput({compact: cli.flags.compact}, flattened)
+	const filtered = filterOutput({compact: cli.flags.compact}, stats)
 	const format = FORMATS[cli.flags.format.toUpperCase()] ? cli.flags.format : FORMATS.PRETTY
 	const output = formatOutput(format, filtered, {compact: cli.flags.compact})
 

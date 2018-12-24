@@ -8,6 +8,7 @@ const isAbsoluteUrl = require('is-absolute-url')
 const getCss = require('get-css')
 const ora = require('ora')
 const tableify = require('./table.js')
+const updateNotifier = require('update-notifier')
 
 // CONFIG
 const FORMATS = {
@@ -50,6 +51,8 @@ const cli = meow(
 		}
 	}
 )
+
+updateNotifier({pkg: cli.pkg}).notify()
 
 const input = cli.input[0]
 

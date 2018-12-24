@@ -4,7 +4,7 @@
   "description": "Stylesheet analysis CLI Tool",
   "homepage": "https://www.projectwallace.com/oss",
   "scripts": {
-    "test": "xo"
+    "test": "xo && ava"
   },
   "bin": {
     "wallace": "./cli.js"
@@ -45,7 +45,10 @@
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
+    "ava": "^1.0.1",
+    "execa": "^1.0.0",
     "prettier": "^1.15.3",
+    "semver": "^5.6.0",
     "xo": "^0.23.0"
   },
   "xo": {

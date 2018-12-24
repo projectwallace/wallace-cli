@@ -7,6 +7,7 @@ const getStdin = require('get-stdin')
 const isAbsoluteUrl = require('is-absolute-url')
 const getCss = require('get-css')
 const ora = require('ora')
+const updateNotifier = require('update-notifier')
 const tableify = require('./table.js')
 
 // CONFIG
@@ -50,6 +51,8 @@ const cli = meow(
 		}
 	}
 )
+
+updateNotifier({pkg: cli.pkg}).notify()
 
 const input = cli.input[0]
 

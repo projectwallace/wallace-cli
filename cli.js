@@ -7,8 +7,8 @@ const getStdin = require('get-stdin')
 const isAbsoluteUrl = require('is-absolute-url')
 const getCss = require('get-css')
 const ora = require('ora')
-const tableify = require('./table.js')
 const updateNotifier = require('update-notifier')
+const tableify = require('./table.js')
 
 // CONFIG
 const FORMATS = {

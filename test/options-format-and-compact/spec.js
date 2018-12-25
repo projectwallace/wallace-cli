@@ -1,7 +1,8 @@
+const {promisify} = require('util')
+const fs = require('fs')
 const test = require('ava')
 const execa = require('execa')
-const fs = require('fs')
-const {promisify} = require('util')
+
 const readFile = promisify(fs.readFile)
 
 test(`it shows compact json output when the --format=json and --compact options are passed`, async t => {

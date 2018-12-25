@@ -1,7 +1,8 @@
+const {promisify} = require('util')
+const fs = require('fs')
 const test = require('ava')
 const execa = require('execa')
-const fs = require('fs')
-const {promisify} = require('util')
+
 const readFile = promisify(fs.readFile)
 
 test(`it shows a table with stats if no options are passed`, async t => {
@@ -18,6 +19,7 @@ test(`it shows a table with stats if no options are passed`, async t => {
 })
 
 // @TODO: make this test work
+/* eslint-disable ava/no-skip-test */
 test.skip('it shows a table of stats if a valid url is passed', async t => {
 	// @TODO: it would be better if this test wouldn't make
 	// an actual HTTP request

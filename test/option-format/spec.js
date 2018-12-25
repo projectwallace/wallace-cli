@@ -1,7 +1,8 @@
+const {promisify} = require('util')
+const fs = require('fs')
 const test = require('ava')
 const execa = require('execa')
-const fs = require('fs')
-const {promisify} = require('util')
+
 const readFile = promisify(fs.readFile)
 
 test(`it shows json output when the --format=json option is passed`, async t => {

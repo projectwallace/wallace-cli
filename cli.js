@@ -79,6 +79,8 @@ const filterOutput = (config, output) => {
 }
 
 const formatOutput = (format, output, config) => {
+	format = format.toLowerCase()
+
 	switch (format) {
 		case FORMATS.JSON:
 			return JSON.stringify(output, null, 2)

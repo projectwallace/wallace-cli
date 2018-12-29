@@ -1,9 +1,11 @@
-# Wallace [![Build Status]
+# Wallace
 
 [![NPM Version](https://img.shields.io/npm/v/wallace-cli.svg)](https://www.npmjs.com/package/wallace-cli)
-(https://travis-ci.com/bartveneman/wallace-cli.svg?branch=master)](https://travis-ci.com/bartveneman/wallace-cli)
+[![Build Status](https://travis-ci.com/bartveneman/wallace-cli.svg?branch=master)](https://travis-ci.com/bartveneman/wallace-cli)
 [![Known Vulnerabilities](https://snyk.io/test/github/bartveneman/wallace-cli/badge.svg?targetFile=package.json)](https://snyk.io/test/github/bartveneman/wallace-cli?targetFile=package.json)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+![Dependencies Status](https://img.shields.io/david/bartveneman/wallace-cli.svg)
+![Dependencies Status](https://img.shields.io/david/dev/bartveneman/wallace-cli.svg)
 
 Analyze your CSS from the CLI, like
 [Parker](https://www.npmjs.com/package/parker) or

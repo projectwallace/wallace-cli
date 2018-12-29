@@ -1,6 +1,13 @@
-# Wallace [![Build Status](https://travis-ci.com/bartveneman/wallace-cli.svg?branch=master)](https://travis-ci.com/bartveneman/wallace-cli) [![Known Vulnerabilities](https://snyk.io/test/github/bartveneman/wallace-cli/badge.svg?targetFile=package.json)](https://snyk.io/test/github/bartveneman/wallace-cli?targetFile=package.json) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+# Wallace [![Build Status]
 
-Analyze your CSS from the CLI, like [Parker](https://www.npmjs.com/package/parker) or [Stylestats](https://www.npmjs.com/package/stylestats)
+[![NPM Version](https://img.shields.io/npm/v/wallace-cli.svg)](https://www.npmjs.com/package/wallace-cli)
+(https://travis-ci.com/bartveneman/wallace-cli.svg?branch=master)](https://travis-ci.com/bartveneman/wallace-cli)
+[![Known Vulnerabilities](https://snyk.io/test/github/bartveneman/wallace-cli/badge.svg?targetFile=package.json)](https://snyk.io/test/github/bartveneman/wallace-cli?targetFile=package.json)
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+
+Analyze your CSS from the CLI, like
+[Parker](https://www.npmjs.com/package/parker) or
+[Stylestats](https://www.npmjs.com/package/stylestats)
 
 ## Usage
 
@@ -22,7 +29,9 @@ Usage
 
 ## Output
 
-This example shows the output for [projectwallace.com](https://www.projectwallace.com) ([screenshot, 102 kB](screenshots/wallace-cli-example.jpg)):
+This example shows the output for
+[projectwallace.com](https://www.projectwallace.com)
+([screenshot, 102 kB](screenshots/wallace-cli-example.jpg)):
 
 ```sh
 ┌───────────────────────────────────────────────────────────────────┐
@@ -181,7 +190,8 @@ This example shows the output for [projectwallace.com](https://www.projectwallac
 └─────────────────────────┴─────────────────────────────────────────┘
 ```
 
-Or in compact mode ([screenshot, 95kB](screenshots/wallace-cli-example-compact.png)):
+Or in compact mode
+([screenshot, 95kB](screenshots/wallace-cli-example-compact.png)):
 
 ```sh
 ┌─────────────────────────────────────────────────────┐
@@ -243,6 +253,9 @@ Or in compact mode ([screenshot, 95kB](screenshots/wallace-cli-example-compact.p
 
 ## Related projects
 
-- [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer that powers this module
-- [Gromit](https://github.com/bartveneman/gromit) - A test framework to assert that CSS doesn't exceeds certain tresholds.
-- [CSS Analyzer Diff](https://github.com/bartveneman/css-analyzer-diff) - Calculates the diff between two sets of CSS analysis
+- [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer
+  that powers this module
+- [Gromit](https://github.com/bartveneman/gromit) - A test framework to assert
+  that CSS doesn't exceeds certain tresholds.
+- [CSS Analyzer Diff](https://github.com/bartveneman/css-analyzer-diff) -
+  Calculates the diff between two sets of CSS analysis

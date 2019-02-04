@@ -109,5 +109,11 @@
   "values.colors.duplicates.total": 0,
   "values.browserhacks.total": 0,
   "values.browserhacks.unique": [],
-  "values.browserhacks.totalUnique": 0
+  "values.browserhacks.totalUnique": 0,
+  "values.boxshadows.total": 0,
+  "values.boxshadows.unique": [],
+  "values.boxshadows.totalUnique": 0,
+  "values.zindexes.total": 0,
+  "values.zindexes.unique": [],
+  "values.zindexes.totalUnique": 0
 }

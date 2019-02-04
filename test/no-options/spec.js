@@ -30,3 +30,4 @@ test.skip('it shows a table of stats if a valid url is passed', async t => {
 
 	t.deepEqual(actual, expected)
 })
+/* eslint-enable ava/no-skip-test */

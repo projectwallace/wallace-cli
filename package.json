@@ -29,7 +29,7 @@
   "author": "Bart Veneman",
   "license": "MIT",
   "dependencies": {
-    "@projectwallace/css-analyzer": "^2.1.0",
+    "@projectwallace/css-analyzer": "^2.1.1",
     "chalk": "^2.4.2",
     "cli-table3": "^0.5.1",
     "cli-truncate": "^1.1.0",

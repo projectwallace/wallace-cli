@@ -21,9 +21,11 @@ const fractionToPercentage = fraction => {
 	if (fraction === 0) {
 		return '0%'
 	}
+
 	if (fraction === 1) {
 		return '100%'
 	}
+
 	return `${roundFraction(fraction * 100)}%`
 }
 
@@ -31,6 +33,7 @@ const fractionOfTotal = (part, total) => {
 	if (total === 0 || part === 0) {
 		return fractionToPercentage(0)
 	}
+
 	return fractionToPercentage(part / total)
 }
 
@@ -77,6 +80,7 @@ module.exports = stats => {
 			)
 		]
 	}
+
 	const listRow = (title, list) => [title, {colSpan: 3, content: list}]
 
 	table.push(
@@ -221,6 +225,7 @@ module.exports = stats => {
 		const dupeMapper = dupe => {
 			return chalk`{dim ${leftPad(dupe.count, padSize) + ' ×'}} ${dupe.value}`
 		}
+
 		const [firstDupe, ...otherDupes] = stats['values.colors.duplicates']
 
 		if (firstDupe) {

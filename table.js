@@ -47,7 +47,7 @@ const listWithCount = list => {
 	return list
 		.map(item => {
 			return chalk`{dim ${leftPad(item.count, padWidth)} ×} ${cliTruncate(
-				item.value,
+				item.value.toString(),
 				MAX_VALUE_WIDTH
 			)}`
 		})
@@ -196,7 +196,8 @@ module.exports = stats => {
 		numericRow('Prefixed', 'values.prefixed'),
 		numericRow('Colors', 'values.colors'),
 		numericRow('Font-families', 'values.fontfamilies'),
-		numericRow('Font-sizes', 'values.fontsizes')
+		numericRow('Font-sizes', 'values.fontsizes'),
+		numericRow('Z-indexes', 'values.zindexes')
 	)
 
 	if (stats['values.colors.unique']) {
@@ -218,26 +219,26 @@ module.exports = stats => {
 		table.push(listRow('Unique Colors', content))
 	}
 
-	if (stats['values.colors.duplicates']) {
+	if (stats['values.colors.duplicates.unique']) {
 		const padSize = Math.max(
-			...stats['values.colors.duplicates'].map(c => c.count)
+			...stats['values.colors.duplicates.unique'].map(c => c.count)
 		).toString().length
 		const dupeMapper = dupe => {
 			return chalk`{dim ${leftPad(dupe.count, padSize) + ' ×'}} ${dupe.value}`
 		}
 
-		const [firstDupe, ...otherDupes] = stats['values.colors.duplicates']
+		const [firstDupe, ...otherDupes] = stats['values.colors.duplicates.unique']
 
 		if (firstDupe) {
 			table.push([
 				{
 					content: 'Color aliases',
-					rowSpan: stats['values.colors.duplicates'].length
+					rowSpan: stats['values.colors.duplicates.unique'].length
 				},
 				dupeMapper(firstDupe),
 				{
 					colSpan: 2,
-					content: firstDupe.aliases
+					content: firstDupe.notations
 						.map(alias => {
 							return chalk`{dim ${alias.count} ×} ${alias.value}`
 						})
@@ -293,6 +294,12 @@ module.exports = stats => {
 				'Unique font-families',
 				listWithCount(stats['values.fontfamilies.unique'])
 			)
+		)
+	}
+
+	if (stats['values.zindexes.unique']) {
+		table.push(
+			listRow('Z-indexes', listWithCount(stats['values.zindexes.unique']))
 		)
 	}
 

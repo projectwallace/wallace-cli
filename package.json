@@ -3,6 +3,7 @@
   "version": "1.4.0",
   "description": "Stylesheet analysis CLI Tool",
   "homepage": "https://www.projectwallace.com/oss",
+  "preferGlobal": true,
   "scripts": {
     "test": "xo && ava"
   },

@@ -52,7 +52,11 @@ const cli = meow(
 	}
 )
 
-updateNotifier({pkg: cli.pkg}).notify()
+updateNotifier({
+	pkg: cli.pkg,
+	shouldNotifyInNpmScript: true,
+	isGlobal: true
+}).notify()
 
 const input = cli.input[0]
 

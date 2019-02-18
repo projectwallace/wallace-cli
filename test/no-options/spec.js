@@ -5,11 +5,22 @@ const execa = require('execa')
 
 const readFile = promisify(fs.readFile)
 
-test(`it shows a table with stats if no options are passed`, async t => {
+test(`it shows a table with stats if no options are passed and CSS is passed via STDIN`, async t => {
 	const [{stdout: actual}, expected] = await Promise.all([
 		execa('./cli.js', {
 			input: 'a{}'
 		}),
+		readFile('./test/no-options/expected.txt', {
+			encoding: 'utf8'
+		})
+	])
+
+	t.deepEqual(actual, expected)
+})
+
+test(`it shows a table with stats if no options are passed and CSS is passed as argument`, async t => {
+	const [{stdout: actual}, expected] = await Promise.all([
+		execa('./cli.js', ['a{}']),
 		readFile('./test/no-options/expected.txt', {
 			encoding: 'utf8'
 		})

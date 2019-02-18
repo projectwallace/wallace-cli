@@ -124,5 +124,8 @@ const processStats = async input => {
 if (input) {
 	processStats(input)
 } else {
-	getStdin().then(input => processStats(input))
+	;(async () => {
+		const css = await getStdin()
+		processStats(css)
+	})()
 }

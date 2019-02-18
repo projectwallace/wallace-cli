@@ -5,7 +5,7 @@ const meow = require('meow')
 const analyzeCss = require('@projectwallace/css-analyzer')
 const getStdin = require('get-stdin')
 const isAbsoluteUrl = require('is-absolute-url')
-const getCss = require('get-css')
+const got = require('got')
 const ora = require('ora')
 const updateNotifier = require('update-notifier')
 const tableify = require('./table.js')
@@ -55,7 +55,7 @@ const cli = meow(
 updateNotifier({
 	pkg: cli.pkg,
 	shouldNotifyInNpmScript: true,
-	isGlobal: true
+	isGlobal: cli.pkg.preferGlobal
 }).notify()
 
 const input = cli.input[0]
@@ -85,19 +85,11 @@ const filterOutput = (config, output) => {
 const formatOutput = (format, output, config) => {
 	format = format.toLowerCase()
 
-	switch (format) {
-		case FORMATS.JSON:
-			return JSON.stringify(output, null, 2)
-		case FORMATS.PRETTY:
-		default:
-			return tableify(output, config)
+	if (format === FORMATS.JSON) {
+		return JSON.stringify(output, null, 2)
 	}
-}
 
-const fetchCssFromUrl = async url => {
-	return (await getCss(url, {
-		headers: {'User-Agent': 'Project Wallace CSS Analyzer CLI'}
-	})).css
+	return tableify(output, config)
 }
 
 const processStats = async input => {
@@ -105,7 +97,16 @@ const processStats = async input => {
 
 	if (isAbsoluteUrl(input)) {
 		spinner.text = 'Fetching CSS...'
-		input = await fetchCssFromUrl(input)
+		const {body: css} = await got(`https://extract-css.now.sh/${input}`, {
+			responseType: 'text',
+			resolveBodyOnly: true,
+			headers: {
+				'User-Agent': `WallaceCLI/${
+					cli.pkg.version
+				} (+https://github.com/bartveneman/wallace-cli)`
+			}
+		})
+		input = css
 	}
 
 	const stats = await analyzeCss(input)

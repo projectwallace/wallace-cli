@@ -36,7 +36,9 @@ test.skip('it shows a table of stats if a valid url is passed', async t => {
 	// an actual HTTP request
 	const [{stdout: actual}, expected] = await Promise.all([
 		execa('./cli.js', ['https://file-huqyrptkwt.now.sh']),
-		readFile('./test/no-options/expected.txt')
+		readFile('./test/no-options/expected.txt', {
+			encoding: 'utf8'
+		})
 	])
 
 	t.deepEqual(actual, expected)

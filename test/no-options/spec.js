@@ -44,3 +44,12 @@ test.skip('it shows a table of stats if a valid url is passed', async t => {
 	t.deepEqual(actual, expected)
 })
 /* eslint-enable ava/no-skip-test */
+
+test('it exits with a non-zero exit code on invalid CSS', async t => {
+	const {code} = await t.throwsAsync(
+		// Intentional CSS Syntax Error
+		execa('./cli.js', ['a{color    red}'])
+	)
+
+	t.is(code, 1)
+})

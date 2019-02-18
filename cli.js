@@ -64,7 +64,7 @@ if (!input && process.stdin.isTTY) {
 	cli.showHelp()
 }
 
-const filterOutput = (config, output) => {
+function filterOutput(config, output) {
 	if (!config.compact) {
 		return output
 	}
@@ -82,7 +82,7 @@ const filterOutput = (config, output) => {
 	}, {})
 }
 
-const formatOutput = (format, output, config) => {
+function formatOutput(output, format, config) {
 	format = format.toLowerCase()
 
 	if (format === FORMATS.JSON) {
@@ -92,40 +92,40 @@ const formatOutput = (format, output, config) => {
 	return tableify(output, config)
 }
 
-const processStats = async input => {
-	const spinner = ora('Starting analysis...').start()
-
-	if (isAbsoluteUrl(input)) {
-		spinner.text = 'Fetching CSS...'
-		const {body: css} = await got(`https://extract-css.now.sh/${input}`, {
-			responseType: 'text',
-			resolveBodyOnly: true,
-			headers: {
-				'User-Agent': `WallaceCLI/${
-					cli.pkg.version
-				} (+https://github.com/bartveneman/wallace-cli)`
-			}
-		})
-		input = css
+async function getCss(input) {
+	if (!isAbsoluteUrl(input)) {
+		return input
 	}
 
-	const stats = await analyzeCss(input)
-	const filtered = filterOutput({compact: cli.flags.compact}, stats)
-	const format = FORMATS[cli.flags.format.toUpperCase()]
-		? cli.flags.format
-		: FORMATS.PRETTY
-	const output = formatOutput(format, filtered, {compact: cli.flags.compact})
+	const spinner = ora('Fetching CSS ...').start()
+	const {body: css} = await got(`https://extract-css.now.sh/${input}`, {
+		responseType: 'text',
+		resolveBodyOnly: true,
+		headers: {
+			'User-Agent': `WallaceCLI/${
+				cli.pkg.version
+			} (+https://github.com/bartveneman/wallace-cli)`
+		}
+	}).finally(spinner.stop())
 
-	spinner.stop()
-	console.log(output)
+	return css
 }
 
-// Read input as argument or from STDIN
-if (input) {
-	processStats(input)
-} else {
-	;(async () => {
-		const css = await getStdin()
-		processStats(css)
-	})()
-}
+Promise.resolve()
+	// Get the correct input source (as argument or via STDIN)
+	.then(() => (input ? input : getStdin()))
+	// Optionally get CSS from a remote source
+	.then(input => getCss(input))
+	// Convert input CSS to stats
+	.then(css => analyzeCss(css))
+	// Filter some stats if the --compact option is used
+	.then(stats => filterOutput({compact: cli.flags.compact}, stats))
+	// Format the stats according to the optional --format option
+	.then(stats => formatOutput(stats, cli.flags.format))
+	// Put the output on the screen
+	.then(output => console.log(output))
+	// Catch error and exit with non-zero code to indicate error
+	.catch(error => {
+		console.error(error.toString())
+		process.exit(1)
+	})

@@ -1,6 +1,6 @@
 {
   "name": "wallace-cli",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Stylesheet analysis CLI Tool",
   "homepage": "https://www.projectwallace.com/oss",
   "preferGlobal": true,

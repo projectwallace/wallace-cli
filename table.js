@@ -250,13 +250,13 @@ module.exports = stats => {
 		if (otherDupes.length > 0) {
 			otherDupes.map(dupe => {
 				const padSize = Math.max(
-					...dupe.aliases.map(alias => alias.count)
+					...dupe.notations.map(alias => alias.count)
 				).toString().length
 				return table.push([
 					dupeMapper(dupe),
 					{
 						colSpan: 2,
-						content: dupe.aliases
+						content: dupe.notations
 							.map(alias => {
 								return chalk`{dim ${leftPad(alias.count, padSize) + ' ×'}} ${
 									alias.value

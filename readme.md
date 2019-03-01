@@ -11,6 +11,14 @@ Analyze your CSS from the CLI, like
 [Parker](https://www.npmjs.com/package/parker) or
 [Stylestats](https://www.npmjs.com/package/stylestats)
 
+## Install
+
+> You need to have [Node.js](https://nodejs.org) installed.
+
+```sh
+$ npm install -g wallace-cli
+```
+
 ## Usage
 
 ```sh

@@ -35,6 +35,7 @@ Usage
   $ echo 'html { font-size: 16px; } | wallace
   $ wallace 'html {}' --format=json
   $ cat style.css | wallace --compact
+  $ curl http://localhost/css/style.css | wallace
 ```
 
 ## Output

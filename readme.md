@@ -6,6 +6,7 @@
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 ![Dependencies Status](https://img.shields.io/david/bartveneman/wallace-cli.svg)
 ![Dependencies Status](https://img.shields.io/david/dev/bartveneman/wallace-cli.svg)
+[![Project: Wallace](https://img.shields.io/badge/Project-Wallace-29c87d.svg)](https://www.projectwallace.com/oss)
 
 Analyze your CSS from the CLI, like
 [Parker](https://www.npmjs.com/package/parker) or

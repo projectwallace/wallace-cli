@@ -33,7 +33,7 @@
   "author": "Bart Veneman",
   "license": "MIT",
   "dependencies": {
-    "@projectwallace/css-analyzer": "^2.1.1",
+    "@projectwallace/css-analyzer": "^2.2.0",
     "chalk": "^2.4.2",
     "cli-table3": "^0.5.1",
     "cli-truncate": "^1.1.0",
@@ -42,14 +42,14 @@
     "is-absolute-url": "^2.1.0",
     "left-pad": "^1.3.0",
     "meow": "^5.0.0",
-    "ora": "^3.1.0",
+    "ora": "^3.2.0",
     "pretty-bytes": "^5.1.0",
     "term-size": "^1.2.0",
     "tinycolor2": "^1.4.1",
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
-    "ava": "^1.2.1",
+    "ava": "^1.3.1",
     "execa": "^1.0.0",
     "prettier": "^1.16.4",
     "semver": "^5.6.0",

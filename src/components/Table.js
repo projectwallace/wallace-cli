@@ -1,5 +1,7 @@
 const React = require('react')
 const {Color, Text, Box} = require('ink')
+const importJsx = require('import-jsx')
+const {Dim} = importJsx('./Colors')
 
 const Table = ({children}) => <React.Fragment>{children}</React.Fragment>
 
@@ -7,17 +9,19 @@ const Th = ({children}) => <Color dim>{children}</Color>
 
 const RowSpan = ({children}) => (
 	<Text>
-		<Color dim>‣</Color> {children}
+		<Color dim>‣ </Color>
+		<Text bold>{children}</Text>
 	</Text>
 )
 
 const Caption = ({children}) => (
-	<Box>
+	<Box flexDirection="column">
 		<Text bold>{children}</Text>
+		<Dim>{new Array(52).fill('-')}</Dim>
 	</Box>
 )
 
-const Tr = ({children, marginTop}) => {
+const Tr = ({children, marginTop, marginBottom}) => {
 	const columns = [
 		{
 			width: 20,
@@ -42,7 +46,7 @@ const Tr = ({children, marginTop}) => {
 	]
 
 	return (
-		<Box marginTop={marginTop}>
+		<Box marginTop={marginTop} marginBottom={marginBottom}>
 			{React.Children.map(children, (child, index) => {
 				const {width, margin, align} = columns[index]
 				return (
@@ -56,7 +60,7 @@ const Tr = ({children, marginTop}) => {
 }
 
 const Td = ({children}) => (
-	<Box marginLeft={2} textWrap="wrap">
+	<Box marginLeft={2} marginBottom={1} textWrap="wrap">
 		{children}
 	</Box>
 )

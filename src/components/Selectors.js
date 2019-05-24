@@ -3,6 +3,7 @@ const {Text} = require('ink')
 const importJsx = require('import-jsx')
 const {Table, Th, RowSpan, Caption, Tr, Td} = importJsx('./Table')
 const {Yellow, Dim} = importJsx('./Colors')
+const ValuesList = importJsx('./ValuesList')
 const {FormatInteger, FormatPercentage} = require('./Formatters')
 
 const Selectors = ({stats, verbose}) => (
@@ -43,6 +44,11 @@ const Selectors = ({stats, verbose}) => (
 				/>
 			</Dim>
 		</Tr>
+		{verbose && (
+			<Td>
+				<ValuesList values={stats['selectors.id.unique']} />
+			</Td>
+		)}
 
 		<Tr>
 			<RowSpan>.js</RowSpan>
@@ -58,6 +64,11 @@ const Selectors = ({stats, verbose}) => (
 				/>
 			</Dim>
 		</Tr>
+		{verbose && (
+			<Td>
+				<ValuesList values={stats['selectors.js.unique']} />
+			</Td>
+		)}
 
 		<Tr>
 			<RowSpan>* (universal)</RowSpan>
@@ -74,6 +85,11 @@ const Selectors = ({stats, verbose}) => (
 				/>
 			</Dim>
 		</Tr>
+		{verbose && (
+			<Td>
+				<ValuesList values={stats['selectors.universal.unique']} />
+			</Td>
+		)}
 
 		<Tr>
 			<RowSpan>{'[role|aria=""]'}</RowSpan>
@@ -90,8 +106,13 @@ const Selectors = ({stats, verbose}) => (
 				/>
 			</Dim>
 		</Tr>
+		{verbose && (
+			<Td>
+				<ValuesList values={stats['selectors.accessibility.unique']} />
+			</Td>
+		)}
 
-		<Tr>
+		<Tr marginBottom={1}>
 			<RowSpan>Browserh4cks</RowSpan>
 			<FormatInteger value={stats['selectors.browserhacks.total']} />
 			<Yellow>
@@ -106,8 +127,13 @@ const Selectors = ({stats, verbose}) => (
 				/>
 			</Dim>
 		</Tr>
+		{verbose && (
+			<Td>
+				<ValuesList values={stats['selectors.browserhacks.unique']} />
+			</Td>
+		)}
 
-		<Tr marginTop={1}>
+		<Tr marginTop={verbose ? 0 : 1}>
 			<RowSpan>Top specificity</RowSpan>
 			<Text>
 				{Object.values(stats['selectors.specificity.top'][0].specificity).join(
@@ -121,7 +147,7 @@ const Selectors = ({stats, verbose}) => (
 			</Td>
 		)}
 
-		<Tr marginTop={1}>
+		<Tr>
 			<RowSpan>Top identifiers</RowSpan>
 			<FormatInteger value={stats['selectors.identifiers.max.count']} />
 		</Tr>

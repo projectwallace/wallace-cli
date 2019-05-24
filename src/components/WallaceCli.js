@@ -7,7 +7,7 @@ const Performance = importJsx('./Performance')
 const Branding = importJsx('./Branding')
 
 const Section = ({children}) => (
-	<Box marginTop={1} flexDirection={'column'}>
+	<Box marginBottom={1} marginTop={1} flexDirection={'column'}>
 		{children}
 	</Box>
 )
@@ -15,16 +15,16 @@ const Section = ({children}) => (
 const WallaceCli = ({stats, cliOptions}) => (
 	<React.Fragment>
 		<Section>
-			<Complexity stats={stats} />
+			<Complexity stats={stats} verbose={cliOptions.verbose} />
 		</Section>
 		<Section>
 			<Selectors stats={stats} verbose={cliOptions.verbose} />
 		</Section>
 		<Section>
-			<Performance stats={stats} />
+			<Performance stats={stats} verbose={cliOptions.verbose} />
 		</Section>
 		<Section>
-			<Branding stats={stats} />
+			<Branding stats={stats} verbose={cliOptions.verbose} />
 		</Section>
 		{/* @TODO: optionally add link to url that was entered as argument to the CLI */}
 	</React.Fragment>

@@ -1,10 +1,12 @@
 const React = require('react')
+const {Box} = require('ink')
 const importJsx = require('import-jsx')
-const {Table, RowSpan, Caption, Tr, Th} = importJsx('./Table')
+const {Table, RowSpan, Caption, Tr, Th, Td} = importJsx('./Table')
 const {Yellow, Dim} = importJsx('./Colors')
 const {FormatInteger, FormatPercentage, FormatBytes} = require('./Formatters')
+const ValuesList = importJsx('./ValuesList')
 
-const Performance = ({stats}) => (
+const Performance = ({stats, verbose}) => (
 	<Table>
 		<Caption>Performance</Caption>
 
@@ -81,6 +83,11 @@ const Performance = ({stats}) => (
 				/>
 			</Dim>
 		</Tr>
+		{verbose && (
+			<Td>
+				<ValuesList values={stats['atrules.imports.unique']} />
+			</Td>
+		)}
 
 		<Tr>
 			<RowSpan>@font-face rules</RowSpan>
@@ -97,6 +104,33 @@ const Performance = ({stats}) => (
 				/>
 			</Dim>
 		</Tr>
+		{verbose && (
+			<Td>
+				<Box marginBottom={1} flexDirection="column">
+					{stats['atrules.fontfaces.unique'].map(fontface => (
+						<Box flexDirection="column" key={fontface.value['src']}>
+							{Object.entries(fontface.value).map(
+								([property, value], index) => (
+									<Box
+										key={fontface.value['src'] + property}
+										marginLeft={index === 0 ? 0 : 2}
+									>
+										{index === 0 && <Dim>‣ </Dim>}
+										<Box>{property}</Box>
+										<Box>
+											<Dim>: </Dim>
+										</Box>
+										<Box textWrap="truncate-middle">
+											<Yellow>{value}</Yellow>
+										</Box>
+									</Box>
+								)
+							)}
+						</Box>
+					))}
+				</Box>
+			</Td>
+		)}
 
 		<Tr>
 			<RowSpan>Color duplicates</RowSpan>

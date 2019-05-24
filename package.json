@@ -45,7 +45,7 @@
     "get-stdin": "^6.0.0",
     "got": "^9.6.0",
     "import-jsx": "^2.0.0",
-    "ink": "^2.1.1",
+    "ink": "^2.2.0",
     "ink-link": "^1.0.0",
     "ink-spinner": "^3.0.1",
     "is-absolute-url": "^2.1.0",

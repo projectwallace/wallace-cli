@@ -1,10 +1,11 @@
 const React = require('react')
 const importJsx = require('import-jsx')
-const {Table, Th, RowSpan, Caption, Tr} = importJsx('./Table')
+const {Table, Th, RowSpan, Caption, Tr, Td} = importJsx('./Table')
 const {Red, Yellow, Dim} = importJsx('./Colors')
 const {FormatInteger, FormatDecimal, FormatPercentage} = require('./Formatters')
+const ValuesList = importJsx('./ValuesList')
 
-const Complexity = ({stats}) => (
+const Complexity = ({stats, verbose}) => (
 	<Table>
 		<Caption>Complexity</Caption>
 
@@ -95,6 +96,11 @@ const Complexity = ({stats}) => (
 				/>
 			</Dim>
 		</Tr>
+		{verbose && (
+			<Td>
+				<ValuesList values={stats['atrules.supports.unique']} />
+			</Td>
+		)}
 
 		<Tr>
 			<RowSpan>@media</RowSpan>
@@ -111,6 +117,11 @@ const Complexity = ({stats}) => (
 				/>
 			</Dim>
 		</Tr>
+		{verbose && (
+			<Td>
+				<ValuesList values={stats['atrules.mediaqueries.unique']} />
+			</Td>
+		)}
 
 		<Tr>
 			<RowSpan>Z-indexes</RowSpan>
@@ -127,6 +138,11 @@ const Complexity = ({stats}) => (
 				/>
 			</Dim>
 		</Tr>
+		{verbose && (
+			<Td>
+				<ValuesList values={stats['values.zindexes.unique']} />
+			</Td>
+		)}
 	</Table>
 )
 

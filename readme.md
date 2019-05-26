@@ -38,9 +38,9 @@ Usage
   $ curl http://localhost/css/style.css | wallace
 ```
 
-## Output
+## Example output
 
-@TODO: fix for V2
+![Example output for projectwallace.com](example.png)
 
 ## Related projects
 

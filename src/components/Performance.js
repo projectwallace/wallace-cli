@@ -2,9 +2,14 @@ const React = require('react')
 const {Box} = require('ink')
 const importJsx = require('import-jsx')
 const {Table, RowSpan, Caption, Tr, Th, Td} = importJsx('./Table')
-const {Yellow, Dim} = importJsx('./Colors')
+const {Yellow, Dim, Red} = importJsx('./Colors')
 const {FormatInteger, FormatPercentage, FormatBytes} = require('./Formatters')
 const ValuesList = importJsx('./ValuesList')
+
+const Warning = ({children, warning}) => {
+	const Component = warning ? Red : React.Fragment
+	return <Component>{children}</Component>
+}
 
 const Performance = ({stats, verbose}) => (
 	<Table>
@@ -60,7 +65,9 @@ const Performance = ({stats, verbose}) => (
 
 		<Tr>
 			<RowSpan>Empty rules</RowSpan>
-			<FormatInteger value={stats['rules.empty.total']} />
+			<Warning warning={stats['rules.empty.total'] > 0}>
+				<FormatInteger value={stats['rules.empty.total']} />
+			</Warning>
 			<Yellow>
 				<FormatPercentage
 					fraction={stats['rules.empty.total'] / stats['rules.total']}
@@ -70,7 +77,9 @@ const Performance = ({stats, verbose}) => (
 
 		<Tr>
 			<RowSpan>@import rules</RowSpan>
-			<FormatInteger value={stats['atrules.imports.total']} />
+			<Warning warning={stats['atrules.imports.total'] > 0}>
+				<FormatInteger value={stats['atrules.imports.total']} />
+			</Warning>
 			<Yellow>
 				<FormatInteger value={stats['atrules.imports.totalUnique']} />
 			</Yellow>
@@ -109,23 +118,17 @@ const Performance = ({stats, verbose}) => (
 				<Box marginBottom={1} flexDirection="column">
 					{stats['atrules.fontfaces.unique'].map(fontface => (
 						<Box flexDirection="column" key={fontface.value['src']}>
-							{Object.entries(fontface.value).map(
-								([property, value], index) => (
-									<Box
-										key={fontface.value['src'] + property}
-										marginLeft={index === 0 ? 0 : 2}
-									>
-										{index === 0 && <Dim>‣ </Dim>}
-										<Box>{property}</Box>
-										<Box>
-											<Dim>: </Dim>
-										</Box>
-										<Box textWrap="truncate-middle">
-											<Yellow>{value}</Yellow>
-										</Box>
+							<Dim>{'{'}</Dim>
+							{Object.entries(fontface.value).map(([property, value]) => (
+								<Box key={fontface.value['src'] + property} marginLeft={2}>
+									<Box>{property}</Box>
+									<Dim>: </Dim>
+									<Box textWrap="truncate-middle">
+										<Yellow>{value}</Yellow>
 									</Box>
-								)
-							)}
+								</Box>
+							))}
+							<Dim>{'}'}</Dim>
 						</Box>
 					))}
 				</Box>

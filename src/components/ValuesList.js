@@ -3,8 +3,16 @@ const {Box} = require('ink')
 const importJsx = require('import-jsx')
 const {Dim} = importJsx('./Colors')
 
-const ValuesList = ({values}) =>
-	values.length > 0 ? (
+const ValuesList = ({values}) => {
+	if (values.length === 0) {
+		return (
+			<Box>
+				<Dim>N/A</Dim>
+			</Box>
+		)
+	}
+
+	return (
 		<Box flexDirection="column">
 			{values.map(value => (
 				<Box key={value.value}>
@@ -20,10 +28,7 @@ const ValuesList = ({values}) =>
 				</Box>
 			))}
 		</Box>
-	) : (
-		<Box>
-			<Dim>N/A</Dim>
-		</Box>
 	)
+}
 
 module.exports = ValuesList

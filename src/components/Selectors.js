@@ -112,7 +112,7 @@ const Selectors = ({stats, verbose}) => (
 			</Td>
 		)}
 
-		<Tr marginBottom={1}>
+		<Tr>
 			<RowSpan>Browserh4cks</RowSpan>
 			<FormatInteger value={stats['selectors.browserhacks.total']} />
 			<Yellow>
@@ -133,7 +133,7 @@ const Selectors = ({stats, verbose}) => (
 			</Td>
 		)}
 
-		<Tr marginTop={verbose ? 0 : 1}>
+		<Tr marginTop={1}>
 			<RowSpan>Top specificity</RowSpan>
 			<Text>
 				{Object.values(stats['selectors.specificity.top'][0].specificity).join(

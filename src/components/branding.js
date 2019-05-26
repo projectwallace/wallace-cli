@@ -28,7 +28,7 @@ const Branding = ({stats, verbose}) => (
 		<Caption>Branding</Caption>
 
 		<Tr>
-			<></>
+			<React.Fragment />
 			<Th>Total</Th>
 			<Th>Unique</Th>
 			<Th>Unique %</Th>

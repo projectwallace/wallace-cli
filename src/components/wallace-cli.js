@@ -14,7 +14,7 @@ const Section = ({children}) => (
 )
 
 const WallaceCli = ({stats, cliOptions}) => (
-	<>
+	<React.Fragment>
 		<Section>
 			<Complexity stats={stats} verbose={cliOptions.verbose} />
 		</Section>
@@ -28,7 +28,7 @@ const WallaceCli = ({stats, cliOptions}) => (
 			<Branding stats={stats} verbose={cliOptions.verbose} />
 		</Section>
 		{/* @TODO: optionally add link to url that was entered as argument to the CLI */}
-	</>
+	</React.Fragment>
 )
 
 module.exports = props => render(<WallaceCli {...props} />)

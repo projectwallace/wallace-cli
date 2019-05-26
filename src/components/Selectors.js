@@ -12,7 +12,7 @@ const Selectors = ({stats, verbose}) => (
 		<Caption>Selectors</Caption>
 
 		<Tr>
-			<></>
+			<React.Fragment />
 			<Th>Total</Th>
 			<Th>Unique</Th>
 			<Th>Unique %</Th>

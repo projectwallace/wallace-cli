@@ -15,7 +15,7 @@ const Complexity = ({stats, verbose}) => (
 		<Caption>Complexity</Caption>
 
 		<Tr>
-			<></>
+			<React.Fragment />
 			<Th>Total</Th>
 			<Th>Average</Th>
 			<Th>Maximum</Th>
@@ -64,7 +64,7 @@ const Complexity = ({stats, verbose}) => (
 		</Tr>
 
 		<Tr marginTop={1}>
-			<></>
+			<React.Fragment />
 			<Th>Total</Th>
 			<Th>Unique</Th>
 			<Th>Unique %</Th>

@@ -60,6 +60,7 @@ if (!input && process.stdin.isTTY) {
 }
 
 const USER_AGENT = `WallaceCli/${cli.pkg.version} (+${cli.pkg.repository.url})`
+const wallaceCli = importJsx('./components/wallace-cli')
 
 Promise.resolve()
 	.then(() => input || getStdin())
@@ -70,7 +71,6 @@ Promise.resolve()
 			return console.log(JSON.stringify(stats))
 		}
 
-		const wallaceCli = importJsx('./components/wallace-cli')
 		return wallaceCli({
 			stats,
 			cliOptions: cli.flags

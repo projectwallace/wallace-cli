@@ -5,7 +5,7 @@ const meow = require('meow')
 const analyzeCss = require('@projectwallace/css-analyzer')
 const getStdin = require('get-stdin')
 const updateNotifier = require('update-notifier')
-const ora = require('ora')
+const importJsx = require('import-jsx')
 const getCss = require('./get-css')
 
 // CONFIG
@@ -60,7 +60,6 @@ if (!input && process.stdin.isTTY) {
 }
 
 const USER_AGENT = `WallaceCli/${cli.pkg.version} (+${cli.pkg.repository.url})`
-const WallaceCli = require('import-jsx')('./components/WallaceCli.js')
 
 Promise.resolve()
 	.then(() => input || getStdin())
@@ -71,7 +70,11 @@ Promise.resolve()
 			return console.log(JSON.stringify(stats))
 		}
 
-		return WallaceCli({stats, cliOptions: cli.flags})
+		const wallaceCli = importJsx('./components/wallace-cli')
+		return wallaceCli({
+			stats,
+			cliOptions: cli.flags
+		})
 	})
 	.catch(error => {
 		console.error(error.toString())

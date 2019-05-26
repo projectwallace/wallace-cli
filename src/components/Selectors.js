@@ -1,17 +1,18 @@
 const React = require('react')
 const {Text} = require('ink')
 const importJsx = require('import-jsx')
-const {Table, Th, RowSpan, Caption, Tr, Td} = importJsx('./Table')
-const {Yellow, Dim} = importJsx('./Colors')
-const ValuesList = importJsx('./ValuesList')
-const {FormatInteger, FormatPercentage} = require('./Formatters')
+const {FormatInteger, FormatPercentage} = require('../formatters')
+
+const {Table, Th, RowSpan, Caption, Tr, Td} = importJsx('./table')
+const {Yellow, Dim} = importJsx('./colors')
+const ValuesList = importJsx('./values-list')
 
 const Selectors = ({stats, verbose}) => (
 	<Table>
 		<Caption>Selectors</Caption>
 
 		<Tr>
-			<React.Fragment />
+			<></>
 			<Th>Total</Th>
 			<Th>Unique</Th>
 			<Th>Unique %</Th>
@@ -92,7 +93,7 @@ const Selectors = ({stats, verbose}) => (
 		)}
 
 		<Tr>
-			<RowSpan>{'[role|aria=""]'}</RowSpan>
+			<RowSpan>[role|aria=&quot;&quot;]</RowSpan>
 			<FormatInteger value={stats['selectors.accessibility.total']} />
 			<Yellow>
 				<FormatInteger value={stats['selectors.accessibility.totalUnique']} />

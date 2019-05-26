@@ -1,9 +1,10 @@
 const React = require('react')
 const {Color, Text, Box} = require('ink')
 const importJsx = require('import-jsx')
+
 const {Dim} = importJsx('./Colors')
 
-const Table = ({children}) => <React.Fragment>{children}</React.Fragment>
+const Table = ({children}) => <>{children}</>
 
 const Th = ({children}) => <Color dim>{children}</Color>
 

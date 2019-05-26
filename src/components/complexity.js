@@ -1,16 +1,21 @@
 const React = require('react')
 const importJsx = require('import-jsx')
-const {Table, Th, RowSpan, Caption, Tr, Td} = importJsx('./Table')
-const {Red, Yellow, Dim} = importJsx('./Colors')
-const {FormatInteger, FormatDecimal, FormatPercentage} = require('./Formatters')
-const ValuesList = importJsx('./ValuesList')
+const {
+	FormatInteger,
+	FormatDecimal,
+	FormatPercentage
+} = require('../formatters')
+
+const {Table, Th, RowSpan, Caption, Tr, Td} = importJsx('./table')
+const {Red, Yellow, Dim} = importJsx('./colors')
+const ValuesList = importJsx('./values-list')
 
 const Complexity = ({stats, verbose}) => (
 	<Table>
 		<Caption>Complexity</Caption>
 
 		<Tr>
-			<React.Fragment />
+			<></>
 			<Th>Total</Th>
 			<Th>Average</Th>
 			<Th>Maximum</Th>
@@ -59,7 +64,7 @@ const Complexity = ({stats, verbose}) => (
 		</Tr>
 
 		<Tr marginTop={1}>
-			<React.Fragment />
+			<></>
 			<Th>Total</Th>
 			<Th>Unique</Th>
 			<Th>Unique %</Th>

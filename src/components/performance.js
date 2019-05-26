@@ -1,10 +1,11 @@
 const React = require('react')
 const {Box} = require('ink')
 const importJsx = require('import-jsx')
-const {Table, RowSpan, Caption, Tr, Th, Td} = importJsx('./Table')
-const {Yellow, Dim, Red} = importJsx('./Colors')
-const {FormatInteger, FormatPercentage, FormatBytes} = require('./Formatters')
-const ValuesList = importJsx('./ValuesList')
+const {FormatInteger, FormatPercentage, FormatBytes} = require('../formatters')
+
+const {Table, RowSpan, Caption, Tr, Th, Td} = importJsx('./table')
+const {Yellow, Dim, Red} = importJsx('./colors')
+const ValuesList = importJsx('./values-list')
 
 const Warning = ({children, warning}) => {
 	const Component = warning ? Red : React.Fragment
@@ -117,10 +118,10 @@ const Performance = ({stats, verbose}) => (
 			<Td>
 				<Box marginBottom={1} flexDirection="column">
 					{stats['atrules.fontfaces.unique'].map(fontface => (
-						<Box flexDirection="column" key={fontface.value['src']}>
+						<Box key={fontface.value.src} flexDirection="column">
 							<Dim>{'{'}</Dim>
 							{Object.entries(fontface.value).map(([property, value]) => (
-								<Box key={fontface.value['src'] + property} marginLeft={2}>
+								<Box key={fontface.value.src + property} marginLeft={2}>
 									<Box>{property}</Box>
 									<Dim>: </Dim>
 									<Box textWrap="truncate-middle">

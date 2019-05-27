@@ -34,7 +34,7 @@ Usage
   $ wallace 'body { color: red; }'
   $ echo 'html { font-size: 16px; } | wallace
   $ wallace 'html {}' --format=json
-  $ cat style.css | wallace --compact
+  $ cat style.css | wallace --verbose
   $ curl http://localhost/css/style.css | wallace
 ```
 

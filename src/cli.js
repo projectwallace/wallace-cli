@@ -17,18 +17,18 @@ const FORMATS = {
 const cli = meow(
 	`
 	Usage
-		$ wallace https://projectwallace.com
+		$ wallace https://www.projectwallace.com
 
 	Options
 		--format, -f Format pretty (default) or JSON
-		--compact, -c Show a compact output
+		--verbose, -v Show verbose output
 
 	Examples
 		$ wallace https://projectwallace.com
 		$ wallace 'body { color: red; }'
 		$ echo 'html { font-size: 16px; }' | wallace
 		$ wallace 'html {}' --format=json
-		$ cat style.css | wallace --compact
+		$ cat style.css | wallace --verbose
 
 `,
 	{
@@ -54,13 +54,12 @@ updateNotifier({
 }).notify()
 
 const [input] = cli.input
+const USER_AGENT = `WallaceCli/${cli.pkg.version} (+${cli.pkg.repository.url})`
+const wallaceCli = importJsx('./components/wallace-cli')
 
 if (!input && process.stdin.isTTY) {
 	cli.showHelp()
 }
-
-const USER_AGENT = `WallaceCli/${cli.pkg.version} (+${cli.pkg.repository.url})`
-const wallaceCli = importJsx('./components/wallace-cli')
 
 Promise.resolve()
 	.then(() => input || getStdin())

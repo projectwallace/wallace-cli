@@ -22,6 +22,13 @@ const Complexity = ({stats, verbose}) => (
 		</Tr>
 
 		<Tr>
+			<RowSpan>Lines of Code</RowSpan>
+			<FormatInteger
+				value={stats['stylesheets.linesOfCode.sourceLinesOfCode.total']}
+			/>
+		</Tr>
+
+		<Tr>
 			<RowSpan>Rules</RowSpan>
 			<FormatInteger value={stats['rules.total']} />
 		</Tr>

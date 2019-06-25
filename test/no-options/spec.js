@@ -11,6 +11,7 @@ test(`it shows a table with stats if no options are passed and CSS is passed via
 	t.true(stdout.includes('Performance'))
 	t.true(stdout.includes('Selectors'))
 	t.true(stdout.includes('Branding'))
+	t.true(stdout.includes('‣ Lines of Code               1'))
 	t.true(
 		stdout.includes('‣ Font-sizes                  0         0       0.0%')
 	)
@@ -24,6 +25,7 @@ test(`it shows a table with stats if no options are passed and CSS is passed as 
 	t.true(stdout.includes('Performance'))
 	t.true(stdout.includes('Selectors'))
 	t.true(stdout.includes('Branding'))
+	t.true(stdout.includes('‣ Lines of Code               1'))
 	t.true(
 		stdout.includes('‣ Font-sizes                  0         0       0.0%')
 	)

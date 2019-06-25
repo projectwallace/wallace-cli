@@ -42,12 +42,12 @@ test.skip('it shows a table of stats if a valid url is passed', async t => {
 /* eslint-enable ava/no-skip-test */
 
 test('it exits with a non-zero exit code on invalid CSS', async t => {
-	const {code, message} = await t.throwsAsync(
+	const {exitCode, stderr} = await t.throwsAsync(
 		// Intentional CSS Syntax Error
 		execa('./src/cli.js', ['a{color    red}'])
 	)
 
-	t.is(code, 1)
-	t.snapshot(message)
-	t.true(message.includes('SyntaxError: Unknown word at line 1, column 3:'))
+	t.is(exitCode, 1)
+	t.snapshot(stderr)
+	t.true(stderr.includes('SyntaxError: Unknown word at line 1, column 3:'))
 })

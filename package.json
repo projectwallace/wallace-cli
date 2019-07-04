@@ -12,7 +12,9 @@
     "node": ">= 8"
   },
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo && ava",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "bin": {
     "wallace": "./src/cli.js"
@@ -51,7 +53,8 @@
     "pretty-bytes": "^5.2.0",
     "react": "^16.8.6",
     "tinycolor2": "^1.4.1",
-    "update-notifier": "^3.0.0"
+    "update-notifier": "^3.0.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "ava": "^2.1.0",
@@ -86,5 +89,6 @@
         }
       }
     ]
-  }
+  },
+  "snyk": true
 }

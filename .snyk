@@ -1,0 +1,38 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - import-jsx > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-register > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-template > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-traverse > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-types > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-template > babel-types > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-plugin-transform-react-jsx > babel-helper-builder-react-jsx > babel-types > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-generator > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-generator > babel-types > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2019-07-04T02:44:32.507Z'
+    - import-jsx > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2019-07-04T02:44:32.507Z'

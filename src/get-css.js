@@ -1,12 +1,15 @@
-const isAbsoluteUrl = require('is-absolute-url')
 const got = require('got')
+const isUrl = require('is-url-superb')
+const normalizeUrl = require('normalize-url')
 
 module.exports = async (input, options = {}) => {
-	if (!isAbsoluteUrl(input)) {
+	if (!isUrl(input)) {
 		return input
 	}
 
-	const {body} = await got(`https://extract-css.now.sh/${input}`, {
+	const url = normalizeUrl(input, {stripWWW: false})
+
+	const {body} = await got(`https://extract-css.now.sh/${url}`, {
 		responseType: 'text',
 		resolveBodyOnly: true,
 		headers: {

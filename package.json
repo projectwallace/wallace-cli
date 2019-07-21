@@ -45,23 +45,23 @@
     "get-stdin": "^7.0.0",
     "got": "^9.6.0",
     "import-jsx": "^2.0.0",
-    "ink": "^2.2.0",
+    "ink": "^2.3.0",
     "is-url-superb": "^3.0.0",
     "meow": "^5.0.0",
     "normalize-url": "^4.3.0",
     "pretty-bytes": "^5.2.0",
     "react": "^16.8.6",
     "tinycolor2": "^1.4.1",
-    "update-notifier": "^3.0.0"
+    "update-notifier": "^3.0.1"
   },
   "devDependencies": {
-    "ava": "^2.1.0",
+    "ava": "^2.2.0",
     "eslint-config-xo-react": "^0.19.0",
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^1.6.1",
-    "execa": "^2.0.0",
+    "execa": "^2.0.3",
     "prettier": "^1.18.2",
-    "semver": "^6.1.2",
+    "semver": "^6.2.0",
     "xo": "^0.24.0"
   },
   "xo": {

@@ -1,6 +1,6 @@
 {
   "name": "wallace-cli",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Pretty CSS analytics on the CLI",
   "homepage": "https://www.projectwallace.com/oss",
   "preferGlobal": true,

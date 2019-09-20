@@ -55,6 +55,13 @@ const Branding = ({stats, verbose}) => (
 			</Td>
 		)}
 
+		<BrandRow stats={stats} name="Text-shadows" id="values.textshadows" />
+		{verbose && (
+			<Td>
+				<ValuesList values={stats['values.textshadows.unique']} />
+			</Td>
+		)}
+
 		<BrandRow stats={stats} name="Colors" id="values.colors" />
 		{verbose && (
 			<Td>

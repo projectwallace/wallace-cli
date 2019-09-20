@@ -24,8 +24,11 @@
   "keywords": [
     "stylesheets",
     "css",
+    "styles",
     "analytics",
     "analysis",
+    "analyze",
+    "analyzer",
     "stats",
     "statistics",
     "cli",
@@ -41,26 +44,26 @@
   "author": "Bart Veneman",
   "license": "MIT",
   "dependencies": {
-    "@projectwallace/css-analyzer": "^2.5.1",
+    "@projectwallace/css-analyzer": "^2.6.0",
     "get-stdin": "^7.0.0",
     "got": "^9.6.0",
-    "import-jsx": "^2.0.0",
+    "import-jsx": "^3.0.0",
     "ink": "^2.3.0",
     "meow": "^5.0.0",
-    "normalize-url": "^4.3.0",
-    "pretty-bytes": "^5.2.0",
-    "react": "^16.8.6",
+    "normalize-url": "^4.4.0",
+    "pretty-bytes": "^5.3.0",
+    "react": "^16.9.0",
     "tinycolor2": "^1.4.1",
     "update-notifier": "^3.0.1"
   },
   "devDependencies": {
-    "ava": "^2.2.0",
-    "eslint-config-xo-react": "^0.19.0",
-    "eslint-plugin-react": "^7.14.2",
-    "eslint-plugin-react-hooks": "^1.6.1",
-    "execa": "^2.0.3",
+    "ava": "^2.4.0",
+    "eslint-config-xo-react": "^0.20.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "execa": "^2.0.4",
     "prettier": "^1.18.2",
-    "semver": "^6.2.0",
+    "semver": "^6.3.0",
     "xo": "^0.24.0"
   },
   "xo": {
@@ -69,7 +72,8 @@
     "extends": "xo-react",
     "rules": {
       "react/prop-types": "off",
-      "react/jsx-fragments": "off"
+      "react/jsx-fragments": "off",
+      "react/jsx-curly-newline": "off"
     }
   },
   "prettier": {

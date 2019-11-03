@@ -16,7 +16,7 @@
 ```sh
 npm install -g wallace-cli
 # or
-yarn add --global wallace-cli
+yarn global add wallace-cli
 ```
 
 ## Usage

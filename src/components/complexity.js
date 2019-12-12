@@ -70,6 +70,11 @@ const Complexity = ({stats, verbose}) => (
 			</Red>
 		</Tr>
 
+		<Tr>
+			<RowSpan>!importants</RowSpan>
+			<FormatInteger value={stats['declarations.importants.total']} />
+		</Tr>
+
 		<Tr marginTop={1}>
 			<React.Fragment />
 			<Th>Total</Th>

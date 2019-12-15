@@ -50,6 +50,7 @@
     "import-jsx": "^3.0.0",
     "ink": "^2.3.0",
     "meow": "^5.0.0",
+    "normalize-url": "^4.5.0",
     "pretty-bytes": "^5.3.0",
     "react": "^16.9.0",
     "tinycolor2": "^1.4.1",

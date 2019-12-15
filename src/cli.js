@@ -54,7 +54,6 @@ updateNotifier({
 }).notify()
 
 const [input] = cli.input
-const USER_AGENT = `WallaceCli/${cli.pkg.version} (+${cli.pkg.repository.url})`
 const wallaceCli = importJsx('./components/wallace-cli')
 
 if (!input && process.stdin.isTTY) {
@@ -63,7 +62,7 @@ if (!input && process.stdin.isTTY) {
 
 Promise.resolve()
 	.then(() => input || getStdin())
-	.then(input => getCss(input, {userAgent: USER_AGENT}))
+	.then(input => getCss(input))
 	.then(analyzeCss)
 	.then(stats => {
 		if (cli.flags.format.toLowerCase() === FORMATS.JSON.toLowerCase()) {

@@ -62,7 +62,7 @@ if (!input && process.stdin.isTTY) {
 
 Promise.resolve()
 	.then(() => input || getStdin())
-	.then(input => getCss(input))
+	.then(getCss)
 	.then(analyzeCss)
 	.then(stats => {
 		if (cli.flags.format.toLowerCase() === FORMATS.JSON.toLowerCase()) {

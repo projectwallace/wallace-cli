@@ -45,7 +45,7 @@
   "license": "MIT",
   "dependencies": {
     "@projectwallace/css-analyzer": "^2.7.1",
-    "extract-css-core": "^2.0.0-beta.1",
+    "extract-css-core": "^2.0.0",
     "get-stdin": "^7.0.0",
     "import-jsx": "^3.0.0",
     "ink": "^2.3.0",

@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Wallace CLI</h1>
-  <p>Pretty CSS analytics on the CLI.</p>
+  <p>Pretty CSS analytics in your terminal.</p>
 </div>
 
 [![NPM Version](https://img.shields.io/npm/v/wallace-cli.svg)](https://www.npmjs.com/package/wallace-cli)
@@ -23,7 +23,7 @@ yarn global add wallace-cli
 
 ```sh
 Usage
-  $ wallace https://projectwallace.com
+  $ wallace projectwallace.com
 
   Options
   --format, -f Format pretty (default) or JSON
@@ -44,8 +44,9 @@ Usage
 
 ## Related projects
 
-- [Extract CSS](https://github.com/bartveneman/extract-css) - Extract all CSS
-  from a given url, both server side and client side rendered.
+- [Extract CSS](https://github.com/bartveneman/extract-css-core) - Extract all
+  CSS from a given url, both server side and client side rendered. Used in this
+  module.
 - [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer
   that powers this module
 - [Constyble](https://github.com/bartveneman/constyble) - A CSS complexity

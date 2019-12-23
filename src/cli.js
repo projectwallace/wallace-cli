@@ -40,7 +40,7 @@ const cli = meow(
 			},
 			verbose: {
 				type: 'boolean',
-				default: null,
+				default: false,
 				alias: 'v'
 			}
 		}

@@ -32,7 +32,7 @@ Usage
   Examples
   $ wallace https://projectwallace.com
   $ wallace 'body { color: red; }'
-  $ echo 'html { font-size: 16px; } | wallace
+  $ echo 'html { font-size: 16px; }' | wallace
   $ wallace 'html {}' --format=json
   $ cat style.css | wallace --verbose
   $ curl http://localhost/css/style.css | wallace

@@ -3,24 +3,12 @@
   "version": "2.5.0",
   "description": "Pretty CSS analytics on the CLI",
   "homepage": "https://www.projectwallace.com/oss",
-  "preferGlobal": true,
+  "author": "Bart Veneman",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bartveneman/wallace-cli"
+    "url": "https://github.com/projectwallace/wallace-cli"
   },
-  "engines": {
-    "node": ">= 8"
-  },
-  "scripts": {
-    "test": "xo && ava"
-  },
-  "bin": {
-    "wallace": "./src/cli.js"
-  },
-  "main": "./src/cli.js",
-  "files": [
-    "src"
-  ],
   "keywords": [
     "stylesheets",
     "css",
@@ -33,62 +21,23 @@
     "statistics",
     "cli",
     "cli-app",
-    "cssstats",
-    "parker",
-    "stylestats",
     "projectwallace",
     "wallace",
-    "performance",
-    "property"
+    "performance"
   ],
-  "author": "Bart Veneman",
-  "license": "MIT",
-  "dependencies": {
-    "@projectwallace/css-analyzer": "^2.7.1",
-    "extract-css-core": "^2.0.0",
-    "get-stdin": "^7.0.0",
-    "import-jsx": "^3.0.0",
-    "ink": "^2.6.0",
-    "meow": "^6.1.0",
-    "normalize-url": "^4.5.0",
-    "pretty-bytes": "^5.3.0",
-    "react": "^16.12.0",
-    "tinycolor2": "^1.4.1",
-    "update-notifier": "^4.0.0"
+  "engines": {
+    "node": ">= 8"
   },
-  "devDependencies": {
-    "ava": "^2.4.0",
-    "eslint-config-xo-react": "^0.20.0",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^2.3.0",
-    "execa": "^3.4.0",
-    "prettier": "^1.19.1",
-    "semver": "^7.0.0",
-    "xo": "^0.25.3"
+  "scripts": {
+    "test": "exit 0"
   },
-  "xo": {
-    "semicolon": false,
-    "prettier": true,
-    "extends": "xo-react",
-    "rules": {
-      "react/prop-types": "off",
-      "react/jsx-fragments": "off",
-      "react/jsx-curly-newline": "off"
-    }
+  "bin": {
+    "wallace": "./src/cli.js"
   },
-  "prettier": {
-    "useTabs": true,
-    "semi": false,
-    "singleQuote": true,
-    "bracketSpacing": false,
-    "proseWrap": "always",
-    "overrides": [
-      {
-        "files": "*.json",
-        "options": {
-          "useTabs": false
-        }
-      }
-    ]
-  }
+  "main": "./src/cli.js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
 }

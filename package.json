@@ -28,16 +28,21 @@
   "engines": {
     "node": ">= 8"
   },
+  "type": "module",
   "scripts": {
     "test": "exit 0"
   },
   "bin": {
-    "wallace": "./src/cli.js"
+    "wallace": "./src/index.js"
   },
-  "main": "./src/cli.js",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
   "files": [
     "dist"
   ],
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@projectwallace/css-analyzer": "^5.1.0",
+    "get-stdin": "^9.0.0",
+    "picocolors": "^1.0.0"
+  }
 }

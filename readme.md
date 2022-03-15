@@ -9,28 +9,31 @@
 ## Install
 
 ```sh
-npm install -g wallace-cli
-# or
-yarn global add wallace-cli
+npm install wallace-cli
 ```
 
 ## Usage
 
 ```sh
 Usage
-  $ wallace projectwallace.com
+  $ wallace <path-to-file>
 
-  Options
-  --format, -f Format pretty (default) or JSON
-  --verbose, -v Show verbose analytics output
+Options
+  --format Format pretty (default) or JSON
+  --help, -h Show this help
 
-  Examples
-  $ wallace https://projectwallace.com
-  $ wallace 'body { color: red; }'
-  $ echo 'html { font-size: 16px; }' | wallace
-  $ wallace 'html {}' --format=json
-  $ cat style.css | wallace --verbose
+Examples
+  # Point to a file
+  $ wallace path/to/styles.css
+
+  # CSS via stdin
+  $ cat style.css | wallace
+
+  # CSS from a server
   $ curl http://localhost/css/style.css | wallace
+
+  # Format as json
+  $ wallace path/to/styles.css --format=json
 ```
 
 ## Example output
@@ -39,11 +42,13 @@ Usage
 
 ## Related projects
 
-- [Extract CSS](https://github.com/bartveneman/extract-css-core) - Extract all
+- [CSS Diff Action](https://github.com/projectwallace/css-diff-action) - A GitHub
+  Action that comments on your PR with the changes in your CSS stats.
+- [Extract CSS](https://github.com/projectwallace/extract-css-core) - Extract all
   CSS from a given url, both server side and client side rendered. Used in this
   module.
 - [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer
   that powers this module
-- [Constyble](https://github.com/bartveneman/constyble) - A CSS complexity
+- [Constyble](https://github.com/projectwallace/constyble) - A CSS complexity
   linter, based on css-analyzer. Don't let your CSS grow beyond the thresholds
   that you provide.

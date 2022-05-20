@@ -1,0 +1,32 @@
+───────────────────────────────────────────────────────────
+Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
+18,239        │ 474,783  │ 4,427 │ 5,908     │ 11,653      
+───────────────────────────────────────────────────────────
+
+Rulesets             Most common      Average      Maximum
+Selectors / rule               1        1.335           30
+Declarations / rule            1        2.627           24
+
+Selectors            Most common      Average      Maximum
+Complexity                     1        2.936           13
+Specificity                0/1/0  0.0/1.6/0.5        1/4/0
+
+AtRules                    Total       Unique     Unique %
+@media                       611          171        28.0%
+@supports                     11            3        27.3%
+@font-face                     7            7       100.0%
+@import                        0            0         0.0%
+@keyframes                    46           46       100.0%
+@container                     0            0         0.0%
+
+Declarations               Total       Unique     Unique %
+Declarations              11,653        2,929        25.1%
+!important                   284
+
+Values                     Total       Unique     Unique %
+Colors                     1,733          240        13.8%
+Font-sizes                   468          102        21.8%
+Font-families                311           19         6.1%
+Text-shadows                  69           10        14.5%
+Box-shadows                   76           44        57.9%
+Z-indexes                     86           19        22.1%

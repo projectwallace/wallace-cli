@@ -1,6 +1,6 @@
 {
   "name": "wallace-cli",
-  "version": "2.5.0",
+  "version": "3.0.0-alpha.0",
   "description": "Pretty CSS analytics on the CLI",
   "homepage": "https://www.projectwallace.com/oss",
   "author": "Bart Veneman",
@@ -30,7 +30,7 @@
   },
   "type": "module",
   "scripts": {
-    "test": "exit 0"
+    "test": "uvu"
   },
   "bin": {
     "wallace": "./src/index.js"
@@ -44,5 +44,8 @@
     "@projectwallace/css-analyzer": "^5.1.0",
     "get-stdin": "^9.0.0",
     "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "uvu": "^0.5.3"
   }
 }

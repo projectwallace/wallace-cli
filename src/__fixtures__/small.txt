@@ -1,0 +1,32 @@
+───────────────────────────────────────────────────────────
+Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
+7             │ 173      │ 2     │ 2         │ 3           
+───────────────────────────────────────────────────────────
+
+Rulesets             Most common      Average      Maximum
+Selectors / rule               1            1            1
+Declarations / rule        1.500        1.500            2
+
+Selectors            Most common      Average      Maximum
+Complexity                 1.500        1.500            2
+Specificity              0/0.5/1      0/0.5/1        0/1/0
+
+AtRules                    Total       Unique     Unique %
+@media                         1            1       100.0%
+@supports                      1            1       100.0%
+@font-face                     0            0       100.0%
+@import                        0            0         0.0%
+@keyframes                     0            0         0.0%
+@container                     0            0         0.0%
+
+Declarations               Total       Unique     Unique %
+Declarations                   3            3       100.0%
+!important                     1
+
+Values                     Total       Unique     Unique %
+Colors                         1            1       100.0%
+Font-sizes                     0            0         0.0%
+Font-families                  0            0         0.0%
+Text-shadows                   0            0         0.0%
+Box-shadows                    0            0         0.0%
+Z-indexes                      0            0         0.0%

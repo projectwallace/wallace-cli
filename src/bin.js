@@ -1,4 +1,4 @@
-const { readFile: fsReadFile } = require('fs/promises')
+const { readFileSync } = require('fs')
 const path = require('path')
 const pc = require('picocolors')
 const { Program } = require('./program')
@@ -18,9 +18,9 @@ async function getStdin() {
   return result
 }
 
-async function readFile(pathParam) {
+function readFile(pathParam) {
   const pathName = path.join(process.cwd(), pathParam)
-  const content = await fsReadFile(pathName, 'utf-8')
+  const content = readFileSync(pathName, 'utf-8')
   return content
 }
 

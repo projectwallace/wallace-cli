@@ -10,20 +10,21 @@ on:
     branches: [master]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  test:
+    name: Node.js v${{ matrix.nodejs }} (${{ matrix.os }})
+    runs-on: [ubuntu-latest, windows-latest, macOS-latest]
+    timeout-minutes: 3
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x, 18.x]
-
+        node-version: [8, 10, 12, 14]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm test
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
         env:
           CI: true

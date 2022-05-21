@@ -1,8 +1,8 @@
-import { suite } from 'uvu'
-import * as assert from 'uvu/assert'
-import * as fs from 'fs'
-import { Program } from './program.js'
-import { help } from './help.js'
+const { suite } = require('uvu')
+const assert = require('uvu/assert')
+const fs = require('fs')
+const { Program } = require('./program.js')
+const { help } = require('./help.js')
 
 const cssFixture = fs.readFileSync('./src/__fixtures__/small.css', 'utf-8')
 const resultFixture = fs.readFileSync('./src/__fixtures__/small.txt', 'utf-8')

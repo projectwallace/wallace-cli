@@ -1,4 +1,4 @@
-export function help(tc) {
+exports.help = function help(tc) {
   return `
 ${tc.bold('Usage')}
   ${tc.dim('$')} wallace <path-to-file>

@@ -1,9 +1,9 @@
-import { toNumber, toPercentage, padEnd, padStart } from './formatters.js'
+const { toNumber, toPercentage, padEnd, padStart } = require('./formatters.js')
 
 const columns = [19, 12, 12, 12]
 const width = columns.reduce((total, num) => (total += num), 0) + columns.length
 
-export function Analytics(stats, pc) {
+exports.Analytics = function Analytics(stats, pc) {
   function Row(...tds) {
     return tds.map((td, index) => {
       if (index === 0) {

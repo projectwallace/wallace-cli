@@ -1,8 +1,8 @@
-import { analyze } from '@projectwallace/css-analyzer'
-import { help } from './help.js'
-import { Analytics } from './components.js'
+const { analyze } = require('@projectwallace/css-analyzer')
+const { help } = require('./help')
+const { Analytics } = require('./components')
 
-export async function Program({ args, readFile, terminalColors, stdIn }) {
+exports.Program = async function Program({ args, readFile, terminalColors, stdIn }) {
   const formatAsJson = '--json'
   const helpArgs = ['-h', '--help']
 

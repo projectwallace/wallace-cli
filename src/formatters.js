@@ -1,10 +1,10 @@
-export function toNumber(number, { decimals = 3 } = {}) {
+exports.toNumber = function toNumber(number, { decimals = 3 } = {}) {
   return Number.isInteger(number)
     ? new Intl.NumberFormat().format(number)
     : number === 0 ? 0 : parseFloat(number).toFixed(decimals);
 }
 
-export function toPercentage(number) {
+exports.toPercentage = function toPercentage(number) {
   return String(parseFloat(number * 100).toFixed(1)) + '%'
 }
 
@@ -16,12 +16,12 @@ function strLength(str) {
     .length
 }
 
-export function padEnd(str, padLength, padString) {
+exports.padEnd = function padEnd(str, padLength, padString) {
   const length = strLength(str)
   return str + ''.padEnd(padLength - length, padString)
 }
 
-export function padStart(str, padLength, padString) {
+exports.padStart = function padStart(str, padLength, padString) {
   const length = strLength(str)
   return ''.padStart(padLength - length, padString) + str
 }

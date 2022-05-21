@@ -26,27 +26,22 @@
     "performance"
   ],
   "engines": {
-    "node": ">= 8"
+    "node": ">=8"
   },
-  "type": "module",
   "scripts": {
     "test": "uvu"
   },
   "bin": {
-    "wallace": "./src/index.js"
+    "wallace": "./src/bin.js"
   },
-  "main": "./src/index.js",
-  "module": "./src/index.js",
   "files": [
-    "dist"
+    "src"
   ],
   "dependencies": {
     "@projectwallace/css-analyzer": "^5.1.0",
-    "get-stdin": "^9.0.0",
     "picocolors": "^1.0.0"
   },
   "devDependencies": {
-    "microbundle": "^0.15.0",
     "uvu": "^0.5.3"
   }
 }

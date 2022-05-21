@@ -1,5 +1,7 @@
+#!/usr/bin/env node
+
 const { readFileSync } = require('fs')
-const path = require('path')
+const { join } = require('path')
 const pc = require('picocolors')
 const { Program } = require('./program')
 
@@ -19,7 +21,7 @@ async function getStdin() {
 }
 
 function readFile(pathParam) {
-  const pathName = path.join(process.cwd(), pathParam)
+  const pathName = join(process.cwd(), pathParam)
   const content = readFileSync(pathName, 'utf-8')
   return content
 }

@@ -46,6 +46,7 @@
     "picocolors": "^1.0.0"
   },
   "devDependencies": {
+    "microbundle": "^0.15.0",
     "uvu": "^0.5.3"
   }
 }

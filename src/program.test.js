@@ -15,9 +15,9 @@ const terminalColors = {
   italic: str => str,
 }
 
-const CLI = suite('CLI')
+const ProgramSuite = suite('Program')
 
-CLI('wallace (no stdIn + no args)', async () => {
+ProgramSuite('wallace (no stdIn + no args)', async () => {
   const actual = await Program({
     args: [],
     readFile: () => Promise.resolve(),
@@ -29,7 +29,7 @@ CLI('wallace (no stdIn + no args)', async () => {
   assert.equal(actual, expected)
 })
 
-CLI('cat style.css | wallace', async () => {
+ProgramSuite('cat style.css | wallace', async () => {
   const actual = await Program({
     args: [],
     readFile: undefined,
@@ -40,7 +40,7 @@ CLI('cat style.css | wallace', async () => {
   assert.equal(actual, resultFixture.trim())
 })
 
-CLI('cat style.css | wallace --json', async () => {
+ProgramSuite('cat style.css | wallace --json', async () => {
   const actual = await Program({
     args: ['--json'],
     readFile: undefined,
@@ -51,7 +51,7 @@ CLI('cat style.css | wallace --json', async () => {
   assert.equal(actual, resultJson.trim())
 })
 
-CLI('cat style.css | wallace --help', async () => {
+ProgramSuite('cat style.css | wallace --help', async () => {
   const actual = await Program({
     args: ['--help'],
     readFile: Promise.resolve,
@@ -63,7 +63,7 @@ CLI('cat style.css | wallace --help', async () => {
   assert.equal(actual, expected)
 })
 
-CLI('cat style.css | wallace -h', async () => {
+ProgramSuite('cat style.css | wallace -h', async () => {
   const actual = await Program({
     args: ['-h'],
     readFile: Promise.resolve,
@@ -75,7 +75,7 @@ CLI('cat style.css | wallace -h', async () => {
   assert.equal(actual, expected)
 })
 
-CLI('wallace non-existing.css', async () => {
+ProgramSuite('wallace non-existing.css', async () => {
   try {
     await Program({
       args: ['non-existing.css'],
@@ -89,7 +89,7 @@ CLI('wallace non-existing.css', async () => {
   }
 })
 
-CLI('wallace style.css', async () => {
+ProgramSuite('wallace style.css', async () => {
   const actual = await Program({
     args: ['style.css'],
     readFile: () => Promise.resolve(cssFixture),
@@ -100,7 +100,7 @@ CLI('wallace style.css', async () => {
   assert.equal(actual, resultFixture.trim())
 })
 
-CLI('wallace style.css --json', async () => {
+ProgramSuite('wallace style.css --json', async () => {
   const actual = await Program({
     args: ['style.css', '--json'],
     readFile: () => Promise.resolve(cssFixture),
@@ -111,7 +111,7 @@ CLI('wallace style.css --json', async () => {
   assert.equal(actual, resultJson.trim())
 })
 
-CLI('wallace style.css --help', async () => {
+ProgramSuite('wallace style.css --help', async () => {
   const actual = await Program({
     args: ['style.css', '--help'],
     readFile: () => Promise.resolve(cssFixture),
@@ -123,7 +123,7 @@ CLI('wallace style.css --help', async () => {
   assert.equal(actual, expected)
 })
 
-CLI('wallace style.css -h', async () => {
+ProgramSuite('wallace style.css -h', async () => {
   const actual = await Program({
     args: ['style.css', '-h'],
     readFile: () => Promise.resolve(cssFixture),
@@ -135,4 +135,4 @@ CLI('wallace style.css -h', async () => {
   assert.equal(actual, expected)
 })
 
-CLI.run()
+ProgramSuite.run()

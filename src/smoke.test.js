@@ -4,7 +4,7 @@ import * as fs from 'fs'
 import { analyze } from '@projectwallace/css-analyzer'
 import { Analytics } from './components.js'
 
-const pcMock = {
+const terminalColors = {
   bold: str => str,
   dim: str => str,
   underline: str => str,
@@ -22,7 +22,7 @@ Object.entries({
     const css = fs.readFileSync(`./src/__fixtures__/${fileName}.css`, 'utf-8')
     const expected = fs.readFileSync(`./src/__fixtures__/${fileName}.txt`, 'utf-8')
     const stats = analyze(css)
-    const actual = Analytics(stats, pcMock)
+    const actual = Analytics(stats, terminalColors)
     // fs.writeFileSync(`./src/__fixtures__/${fileName}.txt`, actual)
     assert.equal(actual, expected)
   })

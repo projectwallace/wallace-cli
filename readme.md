@@ -4,9 +4,8 @@
 </div>
 
 [![NPM Version](https://img.shields.io/npm/v/wallace-cli.svg)](https://www.npmjs.com/package/wallace-cli)
-[![Project: Wallace](https://img.shields.io/badge/Project-Wallace-29c87d.svg)](https://www.projectwallace.com/oss)
 
-## Install
+## Installation
 
 ```sh
 npm install wallace-cli
@@ -19,7 +18,7 @@ Usage
   $ wallace <path-to-file>
 
 Options
-  --format Format pretty (default) or JSON
+  --json Format as JSON instead of a table
   --help, -h Show this help
 
 Examples
@@ -33,7 +32,7 @@ Examples
   $ curl http://localhost/css/style.css | wallace
 
   # Format as json
-  $ wallace path/to/styles.css --format=json
+  $ wallace path/to/styles.css --json
 ```
 
 ## Example output
@@ -45,10 +44,7 @@ Examples
 - [CSS Diff Action](https://github.com/projectwallace/css-diff-action) - A GitHub
   Action that comments on your PR with the changes in your CSS stats.
 - [Extract CSS](https://github.com/projectwallace/extract-css-core) - Extract all
-  CSS from a given url, both server side and client side rendered. Used in this
-  module.
-- [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer
-  that powers this module
+  CSS from a given url, both server side and client side rendered. Used in this module.
+- [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer that powers this module
 - [Constyble](https://github.com/projectwallace/constyble) - A CSS complexity
-  linter, based on css-analyzer. Don't let your CSS grow beyond the thresholds
-  that you provide.
+  linter, based on css-analyzer. Don't let your CSS grow beyond the thresholds that you provide.

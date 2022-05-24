@@ -4,7 +4,7 @@ ${tc.bold('Usage')}
   ${tc.dim('$')} wallace <path-to-file>
 
 ${tc.bold('Options')}
-  --format ${tc.italic('Format pretty (default) or JSON')}
+  --json ${tc.italic('Format as JSON instead of a table')}
   --help, -h Show this help
 
 ${tc.bold('Examples')}
@@ -18,6 +18,6 @@ ${tc.bold('Examples')}
   ${tc.dim('$')} curl http://localhost/css/style.css | wallace
 
   # Format as json
-  ${tc.dim('$')} wallace path/to/styles.css --format=json
+  ${tc.dim('$')} wallace path/to/styles.css --json
 `.trim()
 }

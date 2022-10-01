@@ -1,7 +1,22 @@
+/**
+ * Format byte size to a human readable size, like 100KB
+ * @param {number} number
+ * @param {number} decimals
+ * @returns {string}
+ * @see https://www.codexworld.com/how-to/convert-file-size-bytes-kb-mb-gb-javascript/
+ */
+exports.toFilesize = function toFilesize(bytes) {
+  if (bytes == 0) return '0B'
+  const sizes = ['B', 'KB', 'MB']
+  const step = 1000
+  const magnitude = Math.floor(Math.log(bytes) / Math.log(step))
+  return parseFloat((bytes / Math.pow(step, magnitude)).toFixed(1)) + sizes[magnitude]
+}
+
 exports.toNumber = function toNumber(number, { decimals = 3 } = {}) {
   return Number.isInteger(number)
     ? new Intl.NumberFormat().format(number)
-    : number === 0 ? 0 : parseFloat(number).toFixed(decimals);
+    : number === 0 ? 0 : parseFloat(number).toFixed(decimals)
 }
 
 exports.toPercentage = function toPercentage(number) {

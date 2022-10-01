@@ -37,7 +37,7 @@ async function main() {
 }
 
 main()
-  .then(result => console.log(result))
+  .then(console.log)
   .catch(error => {
     console.error(error.stack || error.message)
     process.exitCode = 1

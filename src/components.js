@@ -1,4 +1,4 @@
-const { toNumber, toPercentage, padEnd, padStart } = require('./formatters.js')
+const { toFilesize, toNumber, toPercentage, padEnd, padStart } = require('./formatters.js')
 
 const columns = [19, 12, 12, 12]
 const width = columns.reduce((total, num) => (total += num), 0) + columns.length
@@ -29,7 +29,7 @@ exports.Analytics = function Analytics(stats, pc) {
       ].join(pc.dim(' │ ')),
       [
         pc.bold(toNumber(stats.stylesheet.sourceLinesOfCode).padEnd('Lines of Code'.length)),
-        pc.bold(toNumber(stats.stylesheet.size).padEnd('Filesize'.length)),
+        pc.bold(toFilesize(stats.stylesheet.size).padEnd('Filesize'.length)),
         pc.bold(toNumber(stats.rules.total).padEnd('Rules'.length)),
         pc.bold(toNumber(stats.selectors.total).padEnd('Selectors'.length)),
         pc.bold(toNumber(stats.declarations.total).padEnd('Declarations'.length)),

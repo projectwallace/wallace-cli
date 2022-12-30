@@ -44,7 +44,7 @@
   "author": "Bart Veneman",
   "license": "MIT",
   "dependencies": {
-    "@projectwallace/css-analyzer": "^2.7.1",
+    "@projectwallace/css-analyzer": "^5.6.0",
     "extract-css-core": "^2.0.0",
     "get-stdin": "^7.0.0",
     "import-jsx": "^3.0.0",

@@ -1,8 +1,8 @@
-const { suite } = require('uvu')
-const assert = require('uvu/assert')
-const fs = require('fs')
-const { analyze } = require('@projectwallace/css-analyzer')
-const { Analytics } = require('./components.js')
+import { suite } from 'uvu'
+import * as assert from 'uvu/assert'
+import fs from 'fs'
+import { analyze } from '@projectwallace/css-analyzer'
+import { Analytics } from './components.js'
 
 const terminalColors = {
   bold: str => str,

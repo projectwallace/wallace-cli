@@ -1,23 +1,23 @@
-exports.help = function help(tc) {
+export function help(colors) {
   return `
-${tc.bold('Usage')}
-  ${tc.dim('$')} wallace <path-to-file>
+${colors.bold('Usage')}
+  ${colors.dim('$')} wallace <path-to-file>
 
-${tc.bold('Options')}
-  --json ${tc.italic('Format as JSON instead of a table')}
+${colors.bold('Options')}
+  --json ${colors.italic('Format as JSON instead of a table')}
   --help, -h Show this help
 
-${tc.bold('Examples')}
+${colors.bold('Examples')}
   # Point to a file
-  ${tc.dim('$')} wallace path/to/styles.css
+  ${colors.dim('$')} wallace path/to/styles.css
 
   # CSS via stdin
-  ${tc.dim('$')} cat style.css | wallace
+  ${colors.dim('$')} cat style.css | wallace
 
   # CSS from a server
-  ${tc.dim('$')} curl http://localhost/css/style.css | wallace
+  ${colors.dim('$')} curl http://localhost/css/style.css | wallace
 
   # Format as json
-  ${tc.dim('$')} wallace path/to/styles.css --json
+  ${colors.dim('$')} wallace path/to/styles.css --json
 `.trim()
 }

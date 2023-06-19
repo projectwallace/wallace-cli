@@ -1,9 +1,9 @@
-const { toFilesize, toNumber, toPercentage, padEnd, padStart } = require('./formatters.js')
+import { toFilesize, toNumber, toPercentage, padEnd, padStart } from './formatters.js'
 
 const columns = [19, 12, 12, 12]
 const width = columns.reduce((total, num) => (total += num), 0) + columns.length
 
-exports.Analytics = function Analytics(stats, pc) {
+export function Analytics(stats, style) {
   function Row(...tds) {
     return tds.map((td, index) => {
       if (index === 0) {
@@ -14,7 +14,7 @@ exports.Analytics = function Analytics(stats, pc) {
   }
 
   function Hr() {
-    return pc.dim(''.padEnd(width, '─'))
+    return style.dim(''.padEnd(width, '─'))
   }
 
   function Summary(stats) {
@@ -26,14 +26,14 @@ exports.Analytics = function Analytics(stats, pc) {
         'Rules',
         'Selectors',
         'Declarations',
-      ].join(pc.dim(' │ ')),
+      ].join(style.dim(' │ ')),
       [
-        pc.bold(toNumber(stats.stylesheet.sourceLinesOfCode).padEnd('Lines of Code'.length)),
-        pc.bold(toFilesize(stats.stylesheet.size).padEnd('Filesize'.length)),
-        pc.bold(toNumber(stats.rules.total).padEnd('Rules'.length)),
-        pc.bold(toNumber(stats.selectors.total).padEnd('Selectors'.length)),
-        pc.bold(toNumber(stats.declarations.total).padEnd('Declarations'.length)),
-      ].join(pc.dim(' │ ')),
+        style.bold(toNumber(stats.stylesheet.sourceLinesOfCode).padEnd('Lines of Code'.length)),
+        style.bold(toFilesize(stats.stylesheet.size).padEnd('Filesize'.length)),
+        style.bold(toNumber(stats.rules.total).padEnd('Rules'.length)),
+        style.bold(toNumber(stats.selectors.total).padEnd('Selectors'.length)),
+        style.bold(toNumber(stats.declarations.total).padEnd('Declarations'.length)),
+      ].join(style.dim(' │ ')),
       Hr(),
     ].join('\n')
   }
@@ -41,10 +41,10 @@ exports.Analytics = function Analytics(stats, pc) {
   function Rules(rules) {
     return [
       Row(
-        pc.underline('Rulesets'),
-        pc.dim('Most common'),
-        pc.dim('Average'),
-        pc.dim('Maximum'),
+        style.underline('Rulesets'),
+        style.dim('Most common'),
+        style.dim('Average'),
+        style.dim('Maximum'),
       ),
       Row(
         `Selectors / rule`,
@@ -64,10 +64,10 @@ exports.Analytics = function Analytics(stats, pc) {
   function Selectors(selectors) {
     return [
       Row(
-        pc.underline('Selectors'),
-        pc.dim('Most common'),
-        pc.dim('Average'),
-        pc.dim('Maximum'),
+        style.underline('Selectors'),
+        style.dim('Most common'),
+        style.dim('Average'),
+        style.dim('Maximum'),
       ),
       Row(
         'Complexity',
@@ -77,11 +77,11 @@ exports.Analytics = function Analytics(stats, pc) {
       ),
       Row(
         'Specificity',
-        selectors.specificity.mode.join(pc.dim('/')),
+        selectors.specificity.mode.join(style.dim(',')),
         selectors.specificity.mean
           .map(n => toNumber(n, { decimals: 1 }))
-          .join(pc.dim('/')),
-        selectors.specificity.max.join(pc.dim('/'))
+          .join(style.dim(',')),
+        selectors.specificity.max.join(style.dim(','))
       ),
     ].join('\n')
   }
@@ -91,10 +91,10 @@ exports.Analytics = function Analytics(stats, pc) {
 
     return [
       Row(
-        pc.underline('AtRules'),
-        pc.dim('Total'),
-        pc.dim('Unique'),
-        pc.dim('Unique %'),
+        style.underline('AtRules'),
+        style.dim('Total'),
+        style.dim('Unique'),
+        style.dim('Unique %'),
       ),
       Row(
         '@media',
@@ -138,10 +138,10 @@ exports.Analytics = function Analytics(stats, pc) {
   function Declarations(declarations) {
     return [
       Row(
-        pc.underline('Declarations'),
-        pc.dim('Total'),
-        pc.dim('Unique'),
-        pc.dim('Unique %'),
+        style.underline('Declarations'),
+        style.dim('Total'),
+        style.dim('Unique'),
+        style.dim('Unique %'),
       ),
       Row(
         'Declarations',
@@ -172,10 +172,10 @@ exports.Analytics = function Analytics(stats, pc) {
 
     return [
       Row(
-        pc.underline('Values'),
-        pc.dim('Total'),
-        pc.dim('Unique'),
-        pc.dim('Unique %'),
+        style.underline('Values'),
+        style.dim('Total'),
+        style.dim('Unique'),
+        style.dim('Unique %'),
       ),
       ValueRow('Colors', colors.total, colors.totalUnique, colors.uniquenessRatio,),
       ValueRow('Font-sizes', fontSizes.total, fontSizes.totalUnique, fontSizes.uniquenessRatio,),

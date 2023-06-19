@@ -5,6 +5,7 @@
   "homepage": "https://www.projectwallace.com/oss",
   "author": "Bart Veneman",
   "license": "MIT",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/projectwallace/wallace-cli"
@@ -29,19 +30,22 @@
     "node": ">=8"
   },
   "scripts": {
-    "test": "uvu"
+    "pretest": "npm run build",
+    "test": "uvu",
+    "build": "esbuild --bundle ./src/bin.js --outfile=./dist/cli.cjs --platform=node --format=cjs --minify"
   },
   "bin": {
-    "wallace": "./src/bin.js"
+    "wallace": "./dist/cli.cjs"
   },
   "files": [
-    "src"
+    "dist"
   ],
   "dependencies": {
-    "@projectwallace/css-analyzer": "^5.5.0",
+    "@projectwallace/css-analyzer": "^5.7.1",
     "picocolors": "^1.0.0"
   },
   "devDependencies": {
-    "uvu": "^0.5.3"
+    "esbuild": "^0.16.14",
+    "uvu": "^0.5.6"
   }
 }

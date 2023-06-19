@@ -43,8 +43,6 @@ Examples
 
 - [CSS Diff Action](https://github.com/projectwallace/css-diff-action) - A GitHub
   Action that comments on your PR with the changes in your CSS stats.
-- [Extract CSS](https://github.com/projectwallace/extract-css-core) - Extract all
-  CSS from a given url, both server side and client side rendered. Used in this module.
 - [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer that powers this module
 - [Constyble](https://github.com/projectwallace/constyble) - A CSS complexity
   linter, based on css-analyzer. Don't let your CSS grow beyond the thresholds that you provide.

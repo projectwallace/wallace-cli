@@ -1,25 +1,32 @@
-const { analyze } = require('@projectwallace/css-analyzer')
-const { help } = require('./help')
-const { Analytics } = require('./components')
+import { analyze } from '@projectwallace/css-analyzer'
+import { help } from './help.js'
+import { Analytics } from './components.js'
 
-exports.Program = async function Program({ args, readFile, terminalColors, stdIn }) {
+export async function Program({ args, readFile, terminalColors, stdin }) {
   const formatAsJson = '--json'
   const helpArgs = ['-h', '--help']
 
   // Show help if the user explicitly asked for it
   if (args.some(arg => helpArgs.includes(arg))
     // Show help if there's no input and no arguments provided
-    || args.length === 0 && stdIn === '') {
+    || args.length === 0 && stdin === '') {
     return help(terminalColors)
   }
 
-  const pathParam = args.find(arg => arg !== formatAsJson && !helpArgs.includes(arg))
-  const css = pathParam ? await readFile(pathParam) : stdIn
+  // path is the first param that doesn't start with -- and isn't one
+  // of the existing flags
+  const pathParam = args.find(arg => {
+    if (arg == formatAsJson) return false
+    if (helpArgs.includes(arg)) return false
+    if (arg.startsWith('--')) return false
+    return true
+  })
+  const css = pathParam ? await readFile(pathParam) : stdin
   const stats = analyze(css)
+  delete stats.__meta__
 
-  // Format as JSON is user asked for it
+  // Format as JSON if user asked for it
   if (args.some(arg => arg === formatAsJson)) {
-    delete stats.__meta__
     return JSON.stringify(stats)
   }
 

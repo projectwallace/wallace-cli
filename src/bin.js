@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const { readFileSync } = require('fs')
-const { join } = require('path')
-const pc = require('picocolors')
-const { Program } = require('./program')
+import { readFileSync } from 'fs'
+import { join } from 'path'
+import pc from 'picocolors'
+import { Program } from './program'
 
 async function getStdin() {
   const { stdin } = process
@@ -27,10 +27,10 @@ function readFile(pathParam) {
 }
 
 async function main() {
-  const stdIn = await getStdin()
+  const stdin = await getStdin()
   return Program({
     args: process.argv.slice(2),
-    stdIn,
+    stdin,
     readFile,
     terminalColors: pc,
   })

@@ -1,6 +1,6 @@
 ───────────────────────────────────────────────────────────
 Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
-7             │ 173      │ 2     │ 2         │ 3           
+7             │ 173B     │ 2     │ 2         │ 3
 ───────────────────────────────────────────────────────────
 
 Rulesets             Most common      Average      Maximum

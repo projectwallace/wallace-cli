@@ -5,7 +5,7 @@
  * @returns {string}
  * @see https://www.codexworld.com/how-to/convert-file-size-bytes-kb-mb-gb-javascript/
  */
-exports.toFilesize = function toFilesize(bytes) {
+export function toFilesize(bytes) {
   if (bytes == 0) return '0B'
   const sizes = ['B', 'KB', 'MB']
   const step = 1000
@@ -13,13 +13,13 @@ exports.toFilesize = function toFilesize(bytes) {
   return parseFloat((bytes / Math.pow(step, magnitude)).toFixed(1)) + sizes[magnitude]
 }
 
-exports.toNumber = function toNumber(number, { decimals = 3 } = {}) {
+export function toNumber(number, { decimals = 3 } = {}) {
   return Number.isInteger(number)
     ? new Intl.NumberFormat().format(number)
     : number === 0 ? 0 : parseFloat(number).toFixed(decimals)
 }
 
-exports.toPercentage = function toPercentage(number) {
+export function toPercentage(number) {
   return String(parseFloat(number * 100).toFixed(1)) + '%'
 }
 
@@ -31,12 +31,12 @@ function strLength(str) {
     .length
 }
 
-exports.padEnd = function padEnd(str, padLength, padString) {
+export function padEnd(str, padLength, padString) {
   const length = strLength(str)
   return str + ''.padEnd(padLength - length, padString)
 }
 
-exports.padStart = function padStart(str, padLength, padString) {
+export function padStart(str, padLength, padString) {
   const length = strLength(str)
   return ''.padStart(padLength - length, padString) + str
 }

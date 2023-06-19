@@ -1,6 +1,6 @@
 ───────────────────────────────────────────────────────────
 Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
-17,818        │ 468,942  │ 4,801 │ 6,718     │ 10,083      
+17,818        │ 468.9KB  │ 4,801 │ 6,664     │ 10,083      
 ───────────────────────────────────────────────────────────
 
 Rulesets             Most common      Average      Maximum
@@ -8,7 +8,7 @@ Selectors / rule               1        1.399          210
 Declarations / rule            1        2.093           25
 
 Selectors            Most common      Average      Maximum
-Complexity                     1        2.352           13
+Complexity                     1        2.369           13
 Specificity                0/1/0    0/1.4/0.4        0/7/1
 
 AtRules                    Total       Unique     Unique %
@@ -24,9 +24,9 @@ Declarations              10,083        1,798        17.8%
 !important                 1,589
 
 Values                     Total       Unique     Unique %
-Colors                     1,042           87         8.3%
-Font-sizes                   280           61        21.8%
-Font-families                 57            9        15.8%
+Colors                     1,151           89         7.7%
+Font-sizes                   276           60        21.7%
+Font-families                 46            8        17.4%
 Text-shadows                   1            1       100.0%
 Box-shadows                   38           16        42.1%
 Z-indexes                    101           22        21.8%

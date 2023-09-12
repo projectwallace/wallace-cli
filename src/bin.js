@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { readFileSync } from 'fs'
+import { readFile as fsReadFile } from 'fs/promises'
 import { join } from 'path'
 import pc from 'picocolors'
 import { Program } from './program'
@@ -20,9 +20,9 @@ async function getStdin() {
   return result
 }
 
-function readFile(pathParam) {
+async function readFile(pathParam) {
   const pathName = join(process.cwd(), pathParam)
-  const content = readFileSync(pathName, 'utf-8')
+  const content = await fsReadFile(pathName, 'utf-8')
   return content
 }
 

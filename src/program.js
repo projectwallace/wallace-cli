@@ -22,6 +22,11 @@ export async function Program({ args, readFile, terminalColors, stdin }) {
     return true
   })
   const css = pathParam ? await readFile(pathParam) : stdin
+
+  if (!css) {
+    return help(terminalColors)
+  }
+
   const stats = analyze(css)
   delete stats.__meta__
 

@@ -20,7 +20,7 @@ AtRules                    Total       Unique     Unique %
 @container                     0            0         0.0%
 
 Declarations               Total       Unique     Unique %
-Declarations               2,633        1,133        43.0%
+Declarations               2,633        1,132        43.0%
 !important                   167
 
 Values                     Total       Unique     Unique %

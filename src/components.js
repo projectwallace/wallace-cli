@@ -77,11 +77,11 @@ export function Analytics(stats, style) {
       ),
       Row(
         'Specificity',
-        selectors.specificity.mode.join(style.dim(',')),
+        selectors.specificity.mode.join(style.dim('/')),
         selectors.specificity.mean
           .map(n => toNumber(n, { decimals: 1 }))
-          .join(style.dim(',')),
-        selectors.specificity.max.join(style.dim(','))
+          .join(style.dim('/')),
+        selectors.specificity.max.join(style.dim('/'))
       ),
     ].join('\n')
   }

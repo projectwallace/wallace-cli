@@ -1,6 +1,6 @@
 ───────────────────────────────────────────────────────────
 Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
-7             │ 173B     │ 2     │ 2         │ 3
+7             │ 173B     │ 2     │ 2         │ 3           
 ───────────────────────────────────────────────────────────
 
 Rulesets             Most common      Average      Maximum
@@ -14,7 +14,7 @@ Specificity              0/0.5/1      0/0.5/1        0/1/0
 AtRules                    Total       Unique     Unique %
 @media                         1            1       100.0%
 @supports                      1            1       100.0%
-@font-face                     0            0       100.0%
+@font-face                     0            0         0.0%
 @import                        0            0         0.0%
 @keyframes                     0            0         0.0%
 @container                     0            0         0.0%

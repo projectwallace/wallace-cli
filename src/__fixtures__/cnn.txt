@@ -20,7 +20,7 @@ AtRules                    Total       Unique     Unique %
 @container                     0            0         0.0%
 
 Declarations               Total       Unique     Unique %
-Declarations              13,265        2,888        21.8%
+Declarations              13,265        2,886        21.8%
 !important                   132
 
 Values                     Total       Unique     Unique %
@@ -29,4 +29,4 @@ Font-sizes                 1,293          319        24.7%
 Font-families                398           19         4.8%
 Text-shadows                   9            6        66.7%
 Box-shadows                   15            9        60.0%
-Z-indexes                    173           20        11.6%
+Z-indexes                    173           19        11.0%

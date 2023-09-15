@@ -39,7 +39,7 @@ Examples
 
 ## Related projects
 
-- [Online CSS Analyzer](https://www.projectwallace.com/analyze-css) - Watch the analytics from this CLI online in a much more visual and detailed way!
+- [Online CSS Analyzer](https://www.projectwallace.com/analyze-css?utm_source=github&utm_medium=wallace_cli_related_projects) - Watch the analytics from this CLI online in a much more visual and detailed way!
 - [CSS Diff Action](https://github.com/projectwallace/css-diff-action) - A GitHub
   Action that comments on your PR with the changes in your CSS stats.
 - [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer that powers this module

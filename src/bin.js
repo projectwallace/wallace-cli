@@ -5,7 +5,7 @@ import { join } from 'path'
 import pc from 'picocolors'
 import { Program } from './program'
 
-async function getStdin() {
+async function get_stdin() {
   const { stdin } = process
   if (stdin.isTTY) {
     return ''
@@ -20,19 +20,19 @@ async function getStdin() {
   return result
 }
 
-async function readFile(pathParam) {
-  const pathName = join(process.cwd(), pathParam)
+async function read_file(path_param) {
+  const pathName = join(process.cwd(), path_param)
   const content = await fsReadFile(pathName, 'utf-8')
   return content
 }
 
 async function main() {
-  const stdin = await getStdin()
+  const stdin = await get_stdin()
   return Program({
     args: process.argv.slice(2),
     stdin,
-    readFile,
-    terminalColors: pc,
+    read_file,
+    terminal_colors: pc,
   })
 }
 

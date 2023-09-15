@@ -1,13 +1,14 @@
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
-import fs from 'fs'
+import { readFile } from 'node:fs/promises'
 import { analyze } from '@projectwallace/css-analyzer'
 import { Analytics } from './components.js'
 
-const terminalColors = {
+const terminal_colors = {
   bold: str => str,
   dim: str => str,
   underline: str => str,
+  red: str => str,
 }
 
 const Smoke = suite('Smoke Tests')
@@ -18,11 +19,13 @@ Object.entries({
   'CNN': 'cnn',
   'Smashing Magazine': 'smashing-magazine',
 }).map(([name, fileName]) => {
-  Smoke(name, () => {
-    const css = fs.readFileSync(`./src/__fixtures__/${fileName}.css`, 'utf-8')
-    const expected = fs.readFileSync(`./src/__fixtures__/${fileName}.txt`, 'utf-8')
+  Smoke(name, async () => {
+    const [css, expected] = await Promise.all([
+      readFile(`./src/__fixtures__/${fileName}.css`, 'utf-8'),
+      readFile(`./src/__fixtures__/${fileName}.txt`, 'utf-8'),
+    ])
     const stats = analyze(css)
-    const actual = Analytics(stats, terminalColors)
+    const actual = Analytics(stats, terminal_colors)
     // fs.writeFileSync(`./src/__fixtures__/${fileName}.txt`, actual)
     assert.equal(actual, expected)
   })

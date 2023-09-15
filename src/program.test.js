@@ -1,14 +1,21 @@
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
-import fs from 'fs'
+import fs from 'node:fs/promises'
 import { Program } from './program.js'
 import { help } from './help.js'
 
-const cssFixture = fs.readFileSync('./src/__fixtures__/small.css', 'utf-8')
-const resultFixture = fs.readFileSync('./src/__fixtures__/small.txt', 'utf-8')
-const resultJson = JSON.parse(fs.readFileSync('./src/__fixtures__/small.json', 'utf-8'))
+const [
+  css_fixture,
+  cli_fixture,
+  result_json,
+] = await Promise.all([
+  fs.readFile('./src/__fixtures__/small.css', 'utf-8'),
+  fs.readFile('./src/__fixtures__/small.txt', 'utf-8'),
+  fs.readFile('./src/__fixtures__/small.json', 'utf-8')
+])
+const result = JSON.parse(result_json)
 
-const terminalColors = {
+const terminal_colors = {
   bold: str => str,
   dim: str => str,
   underline: str => str,
@@ -20,11 +27,11 @@ const ProgramSuite = suite('Program')
 ProgramSuite('wallace (no stdIn + no args)', async () => {
   const actual = await Program({
     args: [],
-    readFile: () => Promise.resolve(),
-    terminalColors,
+    read_file: () => Promise.resolve(),
+    terminal_colors,
     stdin: '',
   })
-  const expected = help(terminalColors)
+  const expected = help(terminal_colors)
 
   assert.equal(actual, expected)
 })
@@ -32,11 +39,11 @@ ProgramSuite('wallace (no stdIn + no args)', async () => {
 ProgramSuite('cat style.css | wallace --help', async () => {
   const actual = await Program({
     args: ['--help'],
-    readFile: Promise.resolve,
-    terminalColors: terminalColors,
-    stdin: cssFixture,
+    read_file: Promise.resolve,
+    terminal_colors: terminal_colors,
+    stdin: css_fixture,
   })
-  const expected = help(terminalColors)
+  const expected = help(terminal_colors)
 
   assert.equal(actual, expected)
 })
@@ -44,11 +51,11 @@ ProgramSuite('cat style.css | wallace --help', async () => {
 ProgramSuite('wallace style.css --help', async () => {
   const actual = await Program({
     args: ['style.css', '--help'],
-    readFile: () => Promise.resolve(cssFixture),
-    terminalColors: terminalColors,
+    read_file: () => Promise.resolve(css_fixture),
+    terminal_colors: terminal_colors,
     stdin: '',
   })
-  const expected = help(terminalColors)
+  const expected = help(terminal_colors)
 
   assert.equal(actual, expected)
 })
@@ -56,11 +63,11 @@ ProgramSuite('wallace style.css --help', async () => {
 ProgramSuite('cat style.css | wallace -h', async () => {
   const actual = await Program({
     args: ['-h'],
-    readFile: Promise.resolve,
-    terminalColors: terminalColors,
-    stdin: cssFixture,
+    read_file: Promise.resolve,
+    terminal_colors: terminal_colors,
+    stdin: css_fixture,
   })
-  const expected = help(terminalColors)
+  const expected = help(terminal_colors)
 
   assert.equal(actual, expected)
 })
@@ -68,11 +75,11 @@ ProgramSuite('cat style.css | wallace -h', async () => {
 ProgramSuite('wallace style.css -h', async () => {
   const actual = await Program({
     args: ['style.css', '-h'],
-    readFile: () => Promise.resolve(cssFixture),
-    terminalColors: terminalColors,
+    read_file: () => Promise.resolve(css_fixture),
+    terminal_colors: terminal_colors,
     stdin: '',
   })
-  const expected = help(terminalColors)
+  const expected = help(terminal_colors)
 
   assert.equal(actual, expected)
 })
@@ -80,31 +87,31 @@ ProgramSuite('wallace style.css -h', async () => {
 ProgramSuite('cat style.css | wallace', async () => {
   const actual = await Program({
     args: [],
-    readFile: Promise.resolve,
-    terminalColors,
-    stdin: cssFixture,
+    read_file: Promise.resolve,
+    terminal_colors,
+    stdin: css_fixture,
   })
 
-  assert.is(actual, resultFixture.trim())
+  assert.is(actual, cli_fixture.trim())
 })
 
 ProgramSuite('cat style.css | wallace --json', async () => {
   const actual = await Program({
     args: ['--json'],
-    readFile: Promise.resolve,
-    terminalColors,
-    stdin: cssFixture,
+    read_file: Promise.resolve,
+    terminal_colors,
+    stdin: css_fixture,
   })
 
-  assert.equal(JSON.parse(actual), resultJson)
+  assert.equal(JSON.parse(actual), result)
 })
 
 ProgramSuite('wallace non-existing.css', async () => {
   try {
     await Program({
       args: ['non-existing.css'],
-      readFile: () => Promise.reject(new Error()),
-      terminalColors,
+      read_file: () => Promise.reject(new Error()),
+      terminal_colors,
       stdin: '',
     })
     assert.unreachable()
@@ -116,23 +123,23 @@ ProgramSuite('wallace non-existing.css', async () => {
 ProgramSuite('wallace style.css', async () => {
   const actual = await Program({
     args: ['style.css'],
-    readFile: () => Promise.resolve(cssFixture),
-    terminalColors,
+    read_file: () => Promise.resolve(css_fixture),
+    terminal_colors,
     stdin: '',
   })
 
-  assert.is(actual, resultFixture.trim())
+  assert.is(actual, cli_fixture.trim())
 })
 
 ProgramSuite('wallace style.css --json', async () => {
   const actual = await Program({
     args: ['style.css', '--json'],
-    readFile: () => Promise.resolve(cssFixture),
-    terminalColors,
+    read_file: () => Promise.resolve(css_fixture),
+    terminal_colors,
     stdin: '',
   })
 
-  assert.equal(JSON.parse(actual), resultJson)
+  assert.equal(JSON.parse(actual), result)
 })
 
 ProgramSuite.run()

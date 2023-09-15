@@ -1,15 +1,25 @@
 ───────────────────────────────────────────────────────────
 Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
-18,239        │ 474.8KB  │ 4,427 │ 5,748     │ 11,653      
+18,239        │ 474.8KB  │ 4,427 │ 5,748     │ 11,653
 ───────────────────────────────────────────────────────────
 
+Comments                    418B    (4 items)
+Embedded Content          42.4KB   (47 items)
+
 Rulesets             Most common      Average      Maximum
-Selectors / rule               1        1.335           30
-Declarations / rule            1        2.627           24
+Selectors / rule               1         1.33           30
+Declarations / rule            1         2.63           24
+Empty rules                                              0
 
 Selectors            Most common      Average      Maximum
-Complexity                     1        2.985           13
+Complexity                     1         2.99           13
 Specificity                0/1/0  0.0/1.6/0.5        1/4/0
+
+                           Total       Unique        Ratio
+All Selectors              5,748        3,955        68.8%
+ID Selectors                  15           13        86.7%
+Accessibility                 29           29       100.0%
+Vendor prefixed              150          103        68.7%
 
 AtRules                    Total       Unique     Unique %
 @media                       611          171        28.0%
@@ -18,15 +28,27 @@ AtRules                    Total       Unique     Unique %
 @import                        0            0         0.0%
 @keyframes                    46           46       100.0%
 @container                     0            0         0.0%
+@property                      0            0         0.0%
 
 Declarations               Total       Unique     Unique %
-Declarations              11,653        2,929        25.1%
+All Declarations          11,653        2,929        25.1%
 !important                   284
+
+Properties                 Total       Unique     Unique %
+All Properties            11,653          228         2.0%
+Custom Properties             78           20        25.6%
+Vendor Prefixed              228           36        15.8%
+Browserhacks                   0            0         0.0%
 
 Values                     Total       Unique     Unique %
 Colors                     1,793          242        13.5%
+Gradients                     82           48        58.5%
 Font-sizes                   462          101        21.9%
 Font-families                308           18         5.8%
+Line-heights                 127           38        29.9%
 Text-shadows                  69           10        14.5%
 Box-shadows                   76           44        57.9%
 Z-indexes                     86           19        22.1%
+Vendor Prefixed              162           20        12.3%
+Browserhacks                   0            0         0.0%
+Units                      5,037           12         0.2%

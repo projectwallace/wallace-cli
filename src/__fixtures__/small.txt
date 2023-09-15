@@ -1,0 +1,54 @@
+───────────────────────────────────────────────────────────
+Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
+7             │ 173B     │ 2     │ 2         │ 3
+───────────────────────────────────────────────────────────
+
+Comments                      0B    (0 items)
+Embedded Content              0B    (0 items)
+
+Rulesets             Most common      Average      Maximum
+Selectors / rule               1            1            1
+Declarations / rule         1.50         1.50            2
+Empty rules                                              0
+
+Selectors            Most common      Average      Maximum
+Complexity                  1.50         1.50            2
+Specificity              0/0.5/1      0/0.5/1        0/1/0
+
+                           Total       Unique        Ratio
+All Selectors                  2            2       100.0%
+ID Selectors                   0            0         0.0%
+Accessibility                  0            0         0.0%
+Vendor prefixed                0            0         0.0%
+
+AtRules                    Total       Unique     Unique %
+@media                         1            1       100.0%
+@supports                      1            1       100.0%
+@font-face                     0            0         0.0%
+@import                        0            0         0.0%
+@keyframes                     0            0         0.0%
+@container                     0            0         0.0%
+@property                      0            0         0.0%
+
+Declarations               Total       Unique     Unique %
+All Declarations               3            3       100.0%
+!important                     1
+
+Properties                 Total       Unique     Unique %
+All Properties                 3            3       100.0%
+Custom Properties              0            0         0.0%
+Vendor Prefixed                0            0         0.0%
+Browserhacks                   1            1       100.0%
+
+Values                     Total       Unique     Unique %
+Colors                         1            1       100.0%
+Gradients                      0            0         0.0%
+Font-sizes                     0            0         0.0%
+Font-families                  0            0         0.0%
+Line-heights                   0            0         0.0%
+Text-shadows                   0            0         0.0%
+Box-shadows                    0            0         0.0%
+Z-indexes                      0            0         0.0%
+Vendor Prefixed                0            0         0.0%
+Browserhacks                   0            0         0.0%
+Units                          0            0         0.0%

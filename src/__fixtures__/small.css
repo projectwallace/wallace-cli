@@ -1,0 +1,12 @@
+.this-is-test {
+  color: green;
+}
+
+@media (min-width: 100px) {
+  @supports (display: grid) {
+    a::after {
+      content: 'success';
+      *zoom: 1 !important;
+    }
+  }
+}

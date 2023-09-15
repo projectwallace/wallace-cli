@@ -3,8 +3,6 @@
   <p>Pretty CSS analytics in your terminal.</p>
 </div>
 
-[![NPM Version](https://img.shields.io/npm/v/wallace-cli.svg)](https://www.npmjs.com/package/wallace-cli)
-
 ## Installation
 
 ```sh
@@ -37,10 +35,11 @@ Examples
 
 ## Example output
 
-![Example output for projectwallace.com](example.png)
+![Example terminal output for this module](example.jpg)
 
 ## Related projects
 
+- [Online CSS Analyzer](https://www.projectwallace.com/analyze-css) - Watch the analytics from this CLI online in a much more visual and detailed way!
 - [CSS Diff Action](https://github.com/projectwallace/css-diff-action) - A GitHub
   Action that comments on your PR with the changes in your CSS stats.
 - [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer that powers this module

@@ -41,7 +41,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@projectwallace/css-analyzer": "^5.12.0",
+    "@projectwallace/css-analyzer": "^5.15.0",
     "esbuild": "^0.16.17",
     "picocolors": "^1.0.0",
     "uvu": "^0.5.6"

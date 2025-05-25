@@ -6,7 +6,7 @@
 ## Installation
 
 ```sh
-npm install wallace-cli
+npm install -g wallace-cli
 ```
 
 ## Usage

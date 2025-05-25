@@ -48,7 +48,7 @@ export function Analytics(stats, style) {
       Row(
         'Embedded Content',
         to_filesize(stylesheet.embeddedContent.size.total),
-        style.dim(`(${stylesheet.embeddedContent.total} items)`)
+        style.dim(`(${stylesheet.embeddedContent.types.total} items)`)
       )
     ].join('\n')
   }
@@ -205,8 +205,8 @@ export function Analytics(stats, style) {
       Row(
         'All Declarations',
         to_number(declarations.total),
-        to_number(declarations.unique.total),
-        to_percentage(declarations.unique.ratio),
+        to_number(declarations.totalUnique),
+        to_percentage(declarations.uniquenessRatio),
       ),
       Row(
         '!important',

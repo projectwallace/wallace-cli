@@ -3,6 +3,7 @@ import * as assert from 'uvu/assert'
 import { readFile } from 'node:fs/promises'
 import { analyze } from '@projectwallace/css-analyzer'
 import { Analytics } from './components.js'
+// import { writeFileSync } from 'node:fs'
 
 const terminal_colors = {
   bold: str => str,
@@ -26,7 +27,7 @@ Object.entries({
     ])
     const stats = analyze(css)
     const actual = Analytics(stats, terminal_colors)
-    // fs.writeFileSync(`./src/__fixtures__/${fileName}.txt`, actual)
+    // writeFileSync(`./src/__fixtures__/${fileName}.txt`, actual)
     assert.equal(actual, expected)
   })
 })

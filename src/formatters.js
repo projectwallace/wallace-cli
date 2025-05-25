@@ -25,20 +25,10 @@ export function to_percentage(number) {
   return String(parseFloat(number * 100).toFixed(1)) + '%'
 }
 
-function str_length(str) {
-  // Basically strip ansi-characters from the string
-  // source: https://github.com/usmanyunusov/nanospinner/blob/a80396e2f2613462399d39e664a690ec31a0da3f/index.js#L9
-  return str
-    .replace(/\u001b[^m]*?m/g, '')
-    .length
-}
-
 export function pad_end(str, padLength, padString) {
-  const length = str_length(str)
-  return str + ''.padEnd(padLength - length, padString)
+  return str + ''.padEnd(padLength - str.length, padString)
 }
 
 export function pad_start(str, padLength, padString) {
-  const length = str_length(str)
-  return ''.padStart(padLength - length, padString) + str
+  return ''.padStart(padLength - str.length, padString) + str
 }

@@ -27,7 +27,7 @@
     "performance"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "pretest": "npm run build",

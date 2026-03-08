@@ -39,9 +39,7 @@ Examples
 
 ## Related projects
 
-- [Online CSS Analyzer](https://www.projectwallace.com/analyze-css?utm_source=github&utm_medium=wallace_cli_related_projects) - Watch the analytics from this CLI online in a much more visual and detailed way!
-- [CSS Diff Action](https://github.com/projectwallace/css-diff-action) - A GitHub
-  Action that comments on your PR with the changes in your CSS stats.
+- [Online CSS Analyzer](https://www.projectwallace.com/analyze-css) - Watch the analytics from this CLI online in a much more visual and detailed way!
 - [CSS Analyzer](https://github.com/projectwallace/css-analyzer) - The analyzer that powers this module
-- [Constyble](https://github.com/projectwallace/constyble) - A CSS complexity
-  linter, based on css-analyzer. Don't let your CSS grow beyond the thresholds that you provide.
+- [CSS Code Quality Analyzer](https://github.com/projectwallace/css-code-quality) - A Code Quality analyzer that tells you how maintainable, complex and performant your CSS is
+- [Format CSS](https://github.com/projectwallace/format-css) - Fast, small, zero-config library to format CSS using basic rules.

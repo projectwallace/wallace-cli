@@ -1,50 +1,53 @@
 {
-  "name": "wallace-cli",
-  "version": "3.2.0",
-  "description": "Pretty CSS analytics on the CLI",
-  "homepage": "https://github.com/projectwallace/wallace-cli",
-  "author": "Bart Veneman <bart@projectwallace.com>",
-  "license": "MIT",
-  "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/projectwallace/wallace-cli.git"
-  },
-  "keywords": [
-    "stylesheets",
-    "css",
-    "styles",
-    "analytics",
-    "analysis",
-    "analyze",
-    "analyzer",
-    "stats",
-    "statistics",
-    "cli",
-    "terminal",
-    "performance"
-  ],
-  "engines": {
-    "node": ">=20.12.0"
-  },
-  "scripts": {
-    "pretest": "npm run build",
-    "test": "uvu",
-    "build": "esbuild --bundle ./src/bin.js --outfile=./dist/cli.js --platform=node --format=esm --external:@projectwallace/css-analyzer",
-    "lint-package": "publint"
-  },
-  "bin": {
-    "wallace": "./dist/cli.js"
-  },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "@projectwallace/css-analyzer": "^9.3.0"
-  },
-  "devDependencies": {
-    "esbuild": "^0.27.3",
-    "publint": "^0.3.18",
-    "uvu": "^0.5.6"
-  }
+	"name": "wallace-cli",
+	"version": "3.2.0",
+	"description": "Pretty CSS analytics on the CLI",
+	"keywords": [
+		"analysis",
+		"analytics",
+		"analyze",
+		"analyzer",
+		"cli",
+		"css",
+		"performance",
+		"statistics",
+		"stats",
+		"styles",
+		"stylesheets",
+		"terminal"
+	],
+	"homepage": "https://github.com/projectwallace/wallace-cli",
+	"license": "MIT",
+	"author": "Bart Veneman <bart@projectwallace.com>",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/projectwallace/wallace-cli.git"
+	},
+	"bin": {
+		"wallace": "./dist/cli.js"
+	},
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"scripts": {
+		"pretest": "npm run build",
+		"test": "uvu",
+		"build": "esbuild --bundle ./src/bin.js --outfile=./dist/cli.js --platform=node --format=esm --external:@projectwallace/css-analyzer",
+		"lint-package": "publint",
+		"lint": "oxlint; oxfmt --check"
+	},
+	"dependencies": {
+		"@projectwallace/css-analyzer": "^9.3.0"
+	},
+	"devDependencies": {
+		"esbuild": "^0.27.3",
+		"oxfmt": "^0.36.0",
+		"oxlint": "^1.51.0",
+		"publint": "^0.3.18",
+		"uvu": "^0.5.6"
+	},
+	"engines": {
+		"node": ">=20.12.0"
+	}
 }

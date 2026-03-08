@@ -8,7 +8,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/projectwallace/wallace-cli"
+    "url": "git+https://github.com/projectwallace/wallace-cli.git"
   },
   "keywords": [
     "stylesheets",
@@ -21,29 +21,30 @@
     "stats",
     "statistics",
     "cli",
-    "cli-app",
-    "projectwallace",
-    "wallace",
+    "terminal",
     "performance"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20.12.0"
   },
   "scripts": {
     "pretest": "npm run build",
     "test": "uvu",
-    "build": "esbuild --bundle ./src/bin.js --outfile=./dist/cli.cjs --platform=node --format=cjs --minify"
+    "build": "esbuild --bundle ./src/bin.js --outfile=./dist/cli.js --platform=node --format=esm --external:@projectwallace/css-analyzer",
+    "lint-package": "publint"
   },
   "bin": {
-    "wallace": "./dist/cli.cjs"
+    "wallace": "./dist/cli.js"
   },
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "@projectwallace/css-analyzer": "^9.3.0"
+  },
   "devDependencies": {
-    "@projectwallace/css-analyzer": "^9.3.0",
     "esbuild": "^0.27.3",
-    "picocolors": "^1.1.1",
+    "publint": "^0.3.18",
     "uvu": "^0.5.6"
   }
 }

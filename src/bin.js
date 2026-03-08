@@ -2,8 +2,16 @@
 
 import { readFile as fsReadFile } from 'fs/promises'
 import { join } from 'path'
-import pc from 'picocolors'
+import { styleText } from 'util'
 import { Program } from './program'
+
+const pc = {
+  bold: str => styleText('bold', str),
+  dim: str => styleText('dim', str),
+  italic: str => styleText('italic', str),
+  underline: str => styleText('underline', str),
+  red: str => styleText('red', str),
+}
 
 async function get_stdin() {
   const { stdin } = process

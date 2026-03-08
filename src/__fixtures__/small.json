@@ -46,6 +46,14 @@
 				"totalUnique": 0,
 				"unique": {},
 				"uniquenessRatio": 0
+			},
+			"features": {
+				"total": 1,
+				"totalUnique": 1,
+				"unique": {
+					"min-width": 1
+				},
+				"uniquenessRatio": 1
 			}
 		},
 		"charset": {
@@ -85,7 +93,13 @@
 			"total": 0,
 			"totalUnique": 0,
 			"unique": {},
-			"uniquenessRatio": 0
+			"uniquenessRatio": 0,
+			"names": {
+				"total": 0,
+				"totalUnique": 0,
+				"unique": {},
+				"uniquenessRatio": 0
+			}
 		},
 		"layer": {
 			"total": 0,
@@ -100,6 +114,37 @@
 			"uniquenessRatio": 0
 		},
 		"total": 2,
+		"totalUnique": 2,
+		"unique": {
+			"media": 1,
+			"supports": 1
+		},
+		"uniquenessRatio": 1,
+		"scope": {
+			"total": 0,
+			"totalUnique": 0,
+			"unique": {},
+			"uniquenessRatio": 0
+		},
+		"nesting": {
+			"min": 0,
+			"max": 1,
+			"mean": 0.5,
+			"mode": 0.5,
+			"range": 1,
+			"sum": 1,
+			"items": [
+				0,
+				1
+			],
+			"total": 2,
+			"totalUnique": 2,
+			"unique": {
+				"0": 1,
+				"1": 1
+			},
+			"uniquenessRatio": 1
+		},
 		"complexity": {
 			"min": 1,
 			"max": 1,
@@ -151,6 +196,25 @@
 				"1": 2
 			},
 			"uniquenessRatio": 0.5
+		},
+		"nesting": {
+			"min": 0,
+			"max": 2,
+			"mean": 1,
+			"mode": 1,
+			"range": 2,
+			"sum": 2,
+			"items": [
+				0,
+				2
+			],
+			"total": 2,
+			"totalUnique": 2,
+			"unique": {
+				"0": 1,
+				"2": 1
+			},
+			"uniquenessRatio": 1
 		},
 		"declarations": {
 			"min": 1,
@@ -279,6 +343,43 @@
 			"totalUnique": 0,
 			"unique": {},
 			"uniquenessRatio": 0
+		},
+		"pseudoElements": {
+			"total": 1,
+			"totalUnique": 1,
+			"unique": {"after": 1},
+			"uniquenessRatio": 1
+		},
+		"attributes": {
+			"total": 0,
+			"totalUnique": 0,
+			"unique": {},
+			"uniquenessRatio": 0
+		},
+		"customElements": {
+			"total": 0,
+			"totalUnique": 0,
+			"unique": {},
+			"uniquenessRatio": 0
+		},
+		"nesting": {
+			"min": 0,
+			"max": 2,
+			"mean": 1,
+			"mode": 1,
+			"range": 2,
+			"sum": 2,
+			"items": [
+				0,
+				2
+			],
+			"total": 2,
+			"totalUnique": 2,
+			"unique": {
+				"0": 1,
+				"2": 1
+			},
+			"uniquenessRatio": 1
 		}
 	},
 	"declarations": {
@@ -300,6 +401,27 @@
 			"mode": 1,
 			"range": 1,
 			"sum": 4
+		},
+
+		"nesting": {
+			"min": 0,
+			"max": 2,
+			"mean": 1.3333333333333333,
+			"mode": 2,
+			"range": 2,
+			"sum": 4,
+			"items": [
+				0,
+				2,
+				2
+			],
+			"total": 3,
+			"totalUnique": 2,
+			"unique": {
+				"0": 1,
+				"2": 2
+			},
+			"uniquenessRatio": 0.6666666666666666
 		}
 	},
 	"properties": {
@@ -308,7 +430,7 @@
 		"unique": {
 			"color": 1,
 			"content": 1,
-			"*zoom": 1
+			"zoom": 1
 		},
 		"uniquenessRatio": 1,
 		"prefixed": {
@@ -336,7 +458,7 @@
 			"total": 1,
 			"totalUnique": 1,
 			"unique": {
-				"*zoom": 1
+				"*": 1
 			},
 			"uniquenessRatio": 1,
 			"ratio": 0.3333333333333333
@@ -468,6 +590,18 @@
 			"sum": 3
 		},
 		"keywords": {
+			"total": 0,
+			"totalUnique": 0,
+			"unique": {},
+			"uniquenessRatio": 0
+		},
+		"resets": {
+			"total": 0,
+			"totalUnique": 0,
+			"unique": {},
+			"uniquenessRatio": 0
+		},
+		"displays": {
 			"total": 0,
 			"totalUnique": 0,
 			"unique": {},

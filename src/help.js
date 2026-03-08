@@ -1,5 +1,5 @@
 export function help(colors) {
-  return `
+	return `
 ${colors.bold('Usage')}
   ${colors.dim('$')} wallace <path-to-file>
 

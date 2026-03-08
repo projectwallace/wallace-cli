@@ -2,8 +2,8 @@
   "name": "wallace-cli",
   "version": "3.2.0",
   "description": "Pretty CSS analytics on the CLI",
-  "homepage": "https://www.projectwallace.com/oss",
-  "author": "Bart Veneman",
+  "homepage": "https://github.com/projectwallace/wallace-cli",
+  "author": "Bart Veneman <bart@projectwallace.com>",
   "license": "MIT",
   "type": "module",
   "repository": {
@@ -41,8 +41,8 @@
     "dist"
   ],
   "devDependencies": {
-    "@projectwallace/css-analyzer": "^7.0.2",
-    "esbuild": "^0.25.4",
+    "@projectwallace/css-analyzer": "^9.3.0",
+    "esbuild": "^0.27.3",
     "picocolors": "^1.1.1",
     "uvu": "^0.5.6"
   }

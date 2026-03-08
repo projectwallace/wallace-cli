@@ -261,7 +261,7 @@ export function Analytics(stats, style) {
     }
 
     const {
-      colors, gradients, fontSizes, fontFamilies, lineHeights, textShadows, boxShadows, zindexes, prefixes, browserhacks, units,
+      colors, gradients, fontSizes, fontFamilies, lineHeights, textShadows, boxShadows, zindexes, prefixes, browserhacks, units, resets,
     } = values
 
     return [
@@ -283,6 +283,7 @@ export function Analytics(stats, style) {
       ValueRow('Vendor Prefixed', prefixes.total, prefixes.totalUnique, prefixes.uniquenessRatio),
       ValueRow('Browserhacks', browserhacks.total, browserhacks.totalUnique, browserhacks.uniquenessRatio),
       ValueRow('Units', units.total, units.totalUnique, units.uniquenessRatio),
+      ValueRow('Resets', resets.total, resets.totalUnique, resets.uniquenessRatio)
     ].join('\n')
   }
 

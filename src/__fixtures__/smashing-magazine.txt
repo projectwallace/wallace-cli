@@ -1,14 +1,14 @@
 ───────────────────────────────────────────────────────────
 Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
-18,239        │ 474.8KB  │ 4,427 │ 5,748     │ 11,653
+18,239        │ 474.8KB  │ 4,273 │ 5,748     │ 11,653
 ───────────────────────────────────────────────────────────
 
-Comments                    418B    (4 items)
+Comments                    434B    (4 items)
 Embedded Content          42.4KB   (47 items)
 
 Rulesets             Most common      Average      Maximum
-Selectors / rule               1         1.33           30
-Declarations / rule            1         2.63           24
+Selectors / rule               1         1.35           30
+Declarations / rule            1         2.68           24
 Empty rules                                              0
 
 Selectors            Most common      Average      Maximum
@@ -18,24 +18,24 @@ Specificity                0/1/0  0.0/1.6/0.5        1/4/0
                            Total       Unique        Ratio
 All Selectors              5,748        3,955        68.8%
 ID Selectors                  15           13        86.7%
-Accessibility                 29           29       100.0%
-Vendor prefixed              150          103        68.7%
+Accessibility                 29            7        24.1%
+Vendor prefixed              150           28        18.7%
 
 AtRules                    Total       Unique     Unique %
 @media                       611          171        28.0%
 @supports                     11            3        27.3%
 @font-face                     7            7       100.0%
 @import                        0            0         0.0%
-@keyframes                    46           46       100.0%
+@keyframes                    46           23        50.0%
 @container                     0            0         0.0%
 @property                      0            0         0.0%
 
 Declarations               Total       Unique     Unique %
-All Declarations          11,653        2,929        25.1%
+All Declarations          11,653        3,422        29.4%
 !important                   284
 
 Properties                 Total       Unique     Unique %
-All Properties            11,653          228         2.0%
+All Properties            11,653          199         1.7%
 Custom Properties             78           20        25.6%
 Vendor Prefixed              228           36        15.8%
 Browserhacks                   0            0         0.0%
@@ -49,6 +49,7 @@ Line-heights                 127           38        29.9%
 Text-shadows                  69           10        14.5%
 Box-shadows                   76           44        57.9%
 Z-indexes                     86           19        22.1%
-Vendor Prefixed              162           20        12.3%
+Vendor Prefixed              170            5         2.9%
 Browserhacks                   0            0         0.0%
-Units                      5,037           12         0.2%
+Units                      5,910           13         0.2%
+Resets                       554           10         1.8%

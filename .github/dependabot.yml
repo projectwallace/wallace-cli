@@ -11,7 +11,6 @@ updates:
       oxc:
         patterns:
           - 'oxlint'
-          - '@oxlint/*'
           - 'oxfmt'
   - package-ecosystem: 'github-actions'
     directory: '/'

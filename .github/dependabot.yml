@@ -7,6 +7,11 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
+    groups:
+      oxc:
+        patterns:
+          - 'oxlint'
+          - 'oxfmt'
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:

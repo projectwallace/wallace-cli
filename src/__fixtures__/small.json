@@ -145,6 +145,12 @@
 			},
 			"uniquenessRatio": 1
 		},
+		"function": {
+			"total": 0,
+			"totalUnique": 0,
+			"unique": {},
+			"uniquenessRatio": 0
+		},
 		"complexity": {
 			"min": 1,
 			"max": 1,

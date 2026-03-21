@@ -1,0 +1,186 @@
+diff --git a/node_modules/@projectwallace/css-parser/dist/nodes.d.ts b/node_modules/@projectwallace/css-parser/dist/nodes.d.ts
+new file mode 100644
+index 0000000..94fe137
+--- /dev/null
++++ b/node_modules/@projectwallace/css-parser/dist/nodes.d.ts
+@@ -0,0 +1,58 @@
++export {
++	STYLESHEET,
++	STYLE_RULE,
++	AT_RULE,
++	DECLARATION,
++	SELECTOR,
++	COMMENT,
++	BLOCK,
++	RAW,
++	IDENTIFIER,
++	NUMBER,
++	DIMENSION,
++	STRING,
++	HASH,
++	FUNCTION,
++	OPERATOR,
++	PARENTHESIS,
++	URL,
++	VALUE,
++	SELECTOR_LIST,
++	TYPE_SELECTOR,
++	CLASS_SELECTOR,
++	ID_SELECTOR,
++	ATTRIBUTE_SELECTOR,
++	PSEUDO_CLASS_SELECTOR,
++	PSEUDO_ELEMENT_SELECTOR,
++	COMBINATOR,
++	UNIVERSAL_SELECTOR,
++	NESTING_SELECTOR,
++	NTH_SELECTOR,
++	NTH_OF_SELECTOR,
++	LANG_SELECTOR,
++	MEDIA_QUERY,
++	MEDIA_FEATURE,
++	MEDIA_TYPE,
++	CONTAINER_QUERY,
++	SUPPORTS_QUERY,
++	LAYER_NAME,
++	PRELUDE_OPERATOR,
++	FEATURE_RANGE,
++	AT_RULE_PRELUDE,
++	FLAG_IMPORTANT,
++	ATTR_OPERATOR_NONE,
++	ATTR_OPERATOR_EQUAL,
++	ATTR_OPERATOR_TILDE_EQUAL,
++	ATTR_OPERATOR_PIPE_EQUAL,
++	ATTR_OPERATOR_CARET_EQUAL,
++	ATTR_OPERATOR_DOLLAR_EQUAL,
++	ATTR_OPERATOR_STAR_EQUAL,
++	ATTR_OPERATOR_NAMES,
++	ATTR_FLAG_NONE,
++	ATTR_FLAG_CASE_INSENSITIVE,
++	ATTR_FLAG_CASE_SENSITIVE,
++	ATTR_FLAG_NAMES,
++	NODE_TYPES,
++	TYPE_NAMES,
++} from './index.js';
++export type { CSSNode, CSSNodeType, PlainCSSNode } from './index.js';
+diff --git a/node_modules/@projectwallace/css-parser/dist/nodes.js b/node_modules/@projectwallace/css-parser/dist/nodes.js
+new file mode 100644
+index 0000000..467f383
+--- /dev/null
++++ b/node_modules/@projectwallace/css-parser/dist/nodes.js
+@@ -0,0 +1,57 @@
++export {
++	STYLESHEET,
++	STYLE_RULE,
++	AT_RULE,
++	DECLARATION,
++	SELECTOR,
++	COMMENT,
++	BLOCK,
++	RAW,
++	IDENTIFIER,
++	NUMBER,
++	DIMENSION,
++	STRING,
++	HASH,
++	FUNCTION,
++	OPERATOR,
++	PARENTHESIS,
++	URL,
++	VALUE,
++	SELECTOR_LIST,
++	TYPE_SELECTOR,
++	CLASS_SELECTOR,
++	ID_SELECTOR,
++	ATTRIBUTE_SELECTOR,
++	PSEUDO_CLASS_SELECTOR,
++	PSEUDO_ELEMENT_SELECTOR,
++	COMBINATOR,
++	UNIVERSAL_SELECTOR,
++	NESTING_SELECTOR,
++	NTH_SELECTOR,
++	NTH_OF_SELECTOR,
++	LANG_SELECTOR,
++	MEDIA_QUERY,
++	MEDIA_FEATURE,
++	MEDIA_TYPE,
++	CONTAINER_QUERY,
++	SUPPORTS_QUERY,
++	LAYER_NAME,
++	PRELUDE_OPERATOR,
++	FEATURE_RANGE,
++	AT_RULE_PRELUDE,
++	FLAG_IMPORTANT,
++	ATTR_OPERATOR_NONE,
++	ATTR_OPERATOR_EQUAL,
++	ATTR_OPERATOR_TILDE_EQUAL,
++	ATTR_OPERATOR_PIPE_EQUAL,
++	ATTR_OPERATOR_CARET_EQUAL,
++	ATTR_OPERATOR_DOLLAR_EQUAL,
++	ATTR_OPERATOR_STAR_EQUAL,
++	ATTR_OPERATOR_NAMES,
++	ATTR_FLAG_NONE,
++	ATTR_FLAG_CASE_INSENSITIVE,
++	ATTR_FLAG_CASE_SENSITIVE,
++	ATTR_FLAG_NAMES,
++	NODE_TYPES,
++	TYPE_NAMES,
++} from './index.js';
+diff --git a/node_modules/@projectwallace/css-parser/dist/walker.d.ts b/node_modules/@projectwallace/css-parser/dist/walker.d.ts
+new file mode 100644
+index 0000000..15fa5f7
+--- /dev/null
++++ b/node_modules/@projectwallace/css-parser/dist/walker.d.ts
+@@ -0,0 +1,27 @@
++import type { CSSNode } from './index.js';
++
++declare const SKIP: unique symbol;
++declare const BREAK: unique symbol;
++
++type WalkCallback = (node: CSSNode, depth: number) => void | typeof SKIP | typeof BREAK;
++type WalkEnterLeaveCallback = (node: CSSNode) => void | typeof SKIP | typeof BREAK;
++
++interface WalkEnterLeaveOptions {
++  enter?: WalkEnterLeaveCallback;
++  leave?: WalkEnterLeaveCallback;
++}
++
++/**
++ * Walk the AST in depth-first order, calling the callback for each node.
++ * Return SKIP to skip children, BREAK to stop traversal.
++ */
++declare function walk(node: CSSNode, callback: WalkCallback, depth?: number): boolean;
++
++/**
++ * Walk the AST in depth-first order, calling enter before visiting children and leave after.
++ * Return SKIP in enter to skip children (leave still called), BREAK to stop (leave NOT called).
++ */
++declare function traverse(node: CSSNode, options?: WalkEnterLeaveOptions): boolean;
++
++export { walk, traverse, SKIP, BREAK };
++export type { WalkCallback, WalkEnterLeaveCallback, WalkEnterLeaveOptions };
+diff --git a/node_modules/@projectwallace/css-parser/dist/walker.js b/node_modules/@projectwallace/css-parser/dist/walker.js
+new file mode 100644
+index 0000000..f4cd77e
+--- /dev/null
++++ b/node_modules/@projectwallace/css-parser/dist/walker.js
+@@ -0,0 +1 @@
++export { walk, SKIP, BREAK, traverse } from './index.js';
+diff --git a/node_modules/@projectwallace/css-parser/package.json b/node_modules/@projectwallace/css-parser/package.json
+index 1234567..abcdefg 100644
+--- a/node_modules/@projectwallace/css-parser/package.json
++++ b/node_modules/@projectwallace/css-parser/package.json
+@@ -60,6 +60,14 @@
+ 		"./parse-dimension": {
+ 			"types": "./dist/parse-dimension.d.ts",
+ 			"import": "./dist/parse-dimension.js"
+-		}
++		},
++		"./walker": {
++			"types": "./dist/walker.d.ts",
++			"import": "./dist/walker.js"
++		},
++		"./nodes": {
++			"types": "./dist/nodes.d.ts",
++			"import": "./dist/nodes.js"
++		}
+ 	},

@@ -2,14 +2,8 @@ import { analyze } from '@projectwallace/css-analyzer'
 import { parseArgs } from 'node:util'
 import { help } from './help.js'
 import { Analytics } from './components.js'
-
-export type Colors = {
-	bold: (str: string) => string
-	dim: (str: string) => string
-	underline: (str: string) => string
-	italic: (str: string) => string
-	red?: (str: string) => string
-}
+export type { Colors } from './types.js'
+import type { Colors } from './types.js'
 
 type ProgramOptions = {
 	args: string[]
@@ -63,5 +57,5 @@ export async function Program({
 		return JSON.stringify(stats)
 	}
 
-	return Analytics(stats, { ...terminal_colors, red: terminal_colors.red ?? ((str) => str) })
+	return Analytics(stats, terminal_colors)
 }

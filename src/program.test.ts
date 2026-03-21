@@ -15,6 +15,7 @@ const terminal_colors = {
 	dim: (str: string) => str,
 	underline: (str: string) => str,
 	italic: (str: string) => str,
+	red: (str: string) => str,
 }
 
 describe('Program', () => {

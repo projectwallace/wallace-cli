@@ -1,15 +1,8 @@
 import type { analyze } from '@projectwallace/css-analyzer'
 import { to_filesize, to_number, to_percentage, pad_end, pad_start } from './formatters.js'
+import type { Colors } from './types.js'
 
 type Stats = ReturnType<typeof analyze>
-
-type Colors = {
-	bold: (str: string) => string
-	dim: (str: string) => string
-	underline: (str: string) => string
-	italic?: (str: string) => string
-	red: (str: string) => string
-}
 
 const columns = [19, 12, 12, 12]
 const width = columns.reduce((total, num) => (total += num), 0) + columns.length

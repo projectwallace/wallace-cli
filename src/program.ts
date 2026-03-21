@@ -3,7 +3,7 @@ import { parseArgs } from 'node:util'
 import { help } from './help.js'
 import { Analytics } from './components.js'
 
-type Colors = {
+export type Colors = {
 	bold: (str: string) => string
 	dim: (str: string) => string
 	underline: (str: string) => string

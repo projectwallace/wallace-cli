@@ -3,9 +3,9 @@
 import { readFile as fsReadFile } from 'fs/promises'
 import { join } from 'path'
 import { styleText } from 'util'
-import { Program } from './program.js'
+import { Program, type Colors } from './program.js'
 
-const pc = {
+const pc: Colors = {
 	bold: (str: string) => styleText('bold', str),
 	dim: (str: string) => styleText('dim', str),
 	italic: (str: string) => styleText('italic', str),

@@ -1,6 +1,6 @@
 ───────────────────────────────────────────────────────────
 Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
-23,386        │ 795.8KB  │ 4,797 │ 8,886     │ 13,256
+23,392        │ 795.8KB  │ 4,797 │ 8,890     │ 13,258
 ───────────────────────────────────────────────────────────
 
 Comments                   3.1KB   (93 items)
@@ -16,8 +16,8 @@ Complexity                     5         5.67           18
 Specificity                0/3/0  0.0/3.3/0.3        2/2/1
 
                            Total       Unique        Ratio
-All Selectors              8,886        6,596        74.2%
-ID Selectors                 295          196        66.4%
+All Selectors              8,890        6,594        74.2%
+ID Selectors                 298          197        66.1%
 Accessibility                  0            0         0.0%
 Vendor prefixed               59           13        22.0%
 
@@ -31,11 +31,11 @@ AtRules                    Total       Unique     Unique %
 @property                      0            0         0.0%
 
 Declarations               Total       Unique     Unique %
-All Declarations          13,256        3,351        25.3%
+All Declarations          13,258        3,353        25.3%
 !important                   132
 
 Properties                 Total       Unique     Unique %
-All Properties            13,256          150         1.1%
+All Properties            13,258          150         1.1%
 Custom Properties              0            0         0.0%
 Vendor Prefixed            1,263           80         6.3%
 Browserhacks                   8            2        25.0%

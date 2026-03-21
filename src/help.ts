@@ -1,4 +1,10 @@
-export function help(colors) {
+type Colors = {
+	bold: (str: string) => string
+	dim: (str: string) => string
+	italic: (str: string) => string
+}
+
+export function help(colors: Colors): string {
 	return `
 ${colors.bold('Usage')}
   ${colors.dim('$')} wallace <path-to-file>

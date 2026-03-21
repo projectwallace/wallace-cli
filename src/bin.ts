@@ -3,17 +3,17 @@
 import { readFile as fsReadFile } from 'fs/promises'
 import { join } from 'path'
 import { styleText } from 'util'
-import { Program } from './program'
+import { Program } from './program.js'
 
 const pc = {
-	bold: (str) => styleText('bold', str),
-	dim: (str) => styleText('dim', str),
-	italic: (str) => styleText('italic', str),
-	underline: (str) => styleText('underline', str),
-	red: (str) => styleText('red', str),
+	bold: (str: string) => styleText('bold', str),
+	dim: (str: string) => styleText('dim', str),
+	italic: (str: string) => styleText('italic', str),
+	underline: (str: string) => styleText('underline', str),
+	red: (str: string) => styleText('red', str),
 }
 
-async function get_stdin() {
+async function get_stdin(): Promise<string> {
 	const { stdin } = process
 	if (stdin.isTTY) {
 		return ''
@@ -28,13 +28,13 @@ async function get_stdin() {
 	return result
 }
 
-async function read_file(path_param) {
+async function read_file(path_param: string): Promise<string> {
 	const pathName = join(process.cwd(), path_param)
 	const content = await fsReadFile(pathName, 'utf-8')
 	return content
 }
 
-async function main() {
+async function main(): Promise<string> {
 	const stdin = await get_stdin()
 	return Program({
 		args: process.argv.slice(2),
@@ -46,7 +46,7 @@ async function main() {
 
 main()
 	.then(console.log)
-	.catch((error) => {
+	.catch((error: Error) => {
 		console.error(error.stack || error.message)
 		process.exitCode = 1
 	})

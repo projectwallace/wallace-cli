@@ -1,10 +1,21 @@
+import type { analyze } from '@projectwallace/css-analyzer'
 import { to_filesize, to_number, to_percentage, pad_end, pad_start } from './formatters.js'
+
+type Stats = ReturnType<typeof analyze>
+
+type Colors = {
+	bold: (str: string) => string
+	dim: (str: string) => string
+	underline: (str: string) => string
+	italic?: (str: string) => string
+	red: (str: string) => string
+}
 
 const columns = [19, 12, 12, 12]
 const width = columns.reduce((total, num) => (total += num), 0) + columns.length
 
-export function Analytics(stats, style) {
-	function Row(...tds) {
+export function Analytics(stats: Stats, style: Colors): string {
+	function Row(...tds: unknown[]): string {
 		return tds
 			.map((td, index) => {
 				if (index === 0) {
@@ -15,26 +26,28 @@ export function Analytics(stats, style) {
 			.join(' ')
 	}
 
-	function Hr() {
+	function Hr(): string {
 		return style.dim(''.padEnd(width, '─'))
 	}
 
-	function Summary(stats) {
+	function Summary(stats: Stats): string {
 		return [
 			Hr(),
 			['Lines of Code', 'Filesize', 'Rules', 'Selectors', 'Declarations'].join(style.dim(' │ ')),
 			[
-				style.bold(to_number(stats.stylesheet.sourceLinesOfCode).padEnd('Lines of Code'.length)),
+				style.bold(
+					to_number(stats.stylesheet.sourceLinesOfCode).toString().padEnd('Lines of Code'.length),
+				),
 				style.bold(to_filesize(stats.stylesheet.size).padEnd('Filesize'.length)),
-				style.bold(to_number(stats.rules.total).padEnd('Rules'.length)),
-				style.bold(to_number(stats.selectors.total).padEnd('Selectors'.length)),
-				style.bold(to_number(stats.declarations.total)),
+				style.bold(to_number(stats.rules.total).toString().padEnd('Rules'.length)),
+				style.bold(to_number(stats.selectors.total).toString().padEnd('Selectors'.length)),
+				style.bold(to_number(stats.declarations.total).toString()),
 			].join(style.dim(' │ ')),
 			Hr(),
 		].join('\n')
 	}
 
-	function Stylesheet(stylesheet) {
+	function Stylesheet(stylesheet: Stats['stylesheet']): string {
 		return [
 			Row(
 				'Comments',
@@ -49,7 +62,7 @@ export function Analytics(stats, style) {
 		].join('\n')
 	}
 
-	function Rules(rules) {
+	function Rules(rules: Stats['rules']): string {
 		let empty_count = to_number(rules.empty.total)
 		return [
 			Row(
@@ -70,11 +83,16 @@ export function Analytics(stats, style) {
 				to_number(rules.declarations.mean),
 				to_number(rules.declarations.max),
 			),
-			Row(`Empty rules`, '', '', rules.empty.total > 0 ? style.red(empty_count) : empty_count),
+			Row(
+				`Empty rules`,
+				'',
+				'',
+				rules.empty.total > 0 ? style.red(String(empty_count)) : empty_count,
+			),
 		].join('\n')
 	}
 
-	function Selectors(selectors) {
+	function Selectors(selectors: Stats['selectors']): string {
 		return [
 			Row(
 				style.underline('Selectors'),
@@ -123,7 +141,7 @@ export function Analytics(stats, style) {
 		].join('\n')
 	}
 
-	function AtRules(atrules) {
+	function AtRules(atrules: Stats['atrules']): string {
 		const { media, supports, fontface, import: imports, keyframes, container, property } = atrules
 
 		return [
@@ -178,7 +196,7 @@ export function Analytics(stats, style) {
 		].join('\n')
 	}
 
-	function Declarations(declarations) {
+	function Declarations(declarations: Stats['declarations']): string {
 		return [
 			Row(
 				style.underline('Declarations'),
@@ -196,7 +214,7 @@ export function Analytics(stats, style) {
 		].join('\n')
 	}
 
-	function Properties(properties) {
+	function Properties(properties: Stats['properties']): string {
 		return [
 			Row(
 				style.underline('Properties'),
@@ -231,8 +249,13 @@ export function Analytics(stats, style) {
 		].join('\n')
 	}
 
-	function Values(values) {
-		function ValueRow(title, total, totalUnique, uniquenessRatio) {
+	function Values(values: Stats['values']): string {
+		function ValueRow(
+			title: string,
+			total: number,
+			totalUnique: number,
+			uniquenessRatio: number,
+		): string {
 			return Row(title, to_number(total), to_number(totalUnique), to_percentage(uniquenessRatio))
 		}
 

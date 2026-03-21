@@ -2,15 +2,29 @@ import { analyze } from '@projectwallace/css-analyzer'
 import { parseArgs } from 'node:util'
 import { help } from './help.js'
 import { Analytics } from './components.js'
+export type { Colors } from './types.js'
+import type { Colors } from './types.js'
 
-export async function Program({ args, read_file, terminal_colors, stdin }) {
+type ProgramOptions = {
+	args: string[]
+	read_file: (path: string) => Promise<string>
+	terminal_colors: Colors
+	stdin: string
+}
+
+export async function Program({
+	args,
+	read_file,
+	terminal_colors,
+	stdin,
+}: ProgramOptions): Promise<string> {
 	const options = {
 		json: {
-			type: 'boolean',
+			type: 'boolean' as const,
 			short: 'j',
 		},
 		help: {
-			type: 'boolean',
+			type: 'boolean' as const,
 			short: 'h',
 		},
 	}
@@ -36,7 +50,7 @@ export async function Program({ args, read_file, terminal_colors, stdin }) {
 	}
 
 	const stats = analyze(css)
-	delete stats.__meta__
+	delete (stats as Record<string, unknown>).__meta__
 
 	// Format as JSON if user asked for it
 	if (values.json) {

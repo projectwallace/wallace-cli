@@ -24,7 +24,7 @@
 		"url": "git+https://github.com/projectwallace/wallace-cli.git"
 	},
 	"bin": {
-		"wallace": "./dist/cli.js"
+		"wallace": "./dist/bin.mjs"
 	},
 	"files": [
 		"dist"
@@ -32,8 +32,8 @@
 	"type": "module",
 	"scripts": {
 		"pretest": "npm run build",
-		"test": "uvu",
-		"build": "esbuild --bundle ./src/bin.js --outfile=./dist/cli.js --platform=node --format=esm --external:@projectwallace/css-analyzer",
+		"test": "vitest run",
+		"build": "tsdown",
 		"lint-package": "publint",
 		"lint": "oxlint; oxfmt --check"
 	},
@@ -41,11 +41,12 @@
 		"@projectwallace/css-analyzer": "^9.3.0"
 	},
 	"devDependencies": {
-		"esbuild": "^0.27.3",
 		"oxfmt": "^0.41.0",
 		"oxlint": "^1.51.0",
 		"publint": "^0.3.18",
-		"uvu": "^0.5.6"
+		"tsdown": "^0.21.4",
+		"typescript": "^5.9.3",
+		"vitest": "^4.1.0"
 	},
 	"engines": {
 		"node": ">=20.12.0"

@@ -6,13 +6,17 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     groups:
       oxc:
         patterns:
           - 'oxlint'
           - 'oxfmt'
+      vitest:
+        patterns:
+          - 'vitest'
+          - '@vitest/*'
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'

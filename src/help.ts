@@ -1,4 +1,6 @@
-export function help(colors) {
+import type { Colors } from './types.js'
+
+export function help(colors: Colors): string {
 	return `
 ${colors.bold('Usage')}
   ${colors.dim('$')} wallace <path-to-file>

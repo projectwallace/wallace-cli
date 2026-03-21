@@ -32,7 +32,7 @@
 	"type": "module",
 	"scripts": {
 		"pretest": "npm run build",
-		"test": "vitest run",
+		"test": "vitest run --coverage",
 		"build": "tsdown",
 		"lint-package": "publint",
 		"lint": "oxlint; oxfmt --check"
@@ -41,6 +41,8 @@
 		"@projectwallace/css-analyzer": "^9.3.0"
 	},
 	"devDependencies": {
+		"@types/node": "^22.0.0",
+		"@vitest/coverage-v8": "^4.1.0",
 		"oxfmt": "^0.41.0",
 		"oxlint": "^1.51.0",
 		"publint": "^0.3.18",

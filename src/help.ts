@@ -1,8 +1,4 @@
-type Colors = {
-	bold: (str: string) => string
-	dim: (str: string) => string
-	italic: (str: string) => string
-}
+import type { Colors } from './program.js'
 
 export function help(colors: Colors): string {
 	return `

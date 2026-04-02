@@ -438,6 +438,13 @@
 			"content": 1,
 			"zoom": 1
 		},
+		"shorthands": {
+			"total": 0,
+			"totalUnique": 0,
+			"unique": {},
+			"uniquenessRatio": 0,
+			"ratio": 0
+		},
 		"uniquenessRatio": 1,
 		"prefixed": {
 			"total": 0,

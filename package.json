@@ -35,16 +35,17 @@
 		"test": "vitest run --coverage",
 		"build": "tsdown",
 		"lint-package": "publint",
-		"lint": "oxlint; oxfmt --check"
+		"lint": "oxlint; oxfmt --check",
+		"check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@projectwallace/css-analyzer": "^9.3.0"
+		"@projectwallace/css-analyzer": "^9.6.0"
 	},
 	"devDependencies": {
 		"@types/node": "^22.0.0",
 		"@vitest/coverage-v8": "^4.1.0",
 		"oxfmt": "^0.43.0",
-		"oxlint": "^1.51.0",
+		"oxlint": "^1.58.0",
 		"publint": "^0.3.18",
 		"tsdown": "^0.21.4",
 		"typescript": "^6.0.2",

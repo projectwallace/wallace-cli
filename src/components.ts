@@ -1,13 +1,10 @@
-import type { analyze } from '@projectwallace/css-analyzer'
 import { to_filesize, to_number, to_percentage, pad_end, pad_start } from './formatters.js'
-import type { Colors } from './types.js'
-
-type Stats = ReturnType<typeof analyze>
+import type { Colors, CssAnalysis } from './types.js'
 
 const columns = [19, 12, 12, 12]
 const width = columns.reduce((total, num) => (total += num), 0) + columns.length
 
-export function Analytics(stats: Stats, style: Colors): string {
+export function Analytics(stats: CssAnalysis, style: Colors): string {
 	function Row(...tds: unknown[]): string {
 		return tds
 			.map((td, index) => {
@@ -23,7 +20,7 @@ export function Analytics(stats: Stats, style: Colors): string {
 		return style.dim(''.padEnd(width, '─'))
 	}
 
-	function Summary(stats: Stats): string {
+	function Summary(stats: CssAnalysis): string {
 		return [
 			Hr(),
 			['Lines of Code', 'Filesize', 'Rules', 'Selectors', 'Declarations'].join(style.dim(' │ ')),
@@ -40,7 +37,7 @@ export function Analytics(stats: Stats, style: Colors): string {
 		].join('\n')
 	}
 
-	function Stylesheet(stylesheet: Stats['stylesheet']): string {
+	function Stylesheet(stylesheet: CssAnalysis['stylesheet']): string {
 		return [
 			Row(
 				'Comments',
@@ -55,7 +52,7 @@ export function Analytics(stats: Stats, style: Colors): string {
 		].join('\n')
 	}
 
-	function Rules(rules: Stats['rules']): string {
+	function Rules(rules: CssAnalysis['rules']): string {
 		let empty_count = to_number(rules.empty.total)
 		return [
 			Row(
@@ -85,7 +82,7 @@ export function Analytics(stats: Stats, style: Colors): string {
 		].join('\n')
 	}
 
-	function Selectors(selectors: Stats['selectors']): string {
+	function Selectors(selectors: CssAnalysis['selectors']): string {
 		return [
 			Row(
 				style.underline('Selectors'),
@@ -134,7 +131,7 @@ export function Analytics(stats: Stats, style: Colors): string {
 		].join('\n')
 	}
 
-	function AtRules(atrules: Stats['atrules']): string {
+	function AtRules(atrules: CssAnalysis['atrules']): string {
 		const { media, supports, fontface, import: imports, keyframes, container, property } = atrules
 
 		return [
@@ -189,7 +186,7 @@ export function Analytics(stats: Stats, style: Colors): string {
 		].join('\n')
 	}
 
-	function Declarations(declarations: Stats['declarations']): string {
+	function Declarations(declarations: CssAnalysis['declarations']): string {
 		return [
 			Row(
 				style.underline('Declarations'),
@@ -207,7 +204,7 @@ export function Analytics(stats: Stats, style: Colors): string {
 		].join('\n')
 	}
 
-	function Properties(properties: Stats['properties']): string {
+	function Properties(properties: CssAnalysis['properties']): string {
 		return [
 			Row(
 				style.underline('Properties'),
@@ -242,7 +239,7 @@ export function Analytics(stats: Stats, style: Colors): string {
 		].join('\n')
 	}
 
-	function Values(values: Stats['values']): string {
+	function Values(values: CssAnalysis['values']): string {
 		function ValueRow(
 			title: string,
 			total: number,

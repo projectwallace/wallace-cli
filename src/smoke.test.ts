@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { readFile } from 'node:fs/promises'
 import { analyze } from '@projectwallace/css-analyzer'
 import { Analytics } from './components.js'
+import { CssAnalysis } from './types.js'
 // import { writeFileSync } from 'node:fs'
 
 const terminal_colors = {
@@ -24,7 +25,7 @@ describe('Smoke Tests', () => {
 				readFile(`./src/__fixtures__/${fileName}.css`, 'utf-8'),
 				readFile(`./src/__fixtures__/${fileName}.txt`, 'utf-8'),
 			])
-			const stats = analyze(css)
+			const stats = analyze(css) as unknown as CssAnalysis
 			const actual = Analytics(stats, terminal_colors)
 			// writeFileSync(`./src/__fixtures__/${fileName}.txt`, actual)
 			expect(actual).toEqual(expected)

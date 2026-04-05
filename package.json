@@ -39,17 +39,17 @@
 		"check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@projectwallace/css-analyzer": "^9.6.0"
+		"@projectwallace/css-analyzer": "^9.6.2"
 	},
 	"devDependencies": {
 		"@types/node": "^22.0.0",
-		"@vitest/coverage-v8": "^4.1.0",
+		"@vitest/coverage-v8": "^4.1.2",
 		"oxfmt": "^0.43.0",
 		"oxlint": "^1.58.0",
 		"publint": "^0.3.18",
-		"tsdown": "^0.21.4",
+		"tsdown": "^0.21.7",
 		"typescript": "^6.0.2",
-		"vitest": "^4.1.0"
+		"vitest": "^4.1.2"
 	},
 	"engines": {
 		"node": ">=20.12.0"

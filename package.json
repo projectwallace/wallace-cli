@@ -39,7 +39,7 @@
 		"check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@projectwallace/css-analyzer": "^9.6.2"
+		"@projectwallace/css-analyzer": "^9.8.2"
 	},
 	"devDependencies": {
 		"@types/node": "^22.0.0",

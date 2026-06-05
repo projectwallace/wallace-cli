@@ -8,15 +8,19 @@ updates:
     schedule:
       interval: 'monthly'
     groups:
-      oxc:
+      projectwallace:
         patterns:
-          - 'oxlint'
-          - 'oxfmt'
-      vitest:
+          - '@projectwallace/*'
+      npm-all:
         patterns:
-          - 'vitest'
-          - '@vitest/*'
+          - '*'
+        exclude-patterns:
+          - '@projectwallace/*'
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'monthly'
+      interval: 'weekly'
+    groups:
+      github-actions:
+        patterns:
+          - '*'

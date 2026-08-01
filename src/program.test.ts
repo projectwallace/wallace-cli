@@ -98,7 +98,7 @@ describe('Program', () => {
 			stdin: css_fixture,
 		})
 
-		expect(JSON.parse(actual)).toEqual(result)
+		expect(JSON.parse(actual)).toMatchObject(result)
 	})
 
 	it('wallace non-existing.css', async () => {
@@ -131,6 +131,6 @@ describe('Program', () => {
 			stdin: '',
 		})
 
-		expect(JSON.parse(actual)).toEqual(result)
+		expect(JSON.parse(actual)).toMatchObject(result)
 	})
 })

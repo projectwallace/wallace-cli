@@ -33,7 +33,7 @@
 	"scripts": {
 		"test": "vitest run --coverage",
 		"build": "tsdown",
-		"lint": "oxlint; oxfmt --check",
+		"lint": "oxlint && oxfmt --check",
 		"check": "tsc --noEmit"
 	},
 	"dependencies": {

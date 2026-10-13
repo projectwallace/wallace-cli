@@ -1,0 +1,7 @@
+{
+	"extends": ["./node_modules/@projectwallace/preset-oxlint/index.json"],
+	"rules": {
+		"prefer-top-level-await": "off",
+		"no-console": "off"
+	}
+}

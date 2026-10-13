@@ -5,7 +5,7 @@ blockExoticSubdeps: true
 # except for first-party packages you own
 minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
-  - "@projectwallace/*"
+  - '@projectwallace/*'
 
 # Prevent trust level downgrades compared to previously installed packages
 trustPolicy: no-downgrade

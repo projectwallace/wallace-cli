@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, test, expect } from 'vitest'
 import { readFile } from 'node:fs/promises'
 import { analyze } from '@projectwallace/css-analyzer'
 import { Analytics } from './components.js'
@@ -19,8 +19,9 @@ describe('Smoke Tests', () => {
 		'CSS Tricks': 'css-tricks',
 		CNN: 'cnn',
 		'Smashing Magazine': 'smashing-magazine',
-	}).map(([name, fileName]) => {
-		it(name, async () => {
+	}).forEach(([name, fileName]) => {
+		// oxlint-disable-next-line valid-title
+		test(name, async () => {
 			const [css, expected] = await Promise.all([
 				readFile(`./src/__fixtures__/${fileName}.css`, 'utf-8'),
 				readFile(`./src/__fixtures__/${fileName}.txt`, 'utf-8'),

@@ -72,7 +72,7 @@ jobs:
           path: ./source-packs
       - uses: e18e/action-dependency-diff@9a7f09f5f2993256322e0db17ee4c8d9339dab77 # v1.7.1
         with:
-          base-packages: "./base-packs/*.tgz"
-          source-packages: "./source-packs/*.tgz"
+          base-packages: './base-packs/*.tgz'
+          source-packages: './source-packs/*.tgz'
           pack-size-threshold: -1
           duplicate-threshold: 2

@@ -9,3 +9,9 @@ minimumReleaseAgeExclude:
 
 # Prevent trust level downgrades compared to previously installed packages
 trustPolicy: no-downgrade
+# undici-types@6.21.0 (transitive via @types/node): verified tarball integrity
+# matches npm registry and maintainers are the legit undici/Node authors. The
+# flag is a false positive from provenance adoption happening after this
+# version's publish date, not an actual takeover.
+trustPolicyExclude:
+  - 'undici-types'

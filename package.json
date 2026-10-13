@@ -37,7 +37,7 @@
 		"check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@projectwallace/css-analyzer": "^9.6.2"
+		"@projectwallace/css-analyzer": "^9.9.4"
 	},
 	"devDependencies": {
 		"@projectwallace/preset-oxlint": "^0.0.11",

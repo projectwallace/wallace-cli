@@ -2,7 +2,6 @@ import { analyze } from '@projectwallace/css-analyzer'
 import { parseArgs } from 'node:util'
 import { help } from './help.js'
 import { Analytics } from './components.js'
-export type { Colors } from './types.js'
 import type { Colors, CssAnalysis } from './types.js'
 
 type ProgramOptions = {

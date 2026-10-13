@@ -33,24 +33,27 @@
 	"scripts": {
 		"test": "vitest run --coverage",
 		"build": "tsdown",
-		"lint": "oxlint; oxfmt --check",
-		"check": "tsc --noEmit"
+		"lint": "oxlint && oxfmt --check",
+		"check": "tsc --noEmit",
+		"knip": "knip"
 	},
 	"dependencies": {
-		"@projectwallace/css-analyzer": "^9.6.2"
+		"@projectwallace/css-analyzer": "^9.9.4"
 	},
 	"devDependencies": {
+		"@projectwallace/preset-oxlint": "^0.0.11",
 		"@types/node": "^22.0.0",
-		"@vitest/coverage-v8": "^5.0.1",
-		"oxfmt": "^0.70.0",
-		"oxlint": "^1.58.0",
-		"publint": "^0.3.18",
+		"@vitest/coverage-v8": "^5.0.3",
+		"knip": "^6.39.0",
+		"oxfmt": "^0.72.0",
+		"oxlint": "^1.87.0",
+		"publint": "^0.3.25",
 		"tsdown": "^0.23.0",
 		"typescript": "^7.0.2",
-		"vitest": "^5.0.1"
+		"vitest": "^5.0.3"
 	},
 	"engines": {
 		"node": ">=20.12.0"
 	},
-	"packageManager": "pnpm@11.1.1"
+	"packageManager": "pnpm@11.16.0"
 }

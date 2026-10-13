@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, test, expect } from 'vitest'
 import fs from 'node:fs/promises'
 import { Program } from './program.js'
 import { help } from './help.js'
@@ -19,7 +19,7 @@ const terminal_colors = {
 }
 
 describe('Program', () => {
-	it('wallace (no stdIn + no args)', async () => {
+	test('wallace (no stdIn + no args)', async () => {
 		const actual = await Program({
 			args: [],
 			read_file: () => Promise.resolve(''),
@@ -31,7 +31,7 @@ describe('Program', () => {
 		expect(actual).toBe(expected)
 	})
 
-	it('cat style.css | wallace --help', async () => {
+	test('cat style.css | wallace --help', async () => {
 		const actual = await Program({
 			args: ['--help'],
 			read_file: () => Promise.resolve(''),
@@ -43,7 +43,7 @@ describe('Program', () => {
 		expect(actual).toBe(expected)
 	})
 
-	it('wallace style.css --help', async () => {
+	test('wallace style.css --help', async () => {
 		const actual = await Program({
 			args: ['style.css', '--help'],
 			read_file: () => Promise.resolve(css_fixture),
@@ -55,7 +55,7 @@ describe('Program', () => {
 		expect(actual).toBe(expected)
 	})
 
-	it('cat style.css | wallace -h', async () => {
+	test('cat style.css | wallace -h', async () => {
 		const actual = await Program({
 			args: ['-h'],
 			read_file: () => Promise.resolve(''),
@@ -67,7 +67,7 @@ describe('Program', () => {
 		expect(actual).toBe(expected)
 	})
 
-	it('wallace style.css -h', async () => {
+	test('wallace style.css -h', async () => {
 		const actual = await Program({
 			args: ['style.css', '-h'],
 			read_file: () => Promise.resolve(css_fixture),
@@ -79,7 +79,7 @@ describe('Program', () => {
 		expect(actual).toBe(expected)
 	})
 
-	it('cat style.css | wallace', async () => {
+	test('cat style.css | wallace', async () => {
 		const actual = await Program({
 			args: [],
 			read_file: () => Promise.resolve(''),
@@ -90,7 +90,7 @@ describe('Program', () => {
 		expect(actual).toBe(cli_fixture.trim())
 	})
 
-	it('cat style.css | wallace --json', async () => {
+	test('cat style.css | wallace --json', async () => {
 		const actual = await Program({
 			args: ['--json'],
 			read_file: () => Promise.resolve(''),
@@ -101,7 +101,7 @@ describe('Program', () => {
 		expect(JSON.parse(actual)).toMatchObject(result)
 	})
 
-	it('wallace non-existing.css', async () => {
+	test('wallace non-existing.css', async () => {
 		await expect(
 			Program({
 				args: ['non-existing.css'],
@@ -112,7 +112,7 @@ describe('Program', () => {
 		).rejects.toThrow(Error)
 	})
 
-	it('wallace style.css', async () => {
+	test('wallace style.css', async () => {
 		const actual = await Program({
 			args: ['style.css'],
 			read_file: () => Promise.resolve(css_fixture),
@@ -123,7 +123,7 @@ describe('Program', () => {
 		expect(actual).toBe(cli_fixture.trim())
 	})
 
-	it('wallace style.css --json', async () => {
+	test('wallace style.css --json', async () => {
 		const actual = await Program({
 			args: ['style.css', '--json'],
 			read_file: () => Promise.resolve(css_fixture),

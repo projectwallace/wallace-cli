@@ -1,0 +1,3 @@
+# keep test files EOL on checkout
+/src/__fixtures__/*.css text eol=lf
+/src/__fixtures__/*.txt text eol=lf

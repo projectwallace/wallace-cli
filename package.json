@@ -1,6 +1,6 @@
 {
 	"name": "wallace-cli",
-	"version": "4.0.3",
+	"version": "4.0.4",
 	"description": "Pretty CSS analytics on the CLI",
 	"keywords": [
 		"analysis",

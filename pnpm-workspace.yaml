@@ -1,0 +1,11 @@
+# Block dependencies from using non-registry sources (git repos, tarballs)
+blockExoticSubdeps: true
+
+# Wait 1 week before allowing newly published packages to be installed,
+# except for first-party packages you own
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - "@projectwallace/*"
+
+# Prevent trust level downgrades compared to previously installed packages
+trustPolicy: no-downgrade

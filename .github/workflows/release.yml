@@ -52,18 +52,21 @@ jobs:
         with:
           persist-credentials: true
       - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-      - run: |
-          VERSION=${GITHUB_REF_NAME#v}
-          pnpm version $VERSION --no-git-tag-version
+      - env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          VERSION="${TAG_NAME#v}"
+          pnpm version "$VERSION" --no-git-tag-version
       - name: Commit and push version bump
         env:
           DEFAULT_BRANCH: main
+          TAG_NAME: ${{ github.ref_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add package.json pnpm-lock.yaml
-          git commit -m "chore: bump version to ${GITHUB_REF_NAME#v}"
-          git push origin HEAD:$DEFAULT_BRANCH
+          git commit -m "chore: bump version to ${TAG_NAME#v}"
+          git push origin HEAD:"$DEFAULT_BRANCH"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: package-json

@@ -20,13 +20,13 @@ async function get_stdin(): Promise<string> {
 		return ''
 	}
 
-	let result = ''
+	const chunks: Buffer[] = []
 
 	for await (const chunk of stdin) {
-		result += chunk.toString()
+		chunks.push(chunk)
 	}
 
-	return result
+	return Buffer.concat(chunks).toString('utf-8')
 }
 
 async function read_file(path_param: string): Promise<string> {

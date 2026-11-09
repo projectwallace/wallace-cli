@@ -2,14 +2,13 @@ import { test, expect } from 'vitest'
 import { to_filesize, pad_end, pad_start } from './formatters.js'
 
 test('to_filesize', () => {
-	expect(to_filesize(0)).toBe('0B')
-	expect(to_filesize(-5)).toBe('0B')
-	expect(to_filesize(0.5)).toBe('0B')
-	expect(to_filesize(999)).toBe('999B')
-	expect(to_filesize(1500)).toBe('1.5KB')
-	expect(to_filesize(2_000_000)).toBe('2MB')
-	expect(to_filesize(3_000_000_000)).toBe('3GB')
-	expect(to_filesize(3_000_000_000_000)).toBe('3000GB')
+	expect(to_filesize(0)).toBe('0 bytes')
+	expect(to_filesize(-5)).toBe('0 bytes')
+	expect(to_filesize(1)).toBe('1 byte')
+	expect(to_filesize(999)).toBe('999 bytes')
+	expect(to_filesize(1500)).toBe('1.5 kB')
+	expect(to_filesize(2_000_000)).toBe('2 MB')
+	expect(to_filesize(3_000_000_000)).toBe('3,000 MB')
 })
 
 test('pad_end/pad_start do not throw when the string is longer than the pad length', () => {

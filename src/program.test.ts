@@ -123,6 +123,17 @@ describe('Program', () => {
 		).rejects.toThrow('empty.css is empty')
 	})
 
+	test('wallace --unknown', async () => {
+		await expect(
+			Program({
+				args: ['--unknown'],
+				read_file: () => Promise.resolve(css_fixture),
+				terminal_colors,
+				stdin: '',
+			}),
+		).rejects.toThrow("Unknown option '--unknown'")
+	})
+
 	test('wallace style.css', async () => {
 		const actual = await Program({
 			args: ['style.css'],

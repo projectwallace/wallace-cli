@@ -1,5 +1,6 @@
 import { to_filesize, to_number, to_percentage, pad_end, pad_start } from './formatters.js'
-import type { Colors, CssAnalysis } from './types.js'
+import type { CssAnalysis } from './analyze.js'
+import type { Colors } from './types.js'
 
 const columns = [19, 12, 12, 12]
 const width = columns.reduce((total, num) => (total += num), 0) + columns.length

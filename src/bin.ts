@@ -48,6 +48,6 @@ async function main(): Promise<string> {
 main()
 	.then(console.log)
 	.catch((error: Error) => {
-		console.error(error.stack || error.message)
+		console.error(`wallace: ${error.message}`)
 		process.exitCode = 1
 	})

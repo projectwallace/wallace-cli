@@ -45,6 +45,9 @@ export async function Program({
 	const css = path_param ? await read_file(path_param) : stdin
 
 	if (!css) {
+		if (path_param) {
+			throw new Error(`${path_param} is empty`)
+		}
 		return help(terminal_colors)
 	}
 

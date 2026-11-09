@@ -105,11 +105,22 @@ describe('Program', () => {
 		await expect(
 			Program({
 				args: ['non-existing.css'],
-				read_file: () => Promise.reject(new Error()),
+				read_file: () => Promise.reject(new Error('ENOENT')),
 				terminal_colors,
 				stdin: '',
 			}),
-		).rejects.toThrow(Error)
+		).rejects.toThrow('ENOENT')
+	})
+
+	test('wallace empty.css', async () => {
+		await expect(
+			Program({
+				args: ['empty.css'],
+				read_file: () => Promise.resolve(''),
+				terminal_colors,
+				stdin: '',
+			}),
+		).rejects.toThrow('empty.css is empty')
 	})
 
 	test('wallace style.css', async () => {

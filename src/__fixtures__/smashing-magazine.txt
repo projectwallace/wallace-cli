@@ -1,10 +1,10 @@
 ───────────────────────────────────────────────────────────
 Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
-18,239        │ 474.8KB  │ 4,273 │ 5,748     │ 11,653
+18,239        │ 475 kB   │ 4,273 │ 5,748     │ 11,653
 ───────────────────────────────────────────────────────────
 
-Comments                    434B    (4 items)
-Embedded Content          42.4KB   (47 items)
+Comments               434 bytes    (4 items)
+Embedded Content         42.4 kB   (47 items)
 
 Rulesets             Most common      Average      Maximum
 Selectors / rule               1         1.35           30

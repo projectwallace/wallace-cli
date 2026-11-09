@@ -1,8 +1,8 @@
-import { analyze } from '@projectwallace/css-analyzer'
 import { parseArgs } from 'node:util'
+import { analyze_css } from './analyze.ts'
 import { help } from './help.ts'
 import { Analytics } from './components.ts'
-import type { Colors, CssAnalysis } from './types.ts'
+import type { Colors } from './types.ts'
 
 type ProgramOptions = {
 	args: string[]
@@ -32,7 +32,7 @@ export async function Program({
 		args,
 		options,
 		allowPositionals: true,
-		strict: false,
+		strict: true,
 	})
 
 	// Show help if the user explicitly asked for it or if no arguments were provided
@@ -51,16 +51,12 @@ export async function Program({
 		return help(terminal_colors)
 	}
 
-	const stats = analyze(css, { useLocations: false })
-	delete (stats as Record<string, unknown>).__meta__
+	const stats = analyze_css(css)
 
 	// Format as JSON if user asked for it
 	if (values.json) {
 		return JSON.stringify(stats)
 	}
 
-	// The analyze function has overloads and TypeScript's ReturnType only captures the last overload's return type,
-	// making the two variants structurally incompatible for a direct cast.
-	// The as unknown as CssAnalysis double assertion is the standard escape hatch for this.
-	return Analytics(stats as unknown as CssAnalysis, terminal_colors)
+	return Analytics(stats, terminal_colors)
 }

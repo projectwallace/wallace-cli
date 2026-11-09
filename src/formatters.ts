@@ -1,17 +1,29 @@
 const number_formatter = new Intl.NumberFormat()
 
+const byte_units = ['byte', 'kilobyte', 'megabyte'] as const
+
+const filesize_formatters = byte_units.map(
+	(unit) =>
+		new Intl.NumberFormat('en-US', {
+			style: 'unit',
+			unit,
+			unitDisplay: unit === 'byte' ? 'long' : 'short',
+			maximumSignificantDigits: 3,
+		}),
+)
+
 /**
- * Format byte size to a human readable size, like 100KB
- * @see https://www.codexworld.com/how-to/convert-file-size-bytes-kb-mb-gb-javascript/
+ * Format byte size to a human readable size, like 100 kB
+ * Sizes above 1MB stay expressed in MB.
  */
 export function to_filesize(bytes: number): string {
-	if (bytes === 0) {
-		return '0B'
+	let size = Math.max(0, bytes)
+	let index = 0
+	while (size >= 1000 && index < filesize_formatters.length - 1) {
+		size /= 1000
+		index++
 	}
-	const sizes = ['B', 'KB', 'MB']
-	const step = 1000
-	const magnitude = Math.floor(Math.log(bytes) / Math.log(step))
-	return Number((bytes / Math.pow(step, magnitude)).toFixed(1)) + sizes[magnitude]
+	return filesize_formatters[index].format(size)
 }
 
 export function to_number(number: number, { decimals = 2 } = {}): string | number {
@@ -29,9 +41,9 @@ export function to_percentage(number: number): string {
 }
 
 export function pad_end(str: string, padLength: number, padString?: string): string {
-	return str + ''.padEnd(padLength - str.length, padString)
+	return str + ''.padEnd(Math.max(0, padLength - str.length), padString)
 }
 
 export function pad_start(str: string, padLength: number, padString?: string): string {
-	return ''.padStart(padLength - str.length, padString) + str
+	return ''.padStart(Math.max(0, padLength - str.length), padString) + str
 }

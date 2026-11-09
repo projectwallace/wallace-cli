@@ -1,5 +1,6 @@
 import { to_filesize, to_number, to_percentage, pad_end, pad_start } from './formatters.ts'
-import type { Colors, CssAnalysis } from './types.ts'
+import type { CssAnalysis } from './analyze.ts'
+import type { Colors } from './types.ts'
 
 const columns = [19, 12, 12, 12]
 const width = columns.reduce((total, num) => (total += num), 0) + columns.length
@@ -21,18 +22,23 @@ export function Analytics(stats: CssAnalysis, style: Colors): string {
 	}
 
 	function Summary(stats: CssAnalysis): string {
+		const columns = [
+			['Lines of Code', String(to_number(stats.stylesheet.sourceLinesOfCode))],
+			['Filesize', to_filesize(stats.stylesheet.size)],
+			['Rules', String(to_number(stats.rules.total))],
+			['Selectors', String(to_number(stats.selectors.total))],
+			['Declarations', String(to_number(stats.declarations.total))],
+		]
+		const widths = columns.map(([header, value]) => Math.max(header.length, value.length))
+		const last = columns.length - 1
+		function cell(text: string, index: number): string {
+			return index === last ? text : text.padEnd(widths[index])
+		}
+
 		return [
 			Hr(),
-			['Lines of Code', 'Filesize', 'Rules', 'Selectors', 'Declarations'].join(style.dim(' │ ')),
-			[
-				style.bold(
-					to_number(stats.stylesheet.sourceLinesOfCode).toString().padEnd('Lines of Code'.length),
-				),
-				style.bold(to_filesize(stats.stylesheet.size).padEnd('Filesize'.length)),
-				style.bold(to_number(stats.rules.total).toString().padEnd('Rules'.length)),
-				style.bold(to_number(stats.selectors.total).toString().padEnd('Selectors'.length)),
-				style.bold(to_number(stats.declarations.total).toString()),
-			].join(style.dim(' │ ')),
+			columns.map(([header], i) => cell(header, i)).join(style.dim(' │ ')),
+			columns.map(([, value], i) => style.bold(cell(value, i))).join(style.dim(' │ ')),
 			Hr(),
 		].join('\n')
 	}

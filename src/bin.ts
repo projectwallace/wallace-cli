@@ -2,6 +2,7 @@
 
 import { readFile as fsReadFile } from 'fs/promises'
 import { resolve } from 'path'
+import { text } from 'node:stream/consumers'
 import { styleText } from 'util'
 import { Program } from './program.js'
 import type { Colors } from './types.js'
@@ -20,13 +21,7 @@ async function get_stdin(): Promise<string> {
 		return ''
 	}
 
-	const chunks: Buffer[] = []
-
-	for await (const chunk of stdin) {
-		chunks.push(chunk)
-	}
-
-	return Buffer.concat(chunks).toString('utf-8')
+	return text(stdin)
 }
 
 async function read_file(path_param: string): Promise<string> {

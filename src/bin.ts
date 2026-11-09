@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { readFile as fsReadFile } from 'fs/promises'
-import { join } from 'path'
+import { resolve } from 'path'
 import { styleText } from 'util'
 import { Program } from './program.js'
 import type { Colors } from './types.js'
@@ -30,7 +30,7 @@ async function get_stdin(): Promise<string> {
 }
 
 async function read_file(path_param: string): Promise<string> {
-	const pathName = join(process.cwd(), path_param)
+	const pathName = resolve(process.cwd(), path_param)
 	const content = await fsReadFile(pathName, 'utf-8')
 	return content
 }

@@ -1,5 +1,5 @@
-import { to_filesize, to_number, to_percentage, pad_end, pad_start } from './formatters.js'
-import type { Colors, CssAnalysis } from './types.js'
+import { to_filesize, to_number, to_percentage, pad_end, pad_start } from './formatters.ts'
+import type { Colors, CssAnalysis } from './types.ts'
 
 const columns = [19, 12, 12, 12]
 const width = columns.reduce((total, num) => (total += num), 0) + columns.length
@@ -53,7 +53,7 @@ export function Analytics(stats: CssAnalysis, style: Colors): string {
 	}
 
 	function Rules(rules: CssAnalysis['rules']): string {
-		let empty_count = to_number(rules.empty.total)
+		const empty_count = to_number(rules.empty.total)
 		return [
 			Row(
 				style.underline('Rulesets'),

@@ -1,8 +1,8 @@
 import { analyze } from '@projectwallace/css-analyzer'
 import { parseArgs } from 'node:util'
-import { help } from './help.js'
-import { Analytics } from './components.js'
-import type { Colors, CssAnalysis } from './types.js'
+import { help } from './help.ts'
+import { Analytics } from './components.ts'
+import type { Colors, CssAnalysis } from './types.ts'
 
 type ProgramOptions = {
 	args: string[]

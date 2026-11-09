@@ -1,8 +1,8 @@
 import { describe, test, expect } from 'vitest'
 import { readFile } from 'node:fs/promises'
 import { analyze } from '@projectwallace/css-analyzer'
-import { Analytics } from './components.js'
-import { CssAnalysis } from './types.js'
+import { Analytics } from './components.ts'
+import { CssAnalysis } from './types.ts'
 // import { writeFileSync } from 'node:fs'
 
 const terminal_colors = {

@@ -1,4 +1,4 @@
-import type { Colors } from './types.js'
+import type { Colors } from './types.ts'
 
 export function help(colors: Colors): string {
 	return `

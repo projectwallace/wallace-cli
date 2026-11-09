@@ -1,4 +1,4 @@
-let number_formatter = new Intl.NumberFormat()
+const number_formatter = new Intl.NumberFormat()
 
 /**
  * Format byte size to a human readable size, like 100KB

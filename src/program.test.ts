@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest'
 import fs from 'node:fs/promises'
-import { Program } from './program.js'
-import { help } from './help.js'
+import { Program } from './program.ts'
+import { help } from './help.ts'
 
 const [css_fixture, cli_fixture, result_json] = await Promise.all([
 	fs.readFile('./src/__fixtures__/small.css', 'utf-8'),

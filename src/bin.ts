@@ -3,8 +3,8 @@
 import { readFile as fsReadFile } from 'fs/promises'
 import { resolve } from 'path'
 import { styleText } from 'util'
-import { Program } from './program.js'
-import type { Colors } from './types.js'
+import { Program } from './program.ts'
+import type { Colors } from './types.ts'
 
 const pc: Colors = {
 	bold: (str: string) => styleText('bold', str),

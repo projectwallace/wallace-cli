@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest'
 import { readFile } from 'node:fs/promises'
-import { analyze_css } from './analyze.js'
-import { Analytics } from './components.js'
+import { analyze_css } from './analyze.ts'
+import { Analytics } from './components.ts'
 // import { writeFileSync } from 'node:fs'
 
 const terminal_colors = {

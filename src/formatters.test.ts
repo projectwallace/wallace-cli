@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { to_filesize, pad_end, pad_start } from './formatters.js'
+import { to_filesize, pad_end, pad_start } from './formatters.ts'
 
 test('to_filesize', () => {
 	expect(to_filesize(0)).toBe('0 bytes')

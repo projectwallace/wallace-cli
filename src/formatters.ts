@@ -1,4 +1,4 @@
-let number_formatter = new Intl.NumberFormat()
+const number_formatter = new Intl.NumberFormat()
 
 const byte_units = ['byte', 'kilobyte', 'megabyte'] as const
 

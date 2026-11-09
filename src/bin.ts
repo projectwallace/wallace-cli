@@ -4,8 +4,8 @@ import { readFile as fsReadFile } from 'fs/promises'
 import { resolve } from 'path'
 import { text } from 'node:stream/consumers'
 import { styleText } from 'util'
-import { Program } from './program.js'
-import type { Colors } from './types.js'
+import { Program } from './program.ts'
+import type { Colors } from './types.ts'
 
 const pc: Colors = {
 	bold: (str: string) => styleText('bold', str),
@@ -15,10 +15,10 @@ const pc: Colors = {
 	red: (str: string) => styleText('red', str),
 }
 
-async function get_stdin(): Promise<string> {
+function get_stdin(): Promise<string> {
 	const { stdin } = process
 	if (stdin.isTTY) {
-		return ''
+		return Promise.resolve('')
 	}
 
 	return text(stdin)

@@ -1,8 +1,8 @@
 import { parseArgs } from 'node:util'
-import { analyze_css } from './analyze.js'
-import { help } from './help.js'
-import { Analytics } from './components.js'
-import type { Colors } from './types.js'
+import { analyze_css } from './analyze.ts'
+import { help } from './help.ts'
+import { Analytics } from './components.ts'
+import type { Colors } from './types.ts'
 
 type ProgramOptions = {
 	args: string[]

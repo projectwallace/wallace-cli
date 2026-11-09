@@ -1,6 +1,6 @@
-import { to_filesize, to_number, to_percentage, pad_end, pad_start } from './formatters.js'
-import type { CssAnalysis } from './analyze.js'
-import type { Colors } from './types.js'
+import { to_filesize, to_number, to_percentage, pad_end, pad_start } from './formatters.ts'
+import type { CssAnalysis } from './analyze.ts'
+import type { Colors } from './types.ts'
 
 const columns = [19, 12, 12, 12]
 const width = columns.reduce((total, num) => (total += num), 0) + columns.length
@@ -30,7 +30,9 @@ function Summary(stats: CssAnalysis, style: Colors): string {
 	]
 	const widths = columns.map(([header, value]) => Math.max(header.length, value.length))
 	const last = columns.length - 1
-	const cell = (text: string, index: number) => (index === last ? text : text.padEnd(widths[index]))
+	function cell(text: string, index: number): string {
+		return index === last ? text : text.padEnd(widths[index])
+	}
 
 	return [
 		Hr(style),
@@ -56,7 +58,7 @@ function Stylesheet(stylesheet: CssAnalysis['stylesheet'], style: Colors): strin
 }
 
 function Rules(rules: CssAnalysis['rules'], style: Colors): string {
-	let empty_count = to_number(rules.empty.total)
+	const empty_count = to_number(rules.empty.total)
 	return [
 		Row(
 			style.underline('Rulesets'),

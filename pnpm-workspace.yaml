@@ -15,3 +15,7 @@ trustPolicy: no-downgrade
 # version's publish date, not an actual takeover.
 trustPolicyExclude:
   - 'undici-types'
+
+# vite <8.2.4 has a high severity advisory (GHSA-587h-7wmj-h5pm), pulled in via vitest
+overrides:
+  vite: '>=8.2.4'

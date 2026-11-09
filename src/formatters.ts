@@ -5,12 +5,12 @@ let number_formatter = new Intl.NumberFormat()
  * @see https://www.codexworld.com/how-to/convert-file-size-bytes-kb-mb-gb-javascript/
  */
 export function to_filesize(bytes: number): string {
-	if (bytes === 0) {
+	if (bytes < 1) {
 		return '0B'
 	}
-	const sizes = ['B', 'KB', 'MB']
+	const sizes = ['B', 'KB', 'MB', 'GB']
 	const step = 1000
-	const magnitude = Math.floor(Math.log(bytes) / Math.log(step))
+	const magnitude = Math.min(Math.floor(Math.log(bytes) / Math.log(step)), sizes.length - 1)
 	return Number((bytes / Math.pow(step, magnitude)).toFixed(1)) + sizes[magnitude]
 }
 
@@ -29,9 +29,9 @@ export function to_percentage(number: number): string {
 }
 
 export function pad_end(str: string, padLength: number, padString?: string): string {
-	return str + ''.padEnd(padLength - str.length, padString)
+	return str + ''.padEnd(Math.max(0, padLength - str.length), padString)
 }
 
 export function pad_start(str: string, padLength: number, padString?: string): string {
-	return ''.padStart(padLength - str.length, padString) + str
+	return ''.padStart(Math.max(0, padLength - str.length), padString) + str
 }

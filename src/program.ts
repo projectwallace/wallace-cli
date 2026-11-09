@@ -32,7 +32,7 @@ export async function Program({
 		args,
 		options,
 		allowPositionals: true,
-		strict: false,
+		strict: true,
 	})
 
 	// Show help if the user explicitly asked for it or if no arguments were provided

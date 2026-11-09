@@ -1,10 +1,10 @@
 ───────────────────────────────────────────────────────────
-Lines of Code │ Filesize │ Rules │ Selectors │ Declarations
-7             │ 173B     │ 2     │ 2         │ 3
+Lines of Code │ Filesize  │ Rules │ Selectors │ Declarations
+7             │ 173 bytes │ 2     │ 2         │ 3
 ───────────────────────────────────────────────────────────
 
-Comments                      0B    (0 items)
-Embedded Content              0B    (0 items)
+Comments                 0 bytes    (0 items)
+Embedded Content         0 bytes    (0 items)
 
 Rulesets             Most common      Average      Maximum
 Selectors / rule               1            1            1

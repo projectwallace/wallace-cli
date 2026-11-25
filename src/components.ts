@@ -1,4 +1,7 @@
 import { to_filesize, to_number, to_percentage, pad_end, pad_start } from './formatters.ts'
+import { summarize, summarize_numbers } from '@projectwallace/css-analyzer'
+import { summarize_specificity } from '@projectwallace/css-analyzer/collectors'
+import type { CountResult } from '@projectwallace/css-analyzer'
 import type { CssAnalysis } from './analyze.ts'
 import type { Colors } from './types.ts'
 
@@ -22,7 +25,7 @@ function Hr(style: Colors): string {
 
 function Summary(stats: CssAnalysis, style: Colors): string {
 	const columns = [
-		['Lines of Code', String(to_number(stats.stylesheet.sourceLinesOfCode))],
+		['Lines of Code', String(to_number(stats.stylesheet.source_lines_of_code))],
 		['Filesize', to_filesize(stats.stylesheet.size)],
 		['Rules', String(to_number(stats.rules.total))],
 		['Selectors', String(to_number(stats.selectors.total))],
@@ -42,6 +45,22 @@ function Summary(stats: CssAnalysis, style: Colors): string {
 	].join('\n')
 }
 
+// Total, unique and unique % of a collected stat
+function CountRow(title: string, counts: CountResult): string {
+	return Row(
+		title,
+		to_number(counts.total),
+		to_number(counts.total_unique),
+		to_percentage(summarize(counts).uniqueness_ratio),
+	)
+}
+
+// Most common, average and maximum of a collected numeric stat
+function SummaryRow(title: string, counts: CountResult<number>): string {
+	const { mode, mean, max } = summarize_numbers(counts)
+	return Row(title, to_number(mode), to_number(mean), to_number(max))
+}
+
 function Stylesheet(stylesheet: CssAnalysis['stylesheet'], style: Colors): string {
 	return [
 		Row(
@@ -51,14 +70,14 @@ function Stylesheet(stylesheet: CssAnalysis['stylesheet'], style: Colors): strin
 		),
 		Row(
 			'Embedded Content',
-			to_filesize(stylesheet.embeddedContent.size.total),
-			style.dim(`(${stylesheet.embeddedContent.types.total} items)`),
+			to_filesize(stylesheet.embedded.size),
+			style.dim(`(${stylesheet.embedded.total} items)`),
 		),
 	].join('\n')
 }
 
 function Rules(rules: CssAnalysis['rules'], style: Colors): string {
-	const empty_count = to_number(rules.empty.total)
+	const empty_count = to_number(rules.empty)
 	return [
 		Row(
 			style.underline('Rulesets'),
@@ -66,28 +85,18 @@ function Rules(rules: CssAnalysis['rules'], style: Colors): string {
 			style.dim('Average'),
 			style.dim('Maximum'),
 		),
-		Row(
-			`Selectors / rule`,
-			to_number(rules.selectors.mode),
-			to_number(rules.selectors.mean),
-			to_number(rules.selectors.max),
-		),
-		Row(
-			`Declarations / rule`,
-			to_number(rules.declarations.mode),
-			to_number(rules.declarations.mean),
-			to_number(rules.declarations.max),
-		),
-		Row(
-			`Empty rules`,
-			'',
-			'',
-			rules.empty.total > 0 ? style.red(String(empty_count)) : empty_count,
-		),
+		SummaryRow('Selectors / rule', rules.selectors),
+		SummaryRow('Declarations / rule', rules.declarations),
+		Row(`Empty rules`, '', '', rules.empty > 0 ? style.red(String(empty_count)) : empty_count),
 	].join('\n')
 }
 
-function Selectors(selectors: CssAnalysis['selectors'], style: Colors): string {
+function Selectors(
+	selectors: CssAnalysis['selectors'],
+	specificity: CssAnalysis['specificity'],
+	style: Colors,
+): string {
+	const { mode, mean, max } = summarize_specificity(specificity)
 	return [
 		Row(
 			style.underline('Selectors'),
@@ -95,94 +104,34 @@ function Selectors(selectors: CssAnalysis['selectors'], style: Colors): string {
 			style.dim('Average'),
 			style.dim('Maximum'),
 		),
-		Row(
-			'Complexity',
-			to_number(selectors.complexity.mode),
-			to_number(selectors.complexity.mean),
-			to_number(selectors.complexity.max),
-		),
+		SummaryRow('Complexity', selectors.complexity),
 		Row(
 			'Specificity',
-			selectors.specificity.mode.join(style.dim('/')),
-			selectors.specificity.mean.map((n) => to_number(n, { decimals: 1 })).join(style.dim('/')),
-			selectors.specificity.max.join(style.dim('/')),
+			mode.join(style.dim('/')),
+			mean.map((n) => to_number(n, { decimals: 1 })).join(style.dim('/')),
+			max.join(style.dim('/')),
 		),
 		Row(),
 		Row('', style.dim('Total'), style.dim('Unique'), style.dim('Ratio')),
-		Row(
-			`All Selectors`,
-			to_number(selectors.total),
-			to_number(selectors.totalUnique),
-			to_percentage(selectors.uniquenessRatio),
-		),
-		Row(
-			`ID Selectors`,
-			to_number(selectors.id.total),
-			to_number(selectors.id.totalUnique),
-			to_percentage(selectors.id.uniquenessRatio),
-		),
-		Row(
-			`Accessibility`,
-			to_number(selectors.accessibility.total),
-			to_number(selectors.accessibility.totalUnique),
-			to_percentage(selectors.accessibility.uniquenessRatio),
-		),
-		Row(
-			`Vendor prefixed`,
-			to_number(selectors.prefixed.total),
-			to_number(selectors.prefixed.totalUnique),
-			to_percentage(selectors.prefixed.uniquenessRatio),
-		),
+		CountRow('All Selectors', selectors),
+		CountRow('ID Selectors', selectors.ids),
+		CountRow('Accessibility', selectors.accessibility),
+		CountRow('Vendor prefixed', selectors.prefixed),
 	].join('\n')
 }
 
 function AtRules(atrules: CssAnalysis['atrules'], style: Colors): string {
-	const { media, supports, fontface, import: imports, keyframes, container, property } = atrules
+	const { media, supports, font_faces, imports, keyframes, containers, properties } = atrules
 
 	return [
 		Row(style.underline('AtRules'), style.dim('Total'), style.dim('Unique'), style.dim('Unique %')),
-		Row(
-			'@media',
-			to_number(media.total),
-			to_number(media.totalUnique),
-			to_percentage(media.uniquenessRatio),
-		),
-		Row(
-			'@supports',
-			to_number(supports.total),
-			to_number(supports.totalUnique),
-			to_percentage(supports.uniquenessRatio),
-		),
-		Row(
-			'@font-face',
-			to_number(fontface.total),
-			to_number(fontface.totalUnique),
-			to_percentage(fontface.uniquenessRatio),
-		),
-		Row(
-			'@import',
-			to_number(imports.total),
-			to_number(imports.totalUnique),
-			to_percentage(imports.uniquenessRatio),
-		),
-		Row(
-			'@keyframes',
-			to_number(keyframes.total),
-			to_number(keyframes.totalUnique),
-			to_percentage(keyframes.uniquenessRatio),
-		),
-		Row(
-			'@container',
-			to_number(container.total),
-			to_number(container.totalUnique),
-			to_percentage(container.uniquenessRatio),
-		),
-		Row(
-			'@property',
-			to_number(property.total),
-			to_number(property.totalUnique),
-			to_percentage(property.uniquenessRatio),
-		),
+		CountRow('@media', media),
+		CountRow('@supports', supports),
+		Row('@font-face', to_number(font_faces.total)),
+		CountRow('@import', imports),
+		CountRow('@keyframes', keyframes),
+		CountRow('@container', containers),
+		CountRow('@property', properties),
 	].join('\n')
 }
 
@@ -194,12 +143,7 @@ function Declarations(declarations: CssAnalysis['declarations'], style: Colors):
 			style.dim('Unique'),
 			style.dim('Unique %'),
 		),
-		Row(
-			'All Declarations',
-			to_number(declarations.total),
-			to_number(declarations.totalUnique),
-			to_percentage(declarations.uniquenessRatio),
-		),
+		CountRow('All Declarations', declarations),
 		Row('!important', to_number(declarations.importants.total)),
 	].join('\n')
 }
@@ -212,93 +156,29 @@ function Properties(properties: CssAnalysis['properties'], style: Colors): strin
 			style.dim('Unique'),
 			style.dim('Unique %'),
 		),
-		Row(
-			'All Properties',
-			to_number(properties.total),
-			to_number(properties.totalUnique),
-			to_percentage(properties.uniquenessRatio),
-		),
-		Row(
-			'Custom Properties',
-			to_number(properties.custom.total),
-			to_number(properties.custom.totalUnique),
-			to_percentage(properties.custom.uniquenessRatio),
-		),
-		Row(
-			'Vendor Prefixed',
-			to_number(properties.prefixed.total),
-			to_number(properties.prefixed.totalUnique),
-			to_percentage(properties.prefixed.uniquenessRatio),
-		),
-		Row(
-			'Browserhacks',
-			to_number(properties.browserhacks.total),
-			to_number(properties.browserhacks.totalUnique),
-			to_percentage(properties.browserhacks.uniquenessRatio),
-		),
+		CountRow('All Properties', properties),
+		CountRow('Custom Properties', properties.custom),
+		CountRow('Vendor Prefixed', properties.prefixed),
+		CountRow('Browserhacks', properties.browserhacks),
 	].join('\n')
 }
 
-function Values(values: CssAnalysis['values'], style: Colors): string {
-	function ValueRow(
-		title: string,
-		total: number,
-		totalUnique: number,
-		uniquenessRatio: number,
-	): string {
-		return Row(title, to_number(total), to_number(totalUnique), to_percentage(uniquenessRatio))
-	}
-
-	const {
-		colors,
-		gradients,
-		fontSizes,
-		fontFamilies,
-		lineHeights,
-		textShadows,
-		boxShadows,
-		zindexes,
-		prefixes,
-		browserhacks,
-		units,
-		resets,
-	} = values
-
+function Values(stats: CssAnalysis, style: Colors): string {
 	return [
 		Row(style.underline('Values'), style.dim('Total'), style.dim('Unique'), style.dim('Unique %')),
-		ValueRow('Colors', colors.total, colors.totalUnique, colors.uniquenessRatio),
-		ValueRow('Gradients', gradients.total, gradients.totalUnique, gradients.uniquenessRatio),
-		ValueRow('Font-sizes', fontSizes.total, fontSizes.totalUnique, fontSizes.uniquenessRatio),
-		ValueRow(
-			'Font-families',
-			fontFamilies.total,
-			fontFamilies.totalUnique,
-			fontFamilies.uniquenessRatio,
-		),
-		ValueRow(
-			'Line-heights',
-			lineHeights.total,
-			lineHeights.totalUnique,
-			lineHeights.uniquenessRatio,
-		),
-		ValueRow(
-			'Text-shadows',
-			textShadows.total,
-			textShadows.totalUnique,
-			textShadows.uniquenessRatio,
-		),
-		ValueRow('Box-shadows', boxShadows.total, boxShadows.totalUnique, boxShadows.uniquenessRatio),
-		ValueRow('Z-indexes', zindexes.total, zindexes.totalUnique, zindexes.uniquenessRatio),
+		CountRow('Colors', stats.colors),
+		CountRow('Gradients', stats.gradients),
+		CountRow('Font-sizes', stats.font_sizes),
+		CountRow('Font-families', stats.font_families),
+		CountRow('Line-heights', stats.line_heights),
+		CountRow('Text-shadows', stats.text_shadows),
+		CountRow('Box-shadows', stats.box_shadows),
+		CountRow('Z-indexes', stats.z_indexes),
 
-		ValueRow('Vendor Prefixed', prefixes.total, prefixes.totalUnique, prefixes.uniquenessRatio),
-		ValueRow(
-			'Browserhacks',
-			browserhacks.total,
-			browserhacks.totalUnique,
-			browserhacks.uniquenessRatio,
-		),
-		ValueRow('Units', units.total, units.totalUnique, units.uniquenessRatio),
-		ValueRow('Resets', resets.total, resets.totalUnique, resets.uniquenessRatio),
+		CountRow('Vendor Prefixed', stats.value_prefixes),
+		CountRow('Browserhacks', stats.value_browserhacks),
+		CountRow('Units', stats.units),
+		CountRow('Resets', stats.resets),
 	].join('\n')
 }
 
@@ -310,7 +190,7 @@ export function Analytics(stats: CssAnalysis, style: Colors): string {
 		Row(),
 		Rules(stats.rules, style),
 		Row(),
-		Selectors(stats.selectors, style),
+		Selectors(stats.selectors, stats.specificity, style),
 		Row(),
 		AtRules(stats.atrules, style),
 		Row(),
@@ -318,6 +198,6 @@ export function Analytics(stats: CssAnalysis, style: Colors): string {
 		Row(),
 		Properties(stats.properties, style),
 		Row(),
-		Values(stats.values, style),
+		Values(stats, style),
 	].join('\n')
 }

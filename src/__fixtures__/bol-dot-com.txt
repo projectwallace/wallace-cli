@@ -24,7 +24,7 @@ Vendor prefixed               92           13        14.1%
 AtRules                    Total       Unique     Unique %
 @media                       986           23         2.3%
 @supports                      5            3        60.0%
-@font-face                     6            6       100.0%
+@font-face                     6
 @import                        0            0         0.0%
 @keyframes                    19           19       100.0%
 @container                     0            0         0.0%
@@ -51,5 +51,5 @@ Box-shadows                   38           16        42.1%
 Z-indexes                    101           22        21.8%
 Vendor Prefixed                7            5        71.4%
 Browserhacks                   0            0         0.0%
-Units                      4,433           10         0.2%
+Units                      4,548           10         0.2%
 Resets                       499           10         2.0%

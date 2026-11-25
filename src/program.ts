@@ -1,5 +1,5 @@
 import { parseArgs } from 'node:util'
-import { analyze_css } from './analyze.ts'
+import { analyze_css, analyze_css_json } from './analyze.ts'
 import { help } from './help.ts'
 import { Analytics } from './components.ts'
 import type { Colors } from './types.ts'
@@ -51,12 +51,10 @@ export async function Program({
 		return help(terminal_colors)
 	}
 
-	const stats = analyze_css(css)
-
 	// Format as JSON if user asked for it
 	if (values.json) {
-		return JSON.stringify(stats)
+		return analyze_css_json(css)
 	}
 
-	return Analytics(stats, terminal_colors)
+	return Analytics(analyze_css(css), terminal_colors)
 }

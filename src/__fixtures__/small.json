@@ -1,624 +1,538 @@
 {
 	"stylesheet": {
-		"sourceLinesOfCode": 7,
-		"linesOfCode": 13,
 		"size": 173,
+		"lines": 13,
+		"source_lines_of_code": 7,
 		"complexity": 16,
 		"comments": {
 			"total": 0,
 			"size": 0
 		},
-		"embeddedContent": {
-			"size": {
-				"total": 0,
-				"ratio": 0
-			},
-			"types": {
-				"total": 0,
-				"totalUnique": 0,
-				"uniquenessRatio": 0,
-				"unique": {}
-			}
+		"embedded": {
+			"total": 0,
+			"total_unique": 0,
+			"unique": {},
+			"size": 0
 		}
 	},
 	"atrules": {
-		"fontface": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": [],
-			"uniquenessRatio": 0
+		"total": 2,
+		"total_unique": 2,
+		"unique": {
+			"media": {
+				"count": 1
+			},
+			"supports": {
+				"count": 1
+			}
 		},
-		"import": {
+		"font_faces": {
 			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
+			"items": []
+		},
+		"imports": {
+			"total": 0,
+			"total_unique": 0,
+			"unique": {}
 		},
 		"media": {
 			"total": 1,
-			"totalUnique": 1,
+			"total_unique": 1,
 			"unique": {
-				"(min-width: 100px)": 1
+				"(min-width: 100px)": {
+					"count": 1
+				}
 			},
-			"uniquenessRatio": 1,
 			"browserhacks": {
 				"total": 0,
-				"totalUnique": 0,
-				"unique": {},
-				"uniquenessRatio": 0
+				"total_unique": 0,
+				"unique": {}
 			},
 			"features": {
 				"total": 1,
-				"totalUnique": 1,
+				"total_unique": 1,
 				"unique": {
-					"min-width": 1
-				},
-				"uniquenessRatio": 1
+					"min-width": {
+						"count": 1
+					}
+				}
 			}
 		},
-		"charset": {
+		"charsets": {
 			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
+			"total_unique": 0,
+			"unique": {}
 		},
 		"supports": {
 			"total": 1,
-			"totalUnique": 1,
+			"total_unique": 1,
 			"unique": {
-				"(display: grid)": 1
+				"(display: grid)": {
+					"count": 1
+				}
 			},
-			"uniquenessRatio": 1,
 			"browserhacks": {
 				"total": 0,
-				"totalUnique": 0,
-				"unique": {},
-				"uniquenessRatio": 0
+				"total_unique": 0,
+				"unique": {}
 			}
 		},
 		"keyframes": {
 			"total": 0,
-			"totalUnique": 0,
+			"total_unique": 0,
 			"unique": {},
-			"uniquenessRatio": 0,
+			"defined": [],
+			"used": [],
+			"unused": [],
+			"unknown": [],
 			"prefixed": {
 				"total": 0,
-				"totalUnique": 0,
-				"unique": {},
-				"uniquenessRatio": 0,
-				"ratio": 0
+				"total_unique": 0,
+				"unique": {}
 			}
 		},
-		"container": {
+		"containers": {
 			"total": 0,
-			"totalUnique": 0,
+			"total_unique": 0,
 			"unique": {},
-			"uniquenessRatio": 0,
 			"names": {
 				"total": 0,
-				"totalUnique": 0,
+				"total_unique": 0,
 				"unique": {},
-				"uniquenessRatio": 0
+				"defined": [],
+				"used": [],
+				"unused": [],
+				"unknown": []
 			}
 		},
-		"layer": {
+		"layers": {
 			"total": 0,
-			"totalUnique": 0,
+			"total_unique": 0,
 			"unique": {},
-			"uniquenessRatio": 0
+			"defined": [],
+			"used": [],
+			"unused": [],
+			"unknown": []
 		},
-		"property": {
+		"properties": {
 			"total": 0,
-			"totalUnique": 0,
+			"total_unique": 0,
 			"unique": {},
-			"uniquenessRatio": 0
+			"defined": [],
+			"used": [],
+			"unused": [],
+			"unknown": []
 		},
-		"total": 2,
-		"totalUnique": 2,
-		"unique": {
-			"media": 1,
-			"supports": 1
-		},
-		"uniquenessRatio": 1,
-		"scope": {
+		"functions": {
 			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
+			"total_unique": 0,
+			"unique": {}
 		},
-		"nesting": {
-			"min": 0,
-			"max": 1,
-			"mean": 0.5,
-			"mode": 0.5,
-			"range": 1,
-			"sum": 1,
-			"items": [
-				0,
-				1
-			],
-			"total": 2,
-			"totalUnique": 2,
-			"unique": {
-				"0": 1,
-				"1": 1
-			},
-			"uniquenessRatio": 1
-		},
-		"function": {
+		"scopes": {
 			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
+			"total_unique": 0,
+			"unique": {}
 		},
 		"complexity": {
-			"min": 1,
-			"max": 1,
-			"mean": 1,
-			"mode": 1,
-			"range": 0,
-			"sum": 2
+			"total": 2,
+			"total_unique": 1,
+			"unique": {
+				"1": {
+					"count": 2
+				}
+			}
+		},
+		"nesting": {
+			"total": 2,
+			"total_unique": 2,
+			"unique": {
+				"0": {
+					"count": 1
+				},
+				"1": {
+					"count": 1
+				}
+			}
 		}
 	},
 	"rules": {
 		"total": 2,
-		"empty": {
-			"total": 0,
-			"ratio": 0
-		},
+		"empty": 0,
 		"sizes": {
-			"min": 2,
-			"max": 3,
-			"mean": 2.5,
-			"mode": 2.5,
-			"range": 1,
-			"sum": 5,
-			"items": [
-				2,
-				3
-			],
 			"total": 2,
-			"totalUnique": 2,
+			"total_unique": 2,
 			"unique": {
-				"2": 1,
-				"3": 1
-			},
-			"uniquenessRatio": 1
-		},
-		"selectors": {
-			"min": 1,
-			"max": 1,
-			"mean": 1,
-			"mode": 1,
-			"range": 0,
-			"sum": 2,
-			"items": [
-				1,
-				1
-			],
-			"total": 2,
-			"totalUnique": 1,
-			"unique": {
-				"1": 2
-			},
-			"uniquenessRatio": 0.5
+				"2": {
+					"count": 1
+				},
+				"3": {
+					"count": 1
+				}
+			}
 		},
 		"nesting": {
-			"min": 0,
-			"max": 2,
-			"mean": 1,
-			"mode": 1,
-			"range": 2,
-			"sum": 2,
-			"items": [
-				0,
-				2
-			],
 			"total": 2,
-			"totalUnique": 2,
+			"total_unique": 2,
 			"unique": {
-				"0": 1,
-				"2": 1
-			},
-			"uniquenessRatio": 1
+				"0": {
+					"count": 1
+				},
+				"2": {
+					"count": 1
+				}
+			}
+		},
+		"selectors": {
+			"total": 2,
+			"total_unique": 1,
+			"unique": {
+				"1": {
+					"count": 2
+				}
+			}
 		},
 		"declarations": {
-			"min": 1,
-			"max": 2,
-			"mean": 1.5,
-			"mode": 1.5,
-			"range": 1,
-			"sum": 3,
-			"items": [
-				1,
-				2
-			],
 			"total": 2,
-			"totalUnique": 2,
+			"total_unique": 2,
 			"unique": {
-				"1": 1,
-				"2": 1
-			},
-			"uniquenessRatio": 1
+				"1": {
+					"count": 1
+				},
+				"2": {
+					"count": 1
+				}
+			}
 		}
 	},
 	"selectors": {
 		"total": 2,
-		"totalUnique": 2,
-		"uniquenessRatio": 1,
-		"specificity": {
-			"min": [
-				0,
-				0,
-				2
-			],
-			"max": [
-				0,
-				1,
-				0
-			],
-			"sum": [
-				0,
-				1,
-				2
-			],
-			"mean": [
-				0,
-				0.5,
-				1
-			],
-			"mode": [
-				0,
-				0.5,
-				1
-			],
-			"items": [
-				[
-					0,
-					1,
-					0
-				],
-				[
-					0,
-					0,
-					2
-				]
-			],
-			"total": 2,
-			"totalUnique": 2,
-			"unique": {
-				"0,1,0": 1,
-				"0,0,2": 1
+		"total_unique": 2,
+		"unique": {
+			".this-is-test": {
+				"count": 1
 			},
-			"uniquenessRatio": 1
+			"a::after": {
+				"count": 1
+			}
 		},
 		"complexity": {
-			"min": 1,
-			"max": 2,
-			"mean": 1.5,
-			"mode": 1.5,
-			"range": 1,
-			"sum": 3,
 			"total": 2,
-			"totalUnique": 2,
+			"total_unique": 2,
 			"unique": {
-				"1": 1,
-				"2": 1
-			},
-			"uniquenessRatio": 1,
-			"items": [
-				1,
-				2
-			]
+				"1": {
+					"count": 1
+				},
+				"2": {
+					"count": 1
+				}
+			}
 		},
-		"id": {
+		"nesting": {
+			"total": 2,
+			"total_unique": 2,
+			"unique": {
+				"0": {
+					"count": 1
+				},
+				"2": {
+					"count": 1
+				}
+			}
+		},
+		"ids": {
 			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0,
-			"ratio": 0
+			"total_unique": 0,
+			"unique": {}
+		},
+		"pseudo_classes": {
+			"total": 0,
+			"total_unique": 0,
+			"unique": {}
+		},
+		"pseudo_elements": {
+			"total": 1,
+			"total_unique": 1,
+			"unique": {
+				"after": {
+					"count": 1
+				}
+			}
 		},
 		"accessibility": {
 			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0,
-			"ratio": 0
-		},
-		"keyframes": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"prefixed": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0,
-			"ratio": 0
-		},
-		"combinators": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"pseudoClasses": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"pseudoElements": {
-			"total": 1,
-			"totalUnique": 1,
-			"unique": {"after": 1},
-			"uniquenessRatio": 1
+			"total_unique": 0,
+			"unique": {}
 		},
 		"attributes": {
 			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
+			"total_unique": 0,
+			"unique": {}
 		},
-		"customElements": {
+		"custom_elements": {
 			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
+			"total_unique": 0,
+			"unique": {}
 		},
-		"nesting": {
-			"min": 0,
-			"max": 2,
-			"mean": 1,
-			"mode": 1,
-			"range": 2,
-			"sum": 2,
-			"items": [
-				0,
-				2
-			],
-			"total": 2,
-			"totalUnique": 2,
-			"unique": {
-				"0": 1,
-				"2": 1
+		"keyframes": {
+			"total": 0,
+			"total_unique": 0,
+			"unique": {}
+		},
+		"prefixed": {
+			"total": 0,
+			"total_unique": 0,
+			"unique": {}
+		},
+		"combinators": {
+			"total": 0,
+			"total_unique": 0,
+			"unique": {}
+		}
+	},
+	"specificity": {
+		"total": 2,
+		"total_unique": 2,
+		"unique": {
+			"0,1,0": {
+				"count": 1
 			},
-			"uniquenessRatio": 1
+			"0,0,2": {
+				"count": 1
+			}
 		}
 	},
 	"declarations": {
 		"total": 3,
-		"totalUnique": 3,
-		"uniquenessRatio": 1,
-		"importants": {
-			"total": 1,
-			"ratio": 0.3333333333333333,
-			"inKeyframes": {
-				"total": 0,
-				"ratio": 0
+		"total_unique": 3,
+		"unique": {
+			"color: green;": {
+				"count": 1
+			},
+			"content: 'success';": {
+				"count": 1
+			},
+			"*zoom: 1 !important;": {
+				"count": 1
 			}
 		},
-		"complexity": {
-			"min": 1,
-			"max": 2,
-			"mean": 1.3333333333333333,
-			"mode": 1,
-			"range": 1,
-			"sum": 4
+		"importants": {
+			"total": 1,
+			"in_keyframes": 0
 		},
-
-		"nesting": {
-			"min": 0,
-			"max": 2,
-			"mean": 1.3333333333333333,
-			"mode": 2,
-			"range": 2,
-			"sum": 4,
-			"items": [
-				0,
-				2,
-				2
-			],
+		"complexity": {
 			"total": 3,
-			"totalUnique": 2,
+			"total_unique": 2,
 			"unique": {
-				"0": 1,
-				"2": 2
-			},
-			"uniquenessRatio": 0.6666666666666666
+				"1": {
+					"count": 2
+				},
+				"2": {
+					"count": 1
+				}
+			}
+		},
+		"nesting": {
+			"total": 3,
+			"total_unique": 2,
+			"unique": {
+				"0": {
+					"count": 1
+				},
+				"2": {
+					"count": 2
+				}
+			}
 		}
 	},
 	"properties": {
 		"total": 3,
-		"totalUnique": 3,
+		"total_unique": 3,
 		"unique": {
-			"color": 1,
-			"content": 1,
-			"zoom": 1
+			"color": {
+				"count": 1
+			},
+			"content": {
+				"count": 1
+			},
+			"zoom": {
+				"count": 1
+			}
 		},
-		"shorthands": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0,
-			"ratio": 0
-		},
-		"uniquenessRatio": 1,
 		"prefixed": {
 			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0,
-			"ratio": 0
+			"total_unique": 0,
+			"unique": {}
 		},
 		"custom": {
 			"total": 0,
-			"totalUnique": 0,
+			"total_unique": 0,
 			"unique": {},
-			"uniquenessRatio": 0,
-			"ratio": 0,
+			"defined": [],
+			"used": [],
+			"unused": [],
+			"unknown": [],
 			"importants": {
 				"total": 0,
-				"totalUnique": 0,
-				"unique": {},
-				"uniquenessRatio": 0,
-				"ratio": 0
+				"total_unique": 0,
+				"unique": {}
 			}
+		},
+		"shorthands": {
+			"total": 0,
+			"total_unique": 0,
+			"unique": {}
 		},
 		"browserhacks": {
 			"total": 1,
-			"totalUnique": 1,
+			"total_unique": 1,
 			"unique": {
-				"*": 1
-			},
-			"uniquenessRatio": 1,
-			"ratio": 0.3333333333333333
+				"*": {
+					"count": 1
+				}
+			}
 		},
 		"complexity": {
-			"min": 1,
-			"max": 2,
-			"mean": 1.3333333333333333,
-			"mode": 1,
-			"range": 1,
-			"sum": 4
+			"total": 3,
+			"total_unique": 2,
+			"unique": {
+				"1": {
+					"count": 2
+				},
+				"2": {
+					"count": 1
+				}
+			}
+		},
+		"anchor_names": {
+			"defined": [],
+			"used": [],
+			"unused": [],
+			"unknown": []
 		}
 	},
-	"values": {
-		"colors": {
-			"total": 1,
-			"totalUnique": 1,
-			"unique": {
-				"green": 1
-			},
-			"uniquenessRatio": 1,
-			"itemsPerContext": {
-				"color": {
-					"total": 1,
-					"totalUnique": 1,
-					"unique": {
-						"green": 1
-					},
-					"uniquenessRatio": 1
-				}
-			},
-			"formats": {
+	"colors": {
+		"total": 1,
+		"total_unique": 1,
+		"unique": {
+			"green": {
+				"count": 1
+			}
+		},
+		"by_context": {
+			"color": {
 				"total": 1,
-				"totalUnique": 1,
+				"total_unique": 1,
 				"unique": {
-					"named": 1
-				},
-				"uniquenessRatio": 1
+					"green": {
+						"count": 1
+					}
+				}
 			}
 		},
-		"gradients": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"fontFamilies": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"fontSizes": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"lineHeights": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"zindexes": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"textShadows": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"boxShadows": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"borderRadiuses": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0,
-			"itemsPerContext": {}
-		},
-		"animations": {
-			"durations": {
-				"total": 0,
-				"totalUnique": 0,
-				"unique": {},
-				"uniquenessRatio": 0
-			},
-			"timingFunctions": {
-				"total": 0,
-				"totalUnique": 0,
-				"unique": {},
-				"uniquenessRatio": 0
+		"formats": {
+			"total": 1,
+			"total_unique": 1,
+			"unique": {
+				"named": {
+					"count": 1
+				}
 			}
-		},
-		"prefixes": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"browserhacks": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"units": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0,
-			"itemsPerContext": {}
-		},
-		"complexity": {
-			"min": 1,
-			"max": 1,
-			"mean": 1,
-			"mode": 1,
-			"range": 0,
-			"sum": 3
-		},
-		"keywords": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"resets": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
-		},
-		"displays": {
-			"total": 0,
-			"totalUnique": 0,
-			"unique": {},
-			"uniquenessRatio": 0
 		}
+	},
+	"font_sizes": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"font_families": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"line_heights": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"gradients": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"box_shadows": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"border_radiuses": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {},
+		"by_context": {}
+	},
+	"durations": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"timing_functions": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"text_shadows": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"z_indexes": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"displays": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"animation_names": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"value_prefixes": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"value_browserhacks": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"units": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {},
+		"by_context": {}
+	},
+	"value_complexity": {
+		"total": 3,
+		"total_unique": 1,
+		"unique": {
+			"1": {
+				"count": 3
+			}
+		}
+	},
+	"keywords": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
+	},
+	"resets": {
+		"total": 0,
+		"total_unique": 0,
+		"unique": {}
 	}
 }

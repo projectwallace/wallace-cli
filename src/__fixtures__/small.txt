@@ -24,7 +24,7 @@ Vendor prefixed                0            0         0.0%
 AtRules                    Total       Unique     Unique %
 @media                         1            1       100.0%
 @supports                      1            1       100.0%
-@font-face                     0            0         0.0%
+@font-face                     0
 @import                        0            0         0.0%
 @keyframes                     0            0         0.0%
 @container                     0            0         0.0%

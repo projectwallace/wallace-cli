@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@projectwallace/css-analyzer':
-        specifier: ^9.9.4
-        version: 9.9.4
+        specifier: https://pkg.pr.new/@projectwallace/css-analyzer@f3efc01
+        version: https://pkg.pr.new/@projectwallace/css-analyzer@f3efc01
     devDependencies:
       '@projectwallace/preset-oxlint':
         specifier: ^0.0.13
@@ -567,12 +567,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@projectwallace/css-analyzer@9.9.4':
-    resolution: {integrity: sha512-MQU1tvCADwFrvYiiJQNH7w4iABSbOm7TTyvdPhuLxjK3TDyh8qole6hJn4NKWRRLh+9seYXbB5wkgoDRWefo2g==}
-    engines: {node: '>=18.0.0', pnpm: '>=11.0.0'}
+  '@projectwallace/css-analyzer@https://pkg.pr.new/@projectwallace/css-analyzer@f3efc01':
+    resolution: {integrity: sha512-WdTIZZcn3vi5dxanbpEXDSnOCE5ypj8VpUJ4ImOzQvUG5/hoZmsrU0sW5F4ZOsUtwbDMElAMfQjxZp0EdBr8kQ==, tarball: https://pkg.pr.new/@projectwallace/css-analyzer@f3efc01}
+    version: 9.9.9
+    engines: {node: '>=22.18.0', pnpm: '>=11.0.0'}
 
-  '@projectwallace/css-parser@0.18.9':
-    resolution: {integrity: sha512-euAUMV2madmhqCeTVNGbeewj8x0VhUIxVik/aGpyIrVBbKfzDV3IxEu/YDTYdUTkwrf+RZPyDkiYQhDuZMW/cg==}
+  '@projectwallace/css-parser@0.20.0':
+    resolution: {integrity: sha512-DACi18aYryfiiEs/orFYB+1aE9uPkq8DmwwOkrKZydbwqPnP0hUl+0xESnIfbld2p2zF23ufJNfBZyV3HQD0/g==}
     engines: {pnpm: '>=11.0.0'}
 
   '@projectwallace/preset-oxlint@0.0.13':
@@ -1392,18 +1393,22 @@ packages:
   yuku-ast@0.19.0:
     resolution: {integrity: sha512-PyCsiScaelhxBGzL8dyeJkLqvRZycoh78R31Vrt/WqYrm0hMFoKwIw/X7Dx5mBKLWAMlV9I9HEyBOHnj2gZVyw==}
     engines: {node: '>=14.18.0'}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   yuku-codegen@0.19.0:
     resolution: {integrity: sha512-uymAKHjDuaP4BEpkXC/BSLz4DUEF5oArZ5AuD3888nb2miChjWSgpPdojEJxm3pjpXkgUaCRJQyNAbnMN33wHg==}
     engines: {node: '>=14.18.0'}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   yuku-core@0.19.0:
     resolution: {integrity: sha512-kYK9e1XdfirNhkipzW0wmMcSWcVF/CWnuugodfVYRCUwvoBefweL9HzB96OiKEhsx78V5WbUxbJqlizMX869Qg==}
     engines: {node: '>=14.18.0'}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   yuku-parser@0.19.0:
     resolution: {integrity: sha512-XrBh9ZiQK5mJVRxZBAvD6LwRyAYrK3MFtH3+onyuxFL5hFD44EC3QOmIC1FjTj6H2MMwq46/NAI+NZxLZPZgxg==}
     engines: {node: '>=14.18.0'}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   zod@4.6.7:
     resolution: {integrity: sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==}
@@ -1691,11 +1696,11 @@ snapshots:
   '@oxlint/binding-win32-x64-msvc@1.90.0':
     optional: true
 
-  '@projectwallace/css-analyzer@9.9.4':
+  '@projectwallace/css-analyzer@https://pkg.pr.new/@projectwallace/css-analyzer@f3efc01':
     dependencies:
-      '@projectwallace/css-parser': 0.18.9
+      '@projectwallace/css-parser': 0.20.0
 
-  '@projectwallace/css-parser@0.18.9': {}
+  '@projectwallace/css-parser@0.20.0': {}
 
   '@projectwallace/preset-oxlint@0.0.13(oxlint@1.90.0)':
     dependencies:

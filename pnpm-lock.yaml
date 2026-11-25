@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@projectwallace/css-analyzer':
-        specifier: https://pkg.pr.new/@projectwallace/css-analyzer@e0c555b
-        version: https://pkg.pr.new/@projectwallace/css-analyzer@e0c555b
+        specifier: ^10.0.0
+        version: 10.0.0
     devDependencies:
       '@projectwallace/preset-oxlint':
         specifier: ^0.0.13
@@ -567,9 +567,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@projectwallace/css-analyzer@https://pkg.pr.new/@projectwallace/css-analyzer@e0c555b':
-    resolution: {integrity: sha512-pSh4u8zRKNKB2qApbJdB6ePgROeSFVEx0xOLaVUy1uJCqU0fyXm1GOQP4OBFWY7Fki01s0K45P2imF+xk438Nw==, tarball: https://pkg.pr.new/@projectwallace/css-analyzer@e0c555b}
-    version: 10.0.0-alpha.0
+  '@projectwallace/css-analyzer@10.0.0':
+    resolution: {integrity: sha512-xk/hi+dvgyC4FU1ru/jvwA00ztEJWnJwp2D3SMgeqhm7Ws2a97v3Yp4zWZqYEvNWILuDPTnCuHaQmVXpEQCd8Q==}
     engines: {node: '>=22.18.0', pnpm: '>=11.0.0'}
 
   '@projectwallace/css-parser@0.20.0':
@@ -1696,7 +1695,7 @@ snapshots:
   '@oxlint/binding-win32-x64-msvc@1.90.0':
     optional: true
 
-  '@projectwallace/css-analyzer@https://pkg.pr.new/@projectwallace/css-analyzer@e0c555b':
+  '@projectwallace/css-analyzer@10.0.0':
     dependencies:
       '@projectwallace/css-parser': 0.20.0
 

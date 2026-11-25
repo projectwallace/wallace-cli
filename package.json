@@ -38,7 +38,7 @@
 		"knip": "knip"
 	},
 	"dependencies": {
-		"@projectwallace/css-analyzer": "https://pkg.pr.new/@projectwallace/css-analyzer@f3efc01"
+		"@projectwallace/css-analyzer": "https://pkg.pr.new/@projectwallace/css-analyzer@e0c555b"
 	},
 	"devDependencies": {
 		"@projectwallace/preset-oxlint": "^0.0.13",
